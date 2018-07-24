@@ -88,7 +88,7 @@
 <meta property="og:description" content="ZCMU2163 项链Description 强迫症非常麻烦，尤其是买东西的时候。冠璐女神的生日快到了，某强迫症要送一条项链送给她，重点是，这条项链要对称，这条项链要对称，这条项链要对称。（很重要所以说三遍） 项链都是环状的（废话…），每条项链上有颜色不同的珍珠，用小写字母 a−z 代表不同的颜色。一条项链是对称的，是指从项链的某个位置开始，两个方向看过去是一样的（珍珠的颜色一样）。 比方说，如图">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://acm.zcmu.edu.cn/JudgeOnline/upload/201806/1.png">
-<meta property="og:updated_time" content="2018-07-24T07:23:39.289Z">
+<meta property="og:updated_time" content="2018-07-24T12:46:46.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ZCMU2163 项链">
 <meta name="twitter:description" content="ZCMU2163 项链Description 强迫症非常麻烦，尤其是买东西的时候。冠璐女神的生日快到了，某强迫症要送一条项链送给她，重点是，这条项链要对称，这条项链要对称，这条项链要对称。（很重要所以说三遍） 项链都是环状的（废话…），每条项链上有颜色不同的珍珠，用小写字母 a−z 代表不同的颜色。一条项链是对称的，是指从项链的某个位置开始，两个方向看过去是一样的（珍珠的颜色一样）。 比方说，如图">
@@ -399,8 +399,10 @@
 <p>YES </p>
 <p>NO   </p>
 </blockquote>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>暴力调了好久调不出，有空再试试8！</p>
-<p>先在原字符串基础上复制并加上一条一样的项链，方便判断，之后用<code>reverse(s.begin(),s.end());</code>倒置，原正向与新反向比较，若返回是其中的重复子串，即对称。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><strong>模拟法：</strong></p>
+<p>分两种情况，第一种项链的对称轴在两颗珠子之间，第二种对称轴分割了一颗珠子。定义两个变量分上述两种情况遍历比较即可。</p>
+<p><strong>STL：</strong></p>
+<p>原字符串基础上复制并加上一条一样的项链，方便判断，之后用<code>reverse</code>倒置，原正向与新反向比较，若原字符串是新字符串的重复子串，即对称。</p>
 <p>妙啊！</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">string</span> s,z;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">while</span>(n--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">		z=s+s;</span><br><span class="line">		reverse(z.begin(),z.end());</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s\n"</span>,<span class="built_in">strstr</span>(z.c_str(),s.c_str())?<span class="string">"YES"</span>:<span class="string">"NO"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="strstr"><a href="#strstr" class="headerlink" title="strstr()"></a>strstr()</h3><p>strstr(str1,str2) 函数用于判断字符串str2是否是str1的子串。如果是，则该函数返回str2在str1中首次出现的地址；否则，返回NULL。 </p>

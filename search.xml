@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2F2018%2F07%2F24%2FZCMU1265-%E6%95%B0%E4%B8%89%E8%A7%92%E5%BD%A2%2F</url>
+    <content type="text"><![CDATA[ZCMU1265 数三角形Description 给定一个等边三角形，它的每条边被分成n等分，分别用平行于三边的直线过各个n等分点截这个三角形，如图所示： 请问，图中总共有多少个三角形？ Input 输入包含多组测试数据，直至EOF。 每组测试数据包含一个正整数n，表示三角形三边被分为了n等份（n&lt;500）。 Output 输出三角形的个数。 Sample Input 1 2 3 Sample Output 1 5 13 思路用数学方法找出三角形个数的递推公式即可。 注意有箭头朝上和箭头朝下两种三角形，箭头朝下个数表达式要分奇偶。 代码12]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[ZCMU2163 项链]]></title>
     <url>%2F2018%2F07%2F24%2FZCMU2163-%E9%A1%B9%E9%93%BE%2F</url>
     <content type="text"><![CDATA[ZCMU2163 项链Description 强迫症非常麻烦，尤其是买东西的时候。冠璐女神的生日快到了，某强迫症要送一条项链送给她，重点是，这条项链要对称，这条项链要对称，这条项链要对称。（很重要所以说三遍） 项链都是环状的（废话…），每条项链上有颜色不同的珍珠，用小写字母 a−z 代表不同的颜色。一条项链是对称的，是指从项链的某个位置开始，两个方向看过去是一样的（珍珠的颜色一样）。 比方说，如图所示的项链（第一个输入样例），从箭头位置开始看，无论是顺时针还是逆时针，看到的都是ababbaba，因此这条项链是对称的。 有的项链非常长，很难看出它们的对称性。你能快速地判断哪些项链是对称的吗？ Input 第一行有一个整数N，表示一共有N条项链。 接下来N行，每行一个由小写字母组成的字符串，代表项链上珍珠的颜色，可能从项链的任意位置开始。 Output 输出N行，如果项链是对称的，输出YES，否则输出NO。 Sample Input 3 abbabaab abab abcdefg Sample Output YES YES NO 思路模拟法： 分两种情况，第一种项链的对称轴在两颗珠子之间，第二种对称轴分割了一颗珠子。定义两个变量分上述两种情况遍历比较即可。 STL： 原字符串基础上复制并加上一条一样的项链，方便判断，之后用reverse倒置，原正向与新反向比较，若原字符串是新字符串的重复子串，即对称。 妙啊！ 代码123456789101112131415#include&lt;bits/stdc++.h&gt;using namespace std;int main()&#123; int n; string s,z; scanf("%d",&amp;n); while(n--) &#123; cin&gt;&gt;s; z=s+s; reverse(z.begin(),z.end()); printf("%s\n",strstr(z.c_str(),s.c_str())?"YES":"NO"); &#125;&#125; strstr()strstr(str1,str2) 函数用于判断字符串str2是否是str1的子串。如果是，则该函数返回str2在str1中首次出现的地址；否则，返回NULL。 s.c_str这是为了与c语言兼容，在c语言中没有string类型，故必须通过string类对象的成员函数c_str把string 对象转换成c中的字符串样式。 https://blog.csdn.net/weixin_41058467/article/details/80609517 by KEMNHan]]></content>
@@ -60,8 +65,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ZCMU</tag>
         <tag>ACM</tag>
+        <tag>ZCMU</tag>
       </tags>
   </entry>
   <entry>

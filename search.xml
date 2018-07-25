@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ZCMU1398 工程]]></title>
+    <url>%2F2018%2F07%2F25%2FZCMU1398-%E5%B7%A5%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[ZCMU1398 工程Description 某省自从实行了很多年的畅通工程计划后，终于修建了很多路。不过路多了也不好，每次要从一个城镇到另一个城镇时，都有许多种道路方案可以选择，而某些方案要比另一些方案行走的距离要短很多。这让行人很困扰。 现在，已知起点和终点，请你计算出要从起点到终点，最短需要行走多少距离。 Input 本题目包含多组数据，请处理到文件结束。 每组数据第一行包含两个正整数N和M(0&lt;N&lt;200,0&lt;M&lt;1000)，分别代表现有城镇的数目和已修建的道路的数目。城镇分别以0～N-1编号。 接下来是M行道路信息。每一行有三个整数A,B,X(0&lt;=A,B&lt;N,A!=B,0&lt;X&lt;10000),表示城镇A和城镇B之间有一条长度为X的双向道路。 再接下一行有两个整数S,T(0&lt;=S,T&lt;N)，分别代表起点和终点。 Output 对于每组数据，请在一行里输出最短需要行走的距离。如果不存在从S到T的路线，就输出-1. Sample Input123456783 3 0 1 1 0 2 3 1 2 1 0 2 3 1 0 1 1 1 2 Sample Output122 -1 思路典型的Floyd算法求最短路径 123456789101112//Floyed-Warshaall for(int k=0;k&lt;n;k++) &#123; for(int i=0;i&lt;n;i++) &#123; for(int j=0;j&lt;n;j++) &#123; if(e[i][k]+e[k][j]&lt;e[i][j]) e[i][j]=e[i][k]+e[k][j]; &#125; &#125; &#125; 注意城镇从0开始而不是1。 城市与城市之间是双向道路，因此读入边时e~ij~=k时也要进行e~ji~=k这步操作。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#include &lt;bits/stdc++.h&gt;using namespace std;const int inf=99999;int e[201][201];int main()&#123; int n,m; while(~scanf("%d%d",&amp;n,&amp;m)) &#123; //初始化 for(int i=0;i&lt;n;i++) &#123; for(int j=0;j&lt;n;j++) &#123; if(i==j) e[i][j]=0; else e[i][j]=inf; &#125; &#125; //读入边 for(int i=0;i&lt;m;i++) &#123; int a,b,x; scanf("%d %d %d",&amp;a,&amp;b,&amp;x); e[a][b]=x; e[b][a]=x; &#125; //Floyed-Warshaall for(int k=0;k&lt;n;k++) &#123; for(int i=0;i&lt;n;i++) &#123; for(int j=0;j&lt;n;j++) &#123; //printf("e[%d][%d]==%d\n",i,j,e[i][j]); if(e[i][k]+e[k][j]&lt;e[i][j]) e[i][j]=e[i][k]+e[k][j]; &#125; &#125; &#125; int s,t; scanf("%d %d",&amp;s,&amp;t); if(e[s][t]!=inf) printf("%d\n",e[s][t]); else printf("-1\n"); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>ZCMU</tag>
+        <tag>算法</tag>
+        <tag>Floyd算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ZCMU1375 阶乘的零]]></title>
     <url>%2F2018%2F07%2F25%2FZCMU1375-%E9%98%B6%E4%B9%98%E7%9A%84%E9%9B%B6%2F</url>
     <content type="text"><![CDATA[ZCMU1375 阶乘的零Description 定义f(n)为n！的末尾零的个数，例如f(4)=0，f(5)=1。你的任务是对于一个给定的的值x找出最小的n满足f(n)=x。 Input 多组测试数据，每组测试数据包含一个正整数x（1&lt;=x&lt;=10^8）。 Output 对于每组测试数据输出对应的n，若没有n满足则输出“No solution”。 Sample Input 2 Sample Output 10 思路要判断n!末尾有几个零，判断1-n中能被5整除的个数，同时注意底数为5的幂提供额外的5。 12345678910int find0(int n)&#123; int sum=0; while (n&gt;=5) &#123; sum+=n/5; n/=5; &#125; return sum;&#125; 一开始想到枚举x，将第一次末尾x个零的n!存入数组——a[n]=x，但这样会超时。 换个角度，由x找n变为由n找x，不妨在所有可能的n中用二分查找法查找末尾有x个0的某阶乘，那么又如何找出第一次出现的n呢？从之前罗列的规律发现该第一次出现的数必能被5整除。 1234while(mid%5!=0)&#123; mid--;&#125; 注意存在输出”No solution” 的结果，例如24!末尾有4个0，25!末尾有6个0，若输入x为5，则输出的是”No solution” 。该情况不用单独考虑，find0(n)并未返回过5，二分查找永远找不到5。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445#include &lt;bits/stdc++.h&gt;using namespace std;const int maxN=200000;typedef long long ll;int F[maxN];ll find0(ll n)&#123; ll sum=0; while (n&gt;4) &#123; sum+=n/5; n/=5; &#125; return sum;&#125; int main()&#123; int x; while(cin&gt;&gt;x) &#123; int flag=1; ll left=5; ll right=10000000000000000; ll mid; while(left&lt;right) &#123; mid=(left+right)/2; if(find0(mid)==x) &#123; while(mid%5!=0) &#123; mid--; &#125; flag=0; cout&lt;&lt;mid&lt;&lt;endl; break; &#125; if(find0(mid)&gt;x) right=mid-1; else left=mid+1; &#125; if(flag) cout&lt;&lt;"No solution"&lt;&lt;endl; &#125; return 0;&#125;]]></content>

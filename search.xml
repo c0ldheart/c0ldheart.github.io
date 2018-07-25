@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ZCMU1375 阶乘的零]]></title>
+    <url>%2F2018%2F07%2F25%2FZCMU1375-%E9%98%B6%E4%B9%98%E7%9A%84%E9%9B%B6%2F</url>
+    <content type="text"><![CDATA[ZCMU1375 阶乘的零Description 定义f(n)为n！的末尾零的个数，例如f(4)=0，f(5)=1。你的任务是对于一个给定的的值x找出最小的n满足f(n)=x。 Input 多组测试数据，每组测试数据包含一个正整数x（1&lt;=x&lt;=10^8）。 Output 对于每组测试数据输出对应的n，若没有n满足则输出“No solution”。 Sample Input 2 Sample Output 10 思路要判断n!末尾有几个零，判断1-n中能被5整除的个数，同时注意底数为5的幂提供额外的5。 12345678910int find0(int n)&#123; int sum=0; while (n&gt;=5) &#123; sum+=n/5; n/=5; &#125; return sum;&#125; 一开始想到枚举x，将第一次末尾x个零的n!存入数组——a[n]=x，但这样会超时。 换个角度，由x找n变为由n找x，不妨在所有可能的n中用二分查找法查找末尾有x个0的某阶乘，那么又如何找出第一次出现的n呢？从之前罗列的规律发现该第一次出现的数必能被5整除。 1234while(mid%5!=0)&#123; mid--;&#125; 注意存在输出”No solution” 的结果，例如24!末尾有4个0，25!末尾有6个0，若输入x为5，则输出的是”No solution” 。该情况不用单独考虑，find0(n)并未返回过5，二分查找永远找不到5。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445#include &lt;bits/stdc++.h&gt;using namespace std;const int maxN=200000;typedef long long ll;int F[maxN];ll find0(ll n)&#123; ll sum=0; while (n&gt;4) &#123; sum+=n/5; n/=5; &#125; return sum;&#125; int main()&#123; int x; while(cin&gt;&gt;x) &#123; int flag=1; ll left=5; ll right=10000000000000000; ll mid; while(left&lt;right) &#123; mid=(left+right)/2; if(find0(mid)==x) &#123; while(mid%5!=0) &#123; mid--; &#125; flag=0; cout&lt;&lt;mid&lt;&lt;endl; break; &#125; if(find0(mid)&gt;x) right=mid-1; else left=mid+1; &#125; if(flag) cout&lt;&lt;"No solution"&lt;&lt;endl; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>ZCMU</tag>
+        <tag>算法</tag>
+        <tag>二分查找</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ZCMU1711 背包]]></title>
     <url>%2F2018%2F07%2F25%2FZCMU1711-%E8%83%8C%E5%8C%85%2F</url>
     <content type="text"><![CDATA[ZCMU1711 背包Description 你有一个神奇的背包，他的容积是m(0&lt;m&lt;=80)，只有你装满他，你才能拿走他，现在给你n(1&lt;=n&lt;=20)个物品Xi(Xi&lt;=m)，那么一共有几种方式，可以让你拿走背包？ Input 第一行 n,m 第二行 n个数字 Output 输出方案数 Sample Input 3 40 20 20 20 Sample Output 3 思路题目名是背包，自然想到用背包问题解决，但是本题并没有涉及到价值和最优解，所以先留个坑给01背包，转而用更简单粗暴的DFS深度优先搜寻遍历所有情况，当满足情况计数器加一即可。 注意数据不大，并不会超时。 代码1234567891011121314151617181920212223242526272829303132#include&lt;bits/stdc++.h&gt;using namespace std;int a[100];int ans;int m,n;void dfs(int x,int y)&#123; if(x==0) &#123; ans++; return; &#125; if(x&lt;0||y&gt;n) return; dfs(x-a[y],y+1); dfs(x,y+1); return;&#125;int main()&#123; while(cin&gt;&gt;n&gt;&gt;m) &#123; for(int i=1;i&lt;=n;i++) &#123; cin&gt;&gt;a[i]; &#125; ans=0; dfs(m,1); cout&lt;&lt;ans&lt;&lt;endl; &#125; return 0;&#125;]]></content>

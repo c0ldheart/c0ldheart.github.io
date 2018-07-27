@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ZCMU,算法,栈," />
 
 
 
@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="ZCMU1880 wjw的火车站Description wjw最近新开了一座火车站…没错就是火车站，因为寒假过完同学们都该返校了，所以他准备大干一场，但是这里有一个问题，因为wjw的资金不足，所以这座火车站只有一条铁路，所有的火车从一侧进入，从另一侧出来，但是为了方便调度火车，所以wjw机智的修改了一下铁路。如下图，如果火车A首先进入铁路，然后火车B在火车A离开之前进入铁路，则火车A只有在火车B离">
+<meta name="keywords" content="ZCMU,算法,栈">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="c0ldheart.github.io/2018/07/22/hello-world/index.html">
+<meta property="og:title" content="ZCMU1880 wjw的火车站(栈的基本应用)">
+<meta property="og:url" content="c0ldheart.github.io/2018/07/27/ZCMU1880-wjw的火车站-栈的基本应用/index.html">
 <meta property="og:site_name" content="Coldheart&#39;s blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="ZCMU1880 wjw的火车站Description wjw最近新开了一座火车站…没错就是火车站，因为寒假过完同学们都该返校了，所以他准备大干一场，但是这里有一个问题，因为wjw的资金不足，所以这座火车站只有一条铁路，所有的火车从一侧进入，从另一侧出来，但是为了方便调度火车，所以wjw机智的修改了一下铁路。如下图，如果火车A首先进入铁路，然后火车B在火车A离开之前进入铁路，则火车A只有在火车B离">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-22T03:16:59.911Z">
+<meta property="og:image" content="http://acm.zcmu.edu.cn/JudgeOnline/upload/201702/QQ%E5%9B%BE%E7%89%8720170221111510.png">
+<meta property="og:updated_time" content="2018-07-27T13:03:43.659Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="ZCMU1880 wjw的火车站(栈的基本应用)">
+<meta name="twitter:description" content="ZCMU1880 wjw的火车站Description wjw最近新开了一座火车站…没错就是火车站，因为寒假过完同学们都该返校了，所以他准备大干一场，但是这里有一个问题，因为wjw的资金不足，所以这座火车站只有一条铁路，所有的火车从一侧进入，从另一侧出来，但是为了方便调度火车，所以wjw机智的修改了一下铁路。如下图，如果火车A首先进入铁路，然后火车B在火车A离开之前进入铁路，则火车A只有在火车B离">
+<meta name="twitter:image" content="http://acm.zcmu.edu.cn/JudgeOnline/upload/201702/QQ%E5%9B%BE%E7%89%8720170221111510.png">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="c0ldheart.github.io/2018/07/22/hello-world/"/>
+  <link rel="canonical" href="c0ldheart.github.io/2018/07/27/ZCMU1880-wjw的火车站-栈的基本应用/"/>
 
 
 
 
 
-  <title>Hello World | Coldheart's blog</title>
+  <title>ZCMU1880 wjw的火车站(栈的基本应用) | Coldheart's blog</title>
   
 
 
@@ -286,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="c0ldheart.github.io/2018/07/22/hello-world/">
+    <link itemprop="mainEntityOfPage" href="c0ldheart.github.io/2018/07/27/ZCMU1880-wjw的火车站-栈的基本应用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="coldheart">
@@ -303,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">ZCMU1880 wjw的火车站(栈的基本应用)</h1>
         
 
         <div class="post-meta">
@@ -315,8 +318,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-22T11:16:59+08:00">
-                2018-07-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-27T20:41:32+08:00">
+                2018-07-27
               </time>
             
 
@@ -325,6 +328,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -353,15 +378,37 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="ZCMU1880-wjw的火车站"><a href="#ZCMU1880-wjw的火车站" class="headerlink" title="ZCMU1880 wjw的火车站"></a>ZCMU1880 wjw的火车站</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><blockquote>
+<p>wjw最近新开了一座火车站…没错就是火车站，因为寒假过完同学们都该返校了，所以他准备大干一场，但是这里有一个问题，因为wjw的资金不足，所以这座火车站只有一条铁路，所有的火车从一侧进入，从另一侧出来，但是为了方便调度火车，所以wjw机智的修改了一下铁路。如下图，如果火车A首先进入铁路，然后火车B在火车A离开之前进入铁路，则火车A只有在火车B离开后才能离开。那么现在问题来了，有一串火车按给定顺序进入车站，wjw希望在通过他的一波操作使这列火车以另一个顺序开出火车站，但是他的智商并不支持他解决这个问题，所以你的任务是确定在给定进站顺序和出站顺序的情况下，给出调度操作。</p>
+<p><img src="http://acm.zcmu.edu.cn/JudgeOnline/upload/201702/QQ%E5%9B%BE%E7%89%8720170221111510.png" alt="img"></p>
+</blockquote>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><blockquote>
+<p>输入包含多组数据。每个测试数据包含一个正整数n表示火车数，接下去的两个序列表示进站顺序和出站顺序，火车编号为小写或大写字母，(a≠A） </p>
+</blockquote>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><blockquote>
+<p>输出数据包含一个字符串“Yes.”或“No.”，表示是否有可行的调度方案，若有，则输出调度操作。 </p>
+</blockquote>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><blockquote>
+<p>3 ABC CBA </p>
+<p>3 abc cab </p>
+</blockquote>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><blockquote>
+<p>Case #1: Yes. </p>
+<p>in </p>
+<p>in </p>
+<p>in </p>
+<p>out </p>
+<p>out </p>
+<p>out </p>
+<p>Case #2: No. </p>
+</blockquote>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>虽然没看懂图，但通过样例基本了解了。每组样例给出两个字符串，第一个为还未进车站的顺序，第二个为希望的出站时的顺序，火车进站后可以选择直接出站，也可以选择暂时不走（压入站顶），等待它后面的火车做出同样的选择（进站后出站或在站顶等待），通过以上操作判断最终能否实现期望出战顺序。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>题意中的站就是栈，这是一题栈的应用。利用数组ans[ansSum]保存输出“in”还是“out”的数据，数据压入栈时同时判断它做出的选择，一旦发现能出栈，就要不停出栈直到不能出，出栈时答案数组保存一个“out”。最后判断栈是否为空，即为答案的”Yes“或”No“。</p>
+<p>关键部分分为以下步骤：</p>
+<h3 id="1-for循环i读入字符串第i个字符，将他压入栈，ans数组保存一个”in”"><a href="#1-for循环i读入字符串第i个字符，将他压入栈，ans数组保存一个”in”" class="headerlink" title="1.for循环i读入字符串第i个字符，将他压入栈，ans数组保存一个”in”"></a>1.for循环i读入字符串第i个字符，将他压入栈，ans数组保存一个”in”</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="built_in">strlen</span>(in);i++)</span><br><span class="line">       &#123;</span><br><span class="line">           s.push(in[i]);</span><br><span class="line">    		ans[ansSum++]=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="2-判断是否能出栈、输出、ans数组保存信息"><a href="#2-判断是否能出栈、输出、ans数组保存信息" class="headerlink" title="2.判断是否能出栈、输出、ans数组保存信息"></a>2.判断是否能出栈、输出、ans数组保存信息</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(!s.empty()&amp;&amp;outPoint&lt;=<span class="built_in">strlen</span>(out)&amp;&amp;s.top()==out[outPoint])<span class="comment">//如果栈非空、火车还没走完、栈顶符合出栈顺序条件</span></span><br><span class="line">            &#123;</span><br><span class="line">                s.pop();<span class="comment">//栈顶出栈</span></span><br><span class="line">                outPoint++;<span class="comment">//火车期望的队形往后一位</span></span><br><span class="line">                ans[ansSum++]=<span class="number">2</span>;<span class="comment">//输出时根据该数组，1输出IN，2输出OUT</span></span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-判断栈是否为空（火车是否成功按期望走出）"><a href="#3-判断栈是否为空（火车是否成功按期望走出）" class="headerlink" title="3.判断栈是否为空（火车是否成功按期望走出）"></a>3.判断栈是否为空（火车是否成功按期望走出）</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="完整代码及注释"><a href="#完整代码及注释" class="headerlink" title="完整代码及注释"></a>完整代码及注释</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> in[<span class="number">10000</span>];</span><br><span class="line"><span class="keyword">char</span> out[<span class="number">10000</span>];</span><br><span class="line"><span class="keyword">int</span> ans[<span class="number">10000</span>];</span><br><span class="line"><span class="built_in">stack</span> &lt;<span class="keyword">char</span>&gt; s;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> kase=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d %s %s"</span>,&amp;n,in,out))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">memset</span>(ans,<span class="number">0</span>,<span class="keyword">sizeof</span>(ans));</span><br><span class="line">        <span class="keyword">int</span> ansSum=<span class="number">0</span>,outPoint=<span class="number">0</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Case #%d: "</span>,++kase);</span><br><span class="line">        <span class="keyword">int</span> out1;</span><br><span class="line">        <span class="keyword">while</span>(!s.empty()) s.pop();<span class="comment">//清空栈</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="built_in">strlen</span>(in);i++)</span><br><span class="line">        &#123;</span><br><span class="line">            s.push(in[i]);<span class="comment">//in队首进栈</span></span><br><span class="line">            ans[ansSum++]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(!s.empty()&amp;&amp;outPoint&lt;=<span class="built_in">strlen</span>(out)&amp;&amp;s.top()==out[outPoint])<span class="comment">//如果栈非空、火车还没走完、栈顶符合出栈顺序条件</span></span><br><span class="line">            &#123;</span><br><span class="line">                s.pop();<span class="comment">//栈顶出栈</span></span><br><span class="line">                outPoint++;<span class="comment">//火车期望的队形往后一位</span></span><br><span class="line">                ans[ansSum++]=<span class="number">2</span>;<span class="comment">//输出时根据该数组，1输出IN，2输出OUT</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!s.empty()) <span class="built_in">printf</span>(<span class="string">"No.\n"</span>);<span class="comment">//还没走完</span></span><br><span class="line">        <span class="keyword">else</span><span class="comment">//走完了</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Yes.\n"</span>);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;ansSum;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(ans[i]==<span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"in\n"</span>);</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(ans[i]==<span class="number">2</span>) <span class="built_in">printf</span>(<span class="string">"out\n"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -377,6 +424,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/ZCMU/" rel="tag"># ZCMU</a>
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/栈/" rel="tag"># 栈</a>
+          
+        </div>
+      
 
       
       
@@ -386,15 +443,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/07/27/ZCMCMU1639-残缺的棋盘/" rel="next" title="ZCMCMU1639 残缺的棋盘">
+                <i class="fa fa-chevron-left"></i> ZCMCMU1639 残缺的棋盘
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/22/我的第一篇文章/" rel="prev" title="我的第一篇文章">
-                我的第一篇文章 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -526,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ZCMU1880-wjw的火车站"><span class="nav-number">1.</span> <span class="nav-text">ZCMU1880 wjw的火车站</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input"><span class="nav-number">1.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output"><span class="nav-number">1.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.4.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">1.6.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">1.7.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-for循环i读入字符串第i个字符，将他压入栈，ans数组保存一个”in”"><span class="nav-number">1.7.1.</span> <span class="nav-text">1.for循环i读入字符串第i个字符，将他压入栈，ans数组保存一个”in”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-判断是否能出栈、输出、ans数组保存信息"><span class="nav-number">1.7.2.</span> <span class="nav-text">2.判断是否能出栈、输出、ans数组保存信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-判断栈是否为空（火车是否成功按期望走出）"><span class="nav-number">1.7.3.</span> <span class="nav-text">3.判断栈是否为空（火车是否成功按期望走出）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整代码及注释"><span class="nav-number">1.8.</span> <span class="nav-text">完整代码及注释</span></a></li></ol></li></ol></div>
             
 
           </div>

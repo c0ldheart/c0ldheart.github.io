@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ZCMCMU1639 残缺的棋盘]]></title>
+    <url>%2F2018%2F07%2F27%2FZCMCMU1639-%E6%AE%8B%E7%BC%BA%E7%9A%84%E6%A3%8B%E7%9B%98%2F</url>
+    <content type="text"><![CDATA[ZCMU1639 残缺的棋盘Description 在国际象棋里，王是最重要的一个棋子。每一步，王可以往上下左右或者对角线方向移动一步，如下图所示。 给定两个格子 A(r1,c1), B(r2,c2)，你的任务是计算出一个王从 A 到 B 至少需要走多少步。为了避免题目太简单，我们从棋盘里拿掉了一个格子 C(r3,c3)（ABC 保证互不相同），要求王从 A走到 B 的过程中不能进入格子 C。在本题中，各行从上到下编号为 1~8，各列从左到右编号为1~8。 Input 输入包含不超过 10000 组数据。每组数据包含 6 个整数 r1, c1, r2, c2, r3, c3 (1&lt;=r1, c1, r2, c2, r3, c3&lt;=8). 三个格子 A, B, C 保证各不相同。 Output 对于每组数据，输出测试点编号和最少步数 Sample Input 1 1 8 7 5 6 1 1 3 3 2 2 Sample Output Case 1: 7 Case 2: 3 思路用广度优先搜索算法（BFS）找最短路径。 注意这里每个点可以朝八个方向走 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263#include&lt;bits/stdc++.h&gt;using namespace std;int r1,c1,r2,c2,r3,c3;struct note&#123; int x; int y; int f; int s;&#125;;int main()&#123; struct note que[65]; int a[9][9],book[9][9]; int next[8][2]=&#123;&#123;0,1&#125;,&#123;1,0&#125;,&#123;0,-1&#125;,&#123;-1,0&#125;,&#123;1,1&#125;,&#123;1,-1&#125;,&#123;-1,-1&#125;,&#123;-1,1&#125;&#125;; int head,tail; int i,j,k,n,m,r1,c1,r2,c2,r3,c3,tx,ty,flag; int sum=0; while(~scanf("%d %d %d %d %d %d",&amp;r1,&amp;c1,&amp;r2,&amp;c2,&amp;r3,&amp;c3)) &#123; fill(a[0],a[0]+81,1); memset(book,0,sizeof(book)); a[r3][c3]=0; head=1; tail=1; que[tail].x=r1; que[tail].y=c1; que[tail].f=0; que[tail].s=0; tail++; book[r1][c1]=1; flag=0; while(head&lt;tail) &#123; for(k=0;k&lt;=7;k++) &#123; tx=que[head].x+next[k][0]; ty=que[head].y+next[k][1]; if(tx&lt;1||tx&gt;8||ty&lt;1||ty&gt;8) continue; if(a[tx][ty]==1&amp;&amp;book[tx][ty]==0) &#123; book[tx][ty]=1; que[tail].x=tx; que[tail].y=ty; que[tail].f=head; que[tail].s=que[head].s+1; tail++; &#125; if(tx==r2&amp;&amp;ty==c2) &#123; flag=1; break; &#125; &#125; if(flag==1) break; head++; &#125; printf("Case %d:% d\n",++sum,que[tail-1].s); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>ZCMU</tag>
+        <tag>算法</tag>
+        <tag>BFS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ZCMCMU1639 残缺的棋盘]]></title>
+    <url>%2F2018%2F07%2F27%2FZCMU1639-%E6%AE%8B%E7%BC%BA%E7%9A%84%E6%A3%8B%E7%9B%98%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[ZCMU1398 工程]]></title>
     <url>%2F2018%2F07%2F25%2FZCMU1398-%E5%B7%A5%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[ZCMU1398 工程Description 某省自从实行了很多年的畅通工程计划后，终于修建了很多路。不过路多了也不好，每次要从一个城镇到另一个城镇时，都有许多种道路方案可以选择，而某些方案要比另一些方案行走的距离要短很多。这让行人很困扰。 现在，已知起点和终点，请你计算出要从起点到终点，最短需要行走多少距离。 Input 本题目包含多组数据，请处理到文件结束。 每组数据第一行包含两个正整数N和M(0&lt;N&lt;200,0&lt;M&lt;1000)，分别代表现有城镇的数目和已修建的道路的数目。城镇分别以0～N-1编号。 接下来是M行道路信息。每一行有三个整数A,B,X(0&lt;=A,B&lt;N,A!=B,0&lt;X&lt;10000),表示城镇A和城镇B之间有一条长度为X的双向道路。 再接下一行有两个整数S,T(0&lt;=S,T&lt;N)，分别代表起点和终点。 Output 对于每组数据，请在一行里输出最短需要行走的距离。如果不存在从S到T的路线，就输出-1. Sample Input123456783 3 0 1 1 0 2 3 1 2 1 0 2 3 1 0 1 1 1 2 Sample Output122 -1 思路典型的Floyd算法求最短路径 123456789101112//Floyed-Warshaall for(int k=0;k&lt;n;k++) &#123; for(int i=0;i&lt;n;i++) &#123; for(int j=0;j&lt;n;j++) &#123; if(e[i][k]+e[k][j]&lt;e[i][j]) e[i][j]=e[i][k]+e[k][j]; &#125; &#125; &#125; 注意城镇从0开始而不是1。 城市与城市之间是双向道路，因此读入边时e~ij~=k时也要进行e~ji~=k这步操作。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#include &lt;bits/stdc++.h&gt;using namespace std;const int inf=99999;int e[201][201];int main()&#123; int n,m; while(~scanf("%d%d",&amp;n,&amp;m)) &#123; //初始化 for(int i=0;i&lt;n;i++) &#123; for(int j=0;j&lt;n;j++) &#123; if(i==j) e[i][j]=0; else e[i][j]=inf; &#125; &#125; //读入边 for(int i=0;i&lt;m;i++) &#123; int a,b,x; scanf("%d %d %d",&amp;a,&amp;b,&amp;x); e[a][b]=x; e[b][a]=x; &#125; //Floyd-Warshaall for(int k=0;k&lt;n;k++) &#123; for(int i=0;i&lt;n;i++) &#123; for(int j=0;j&lt;n;j++) &#123; //printf("e[%d][%d]==%d\n",i,j,e[i][j]); if(e[i][k]+e[k][j]&lt;e[i][j]) e[i][j]=e[i][k]+e[k][j]; &#125; &#125; &#125; int s,t; scanf("%d %d",&amp;s,&amp;t); if(e[s][t]!=inf) printf("%d\n",e[s][t]); else printf("-1\n"); &#125; return 0;&#125;]]></content>

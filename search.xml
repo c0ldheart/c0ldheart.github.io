@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[tags]]></title>
-    <url>%2F2018%2F07%2F28%2Ftags%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
     <title><![CDATA[VOJ Expanding Rods(二分法解方程)]]></title>
     <url>%2F2018%2F07%2F28%2FVOJ-Expanding-Rods-%E4%BA%8C%E5%88%86%E6%B3%95%E8%A7%A3%E6%96%B9%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[描述 When a thin rod of length L is heated n degrees, it expands to a new length L’ = (1+n*C)*L, where C is the coefficient of heat expansion. When a thin rod is mounted on two solid walls and then heated, it expands and takes the shape of a circular segment, the original rod being the chord of the segment. Your task is to compute the distance by which the center of the rod is displaced. That means you have to calculate h as in the picture. Input Input starts with an integer T (≤ 20), denoting the number of test cases. Each case contains three non-negative real numbers: the initial length of the rod in millimeters L, the temperature change in degrees n and the coefficient of heat expansion of the material C. Input data guarantee that no rod expands by more than one half of its original length. All the numbers will be between 0 and 1000 and there can be at most 5 digits after the decimal point. Output For each case, print the case number and the displacement of the center of the rod in single line. Errors less than 10-6will be ignored. Sample Input 3 1000 100 0.0001 150 10 0.00006 10 0 0.001 Sample Output Case 1: 61.3289915 Case 2: 2.2502024857 Case 3: 0 思路一道很有意思的题目，利用二分法查找x解方程。 代码123456789101112131415161718192021222324252627282930313233343536#include &lt;iostream&gt;#include &lt;cstdio&gt;#include&lt;cmath&gt;/*L1=(1+n*C)*Lθr = 1/2*L1sinθ= 1/2*L/rr*r = (1/2*L)*(1/2*L) + (r-x)*(r-x)*/using namespace std;const double PI=acos(-1.0);const double eps=1e-6;double L1,C,L,N,R,Left,Right,mid,t;int main()&#123; int n; scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) &#123; scanf("%lf %lf %lf",&amp;L,&amp;N,&amp;C); L1=(1+N*C)*L; Left=0; Right=L/2; while(Right-Left&gt;eps) &#123; mid=(Left+Right)/2; R=(L*L/4+mid*mid)/(2*mid); t=2*R*asin(L/(2*R)); if(t&gt;L1) Right=mid; else Left=mid; &#125; mid=(Left+Right)/2; printf("Case %d: %lf\n",i,mid); &#125;&#125;]]></content>
@@ -104,8 +99,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>模拟</tag>
         <tag>ZCMU</tag>
+        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>

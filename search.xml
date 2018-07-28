@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ZCMU1713 打麻将(模拟)]]></title>
+    <url>%2F2018%2F07%2F28%2FZCMU1713-%E6%89%93%E9%BA%BB%E5%B0%86-%E6%A8%A1%E6%8B%9F%2F</url>
+    <content type="text"><![CDATA[ZCMU1713 打麻将(模拟)Description 卡斯丁狗表示真月里那几天，天天在打麻将，他的手气很好，总是摸到三四个财神，于是他就怒赚了一波红包。由于长得帅，他就想把这个不可告人的赚钱胡牌大法告诉你。 已知胡牌公式是这样的XXXN+Y(Y+1)(Y+2)M+ZZ（N*M可以等于0）就可以胡牌。例如用1-9表示点数，字母abc分别表示条子，筒子，万子。那么 1a2a3a 3a4a5a 6b7b8b 9c9c9c 1b1b是可以胡牌的。为了教育初学者，现给出5张牌，问是否会胡牌。 Input 多组测试数据 输入一个含10个字符的字符串。 每种牌的个数&lt;=4 Output 胡牌输出Y，否则输出N。 Sample Input 1a1a1a2b2b 1a2a3a2c2c 1a2a4a2c2c 1a2b3c4a4a Sample Output Y Y N N 思路一道模拟题，利用字符数组和整形数组的转换记录必要的数据，具体看代码和注释。 代码123456789101112131415161718192021222324252627282930313233343536373839#include&lt;bits/stdc++.h&gt;using namespace std;int pai[9][3];//一共27张牌char s[10];//十个字符int main()&#123; while(~scanf("%s",s)) &#123; //为新数据清空 int Double=0,Triple=0; int flag=0; memset(pai,0,sizeof(pai)); //读入每张牌，并记录对应个数 for(int i=0;i&lt;=9;i+=2) &#123; pai[ s[i]-'0'-1 ][ s[i+1]-'a' ]++; &#125; //遍历统计找三个一样的和连个一样的 for(int i=0;i&lt;9;i++) for(int j=0;j&lt;3;j++) &#123; if(pai[i][j]==3) Triple++; if(pai[i][j]==2) Double++; &#125; if(Triple==1&amp;&amp;Double==1)//同时出现对和碰，胡了 flag=1; else if(Double==1)//如果只出现对子，去找有没有顺子，找到也胡了 &#123; for(int i=0;i&lt;6;i++)//注意这是i&lt;6,否则i+3无效且越界 for(int j=0;j&lt;3;j++) &#123; if(pai[i][j]==1&amp;&amp;pai[i+1][j]==1&amp;&amp;pai[i+2][j]==1) flag=1;//找到顺子了 &#125; &#125; if(flag) printf("Y\n"); else printf("N\n"); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>模拟</tag>
+        <tag>麻将</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[VOJ Expanding Rods(二分法解方程)]]></title>
     <url>%2F2018%2F07%2F28%2FVOJ-Expanding-Rods-%E4%BA%8C%E5%88%86%E6%B3%95%E8%A7%A3%E6%96%B9%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[描述 When a thin rod of length L is heated n degrees, it expands to a new length L’ = (1+n*C)*L, where C is the coefficient of heat expansion. When a thin rod is mounted on two solid walls and then heated, it expands and takes the shape of a circular segment, the original rod being the chord of the segment. Your task is to compute the distance by which the center of the rod is displaced. That means you have to calculate h as in the picture. Input Input starts with an integer T (≤ 20), denoting the number of test cases. Each case contains three non-negative real numbers: the initial length of the rod in millimeters L, the temperature change in degrees n and the coefficient of heat expansion of the material C. Input data guarantee that no rod expands by more than one half of its original length. All the numbers will be between 0 and 1000 and there can be at most 5 digits after the decimal point. Output For each case, print the case number and the displacement of the center of the rod in single line. Errors less than 10-6will be ignored. Sample Input 3 1000 100 0.0001 150 10 0.00006 10 0 0.001 Sample Output Case 1: 61.3289915 Case 2: 2.2502024857 Case 3: 0 思路一道很有意思的题目，利用二分法查找x解方程。 代码123456789101112131415161718192021222324252627282930313233343536#include &lt;iostream&gt;#include &lt;cstdio&gt;#include&lt;cmath&gt;/*L1=(1+n*C)*Lθr = 1/2*L1sinθ= 1/2*L/rr*r = (1/2*L)*(1/2*L) + (r-x)*(r-x)*/using namespace std;const double PI=acos(-1.0);const double eps=1e-6;double L1,C,L,N,R,Left,Right,mid,t;int main()&#123; int n; scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) &#123; scanf("%lf %lf %lf",&amp;L,&amp;N,&amp;C); L1=(1+N*C)*L; Left=0; Right=L/2; while(Right-Left&gt;eps) &#123; mid=(Left+Right)/2; R=(L*L/4+mid*mid)/(2*mid); t=2*R*asin(L/(2*R)); if(t&gt;L1) Right=mid; else Left=mid; &#125; mid=(Left+Right)/2; printf("Case %d: %lf\n",i,mid); &#125;&#125;]]></content>

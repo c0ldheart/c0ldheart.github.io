@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[POJ 3122 Pie(二分查找求最大值)]]></title>
+    <url>%2F2018%2F07%2F28%2FPOJ-3122-Pie-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B1%82%E6%9C%80%E5%A4%A7%E5%80%BC%2F</url>
+    <content type="text"><![CDATA[POJ3122 Pie描述 My birthday is coming up and traditionally I’m serving pie. Not just one pie, no, I have a number N of them, of various tastes and of various sizes. F of my friends are coming to my party and each of them gets a piece of pie. This should be one piece of one pie, not several small pieces since that looks messy. This piece can be one whole pie though. My friends are very annoying and if one of them gets a bigger piece than the others, they start complaining. Therefore all of them should get equally sized (but not necessarily equally shaped) pieces, even if this leads to some pie getting spoiled (which is better than spoiling the party). Of course, I want a piece of pie for myself too, and that piece should also be of the same size. What is the largest possible piece size all of us can get? All the pies are cylindrical in shape and they all have the same height 1, but the radii of the pies can be different. Input One line with a positive integer: the number of test cases. Then for each test case: One line with two integers N and F with 1 ≤ N, F ≤ 10 000: the number of pies and the number of friends. One line with N integers ri with 1 ≤ ri ≤ 10 000: the radii of the pies. Output For each test case, output one line with the largest possible volume V such that me and my friends can all get a pie piece of size V. The answer should be given as a floating point number with an absolute error of at most 10 −3. Sample Input123456733 34 3 31 24510 51 4 2 3 4 5 6 5 4 2 Sample Output12325.13273.141650.2655 题意原题是派对分派吃什么的，这里简化一下题意: 有N个半径不一，高度为1的圆柱体，每个圆柱体沿高切出若干个底面扇形的柱体（可以不切），要求切出来的所有柱体体积相等，数量为f+1（别忘了“我”）。求目标体积最大值，精确到$10^-$$^3$ 思路在满足条件（pie够切）的情况下，尽可能得到最大值，类似问题就可以用二分查找做。 先读入所有pie的半径，用自己定义的Π=acos(-1.0)，计算出体积并覆盖原半径数组。 对所有pie从小到大排序，二分上下界分别为最大体积的pie即a[n-1]，和0，二分中的mid是假设体积，遍历a[]，对当前pie外套一个while循环，不断判断是否够切，若够切，切掉（数值-mid），计数器sum+1，直到不够切，对下一个pie进行相同操作。直至所有pie判断完成，将最终获得的sum与f+1比，若sum&gt;=f+1，说明二分猜测的mid可能太小了太小气了，分给客人这么点pie，让left=mid（并不是mid+1，思考为什么），并用ans记录下mid，防止可能的正常答案丢失；若sum&lt;f+1，pie不够切，mid=right-1。以上操作直至right-left&lt;1e-6（虽然题目要求1e-3，不过在不超时的情况下精度高点总是好的），输出ans。 注意涉及精度，不少变量需定义成double型 对pie切割时不能直接对原数组减，要另建一个数组，初始值为原pie的体积 doble型上下界，不能直接left+1或right-1 一次大循环后注意各值的初始化，不能沿用上个循环的 f=f+1，别忘了题中的“我” 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;algorithm&gt;#include&lt;math.h&gt;using namespace std;const double PI=acos(-1.0);double a[10005];double a1[10005];int main()&#123; int t; scanf("%d",&amp;t); int n,f; while(t--) &#123; scanf("%d %d",&amp;n,&amp;f); f+=1;//我也要吃 for(int i=0;i&lt;n;i++) &#123; scanf("%lf",&amp;a[i]); a[i]=a[i]*a[i]*PI;//换成体积 &#125; sort(a,a+n); double Left=0.0,Right=a[n-1]*1.0; double mid; double ans; int sum=0; while(Right-Left&gt;1e-6)//精度 &#123; sum=0; mid=(Left+Right)/2.0; for(int i=0;i&lt;n;i++) &#123; a1[i]=a[i];//“替身” while(a1[i]&gt;=mid) &#123; sum++; a1[i]-=mid; &#125; &#125; if(sum&gt;=f) &#123; ans=mid; Left=mid; &#125; else Right=mid; &#125; printf("%lf\n",ans); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>POJ</tag>
+        <tag>二分查找</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[VJudge River Hopscotch(二分查找解最小值最大)]]></title>
     <url>%2F2018%2F07%2F28%2FVJudge-River-Hopscotch-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E8%A7%A3%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7%2F</url>
     <content type="text"><![CDATA[描述 Every year the cows hold an event featuring a peculiar version of hopscotch that involves carefully jumping from rock to rock in a river. The excitement takes place on a long, straight river with a rock at the start and another rock at the end, L units away from the start (1 ≤ L ≤ 1,000,000,000). Along the river between the starting and ending rocks, N (0 ≤ N ≤ 50,000) more rocks appear, each at an integral distance Di from the start (0 &lt; Di &lt; L). To play the game, each cow in turn starts at the starting rock and tries to reach the finish at the ending rock, jumping only from rock to rock. Of course, less agile cows never make it to the final rock, ending up instead in the river. Farmer John is proud of his cows and watches this event each year. But as time goes by, he tires of watching the timid cows of the other farmers limp across the short distances between rocks placed too closely together. He plans to remove several rocks in order to increase the shortest distance a cow will have to jump to reach the end. He knows he cannot remove the starting and ending rocks, but he calculates that he has enough resources to remove up to M rocks (0 ≤ M ≤ N). FJ wants to know exactly how much he can increase the shortest distance before\ he starts removing the rocks. Help Farmer John determine the greatest possible shortest distance a cow has to jump after removing the optimal set of M rocks. Input Line 1: Three space-separated integers: L, N, and M Lines 2.. N+1: Each line contains a single integer indicating how far some rock is away from the starting rock. No two rocks share the same position. Output Line 1: A single integer that is the maximum of the shortest distance a cow has to jump after removing M rocks Sample Input12345625 5 2214112117 Sample Output14 Hint Before removing any rocks, the shortest jump was a jump of 2 from 0 (the start) to 2. After removing the rocks at 2 and 14, the shortest required jump is a jump of 4 (from 17 to 21 or from 21 to 25). 题意一条河长L，中间有N块石头，绝对距离已给。要求移除M块石头后石头与石头之间距离最小值最大结果。 思路典型的二分查找求最小值最大/最大值最小问题，设初始上下界为L，0，mid为假设的最小距离。 读入所有数据，sort排序所有石头的绝对距离 遍历所有石头，判断两块石头之间距离是否小于最小值，若小于，移除一块石头，移除数量+1，继续判断下一块石头；若大于等于，将距离的头更新为当前判断石头。直至遍历结束。之后将移除石头的数量与题目给出的M比较，若移除数大于M，说明假设的距离太大了，应让right=mid-1；反之，假设的距离可能正好是答案，可能太小，不管怎样，先用变量ans记录当前mid防止答案丢失，再让left=mid+1。直至left&gt;right 注意数据L过大，某些变量应定义为long long型 别忘了ans存mid的值 两端也有石头，绝对距离分别为0和L，但这两块不能移除，故不记录在数组 代码123456789101112131415161718192021222324252627282930313233343536373839#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;algorithm&gt;using namespace std;int main()&#123; long long a[50005]; long long l; int n,m; scanf("%lld %d %d",&amp;l,&amp;n,&amp;m); for(int i=0;i&lt;n;i++) &#123; scanf("%lld",&amp;a[i]); &#125; sort(a,a+n); long long Left=0,Right=l,mid,ans=0; long long nowStone=0; int sum=0; while(Left&lt;=Right) &#123; nowStone=0; sum=0; mid=(Left+Right)/2; for(int i=0;i&lt;n;i++) &#123; if(a[i]-nowStone&gt;=mid) nowStone=a[i]; else sum++; &#125; if(l-nowStone&lt;mid) sum++; if(sum&lt;=m) &#123; ans=mid; Left=mid+1; &#125; else Right=mid-1; &#125; printf("%lld",ans); return 0;&#125;]]></content>
@@ -8,9 +21,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>POJ</tag>
         <tag>二分查找</tag>
+        <tag>算法</tag>
         <tag>最小值最大化</tag>
       </tags>
   </entry>
@@ -23,8 +36,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>模拟</tag>
         <tag>ZCMU</tag>
+        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -36,8 +49,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>模拟</tag>
         <tag>ZCMU</tag>
+        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -48,8 +61,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>二分查找</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -60,8 +73,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>二分查找</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -111,8 +124,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>二分查找</tag>
+        <tag>算法</tag>
         <tag>ZCMU</tag>
       </tags>
   </entry>
@@ -139,8 +152,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>模拟</tag>
         <tag>ZCMU</tag>
+        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>

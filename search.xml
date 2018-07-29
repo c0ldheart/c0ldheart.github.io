@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[洛谷P1036 选数(DFS解n选m问题)]]></title>
     <url>%2F2018%2F07%2F29%2F%E6%B4%9B%E8%B0%B7P1036-%E9%80%89%E6%95%B0-DFS%E8%A7%A3n%E9%80%89m%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[洛谷P1036 选数(DFS解n选m问题)题目描述 已知 nn 个整数 x_1,x_2,…,x_nx1,x2,…,xn ，以及 11 个整数 kk ( k&lt;nk&lt;n )。从 nn 个整数中任选 kk 个整数相加，可分别得到一系列的和。例如当 n=4,k=3n=4,k=3 , 44 个整数分别为 3,7,12,193,7,12,19 时，可得全部的组合与它们的和为： 3+7+12=223+7+12=22 3+7+19=293+7+19=29 7+12+19=387+12+19=38 3+12+19=343+12+19=34 。 现在，要求你计算出和为素数共有多少种。 例如上例，只有一种的和为素数： 3+7+19=293+7+19=29 。 输入输出格式 输入格式： 键盘输入，格式为： n,kn,k ( 1 \le n \le 20,k&lt;n1≤n≤20,k&lt;n ) x_1,x_2,…,x_n (1 \le x_i \le 5000000)x1,x2,…,xn(1≤xi≤5000000) 输出格式： 屏幕输出，格式为： 11 个整数（满足条件的种数）。 输入输出样例输入样例#1： 124 33 7 12 19 输出样例#1： 11 思路n选m问题且数据量不大，用DFS枚举所有可能，再求和判断素数即可 注意注意设全局变量的位置，让函数直接计算结果 代码1234567891011121314151617181920212223242526272829303132333435363738#include&lt;bits/stdc++.h&gt;using namespace std;int a[21];int n,k;bool isPrime(int x)&#123; for(int i=2;i&lt;=sqrt(x);i++) &#123; if(x%i==0) return false; &#125; return true;&#125;int ans=0;void DFS(int index,int nowK,int nowSum)&#123; //找到满足条件的解 if(nowK==k&amp;&amp;isPrime(nowSum)) &#123; ans++; return; &#125; //处理完了全部或k多了(dfs边界) if(index==n||nowK&gt;k) return; //选index DFS(index+1,nowK+1,nowSum+a[index]); //不选 DFS(index+1,nowK,nowSum);&#125;int main()&#123; scanf("%d %d",&amp;n,&amp;k); for(int i=0;i&lt;n;i++) &#123; scanf("%d",&amp;a[i]); &#125; DFS(0,0,0); printf("%d",ans);&#125; 拓展若要输出具体的方案，可用vector容器存对应各个数字，在满足条件后输出。具体看代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#include&lt;bits/stdc++.h&gt;using namespace std;int a[21];int n,k;vector&lt;int&gt; temp,ans;bool isPrime(int x)&#123; for(int i=2;i&lt;=sqrt(x);i++) &#123; if(x%i==0) return false; &#125; return true;&#125;void DFS(int index,int nowK,int nowSum)&#123; //找到满足条件的解 int s=0; if(nowK==k&amp;&amp;isPrime(nowSum)) &#123; ans=temp; //输出方案 for(int i=0;i&lt;ans.size();i++) &#123; printf("%d",ans[i]); if(i!=ans.size()-1) printf("+"); else printf("=%d\n",nowSum); &#125; return; &#125; //处理完了全部或k多了(dfs边界) if(index==n||nowK&gt;k) return; //选index temp.push_back(a[index]); DFS(index+1,nowK+1,nowSum+a[index]); temp.pop_back(); //不选 DFS(index+1,nowK,nowSum);&#125;int main()&#123; scanf("%d %d",&amp;n,&amp;k); for(int i=0;i&lt;n;i++) &#123; scanf("%d",&amp;a[i]); &#125; DFS(0,0,0); return 0;&#125;]]></content>
+    <content type="text"><![CDATA[洛谷P1036 选数(DFS解n选m问题)题目描述 已知 n 个整数 x1,x2,x3….,xn ，以及 1 个整数 k ( k&lt;n)。从 n 个整数中任选 k个整数相加，可分别得到一系列的和。例如当 n=4,k=3 , 4 个整数分别为 3,7,12,19 时，可得全部的组合与它们的和为： 3+7+12=22 3+7+19=29 7+12+19=38 3+12+19=34 现在，要求你计算出和为素数共有多少种。 例如上例，只有一种的和为素数： 3+7+19=29 输入输出格式 输入格式： 键盘输入，格式为： n,k( 1 &lt;n&lt;=20,k&lt;n) x1,x2,…,xn(1≤xi≤5000000) 输出格式： 屏幕输出，格式为： 1 个整数（满足条件的种数）。 输入输出样例输入样例#1： 124 33 7 12 19 输出样例#1： 11 思路n选m问题且数据量不大，用DFS枚举所有可能，再求和判断素数即可 注意注意设全局变量的位置，让函数直接计算结果 代码1234567891011121314151617181920212223242526272829303132333435363738#include&lt;bits/stdc++.h&gt;using namespace std;int a[21];int n,k;bool isPrime(int x)&#123; for(int i=2;i&lt;=sqrt(x);i++) &#123; if(x%i==0) return false; &#125; return true;&#125;int ans=0;void DFS(int index,int nowK,int nowSum)&#123; //找到满足条件的解 if(nowK==k&amp;&amp;isPrime(nowSum)) &#123; ans++; return; &#125; //处理完了全部或k多了(dfs边界) if(index==n||nowK&gt;k) return; //选index DFS(index+1,nowK+1,nowSum+a[index]); //不选 DFS(index+1,nowK,nowSum);&#125;int main()&#123; scanf("%d %d",&amp;n,&amp;k); for(int i=0;i&lt;n;i++) &#123; scanf("%d",&amp;a[i]); &#125; DFS(0,0,0); printf("%d",ans);&#125; 拓展若要输出具体的方案，可用vector容器存对应各个数字，在满足条件后输出。具体看代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#include&lt;bits/stdc++.h&gt;using namespace std;int a[21];int n,k;vector&lt;int&gt; temp,ans;bool isPrime(int x)&#123; for(int i=2;i&lt;=sqrt(x);i++) &#123; if(x%i==0) return false; &#125; return true;&#125;void DFS(int index,int nowK,int nowSum)&#123; //找到满足条件的解 int s=0; if(nowK==k&amp;&amp;isPrime(nowSum)) &#123; ans=temp; //输出方案 for(int i=0;i&lt;ans.size();i++) &#123; printf("%d",ans[i]); if(i!=ans.size()-1) printf("+"); else printf("=%d\n",nowSum); &#125; return; &#125; //处理完了全部或k多了(dfs边界) if(index==n||nowK&gt;k) return; //选index temp.push_back(a[index]); DFS(index+1,nowK+1,nowSum+a[index]); temp.pop_back(); //不选 DFS(index+1,nowK,nowSum);&#125;int main()&#123; scanf("%d %d",&amp;n,&amp;k); for(int i=0;i&lt;n;i++) &#123; scanf("%d",&amp;a[i]); &#125; DFS(0,0,0); return 0;&#125;]]></content>
       <categories>
         <category>算法</category>
       </categories>
@@ -49,8 +49,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>模拟</tag>
         <tag>ZCMU</tag>
+        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -62,8 +62,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>模拟</tag>
         <tag>ZCMU</tag>
+        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -165,8 +165,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>模拟</tag>
         <tag>ZCMU</tag>
+        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>

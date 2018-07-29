@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="洛谷P1036 选数(DFS解n选m问题)题目描述 已知 nn 个整数 x_1,x_2,…,x_nx1,x2,…,xn ，以及 11 个整数 kk ( k&amp;lt;nk&amp;lt;n )。从 nn 个整数中任选 kk 个整数相加，可分别得到一系列的和。例如当 n=4,k=3n=4,k=3 , 44 个整数分别为 3,7,12,193,7,12,19 时，可得全部的组合与它们的和为： 3+7+12=223">
+<meta name="description" content="洛谷P1036 选数(DFS解n选m问题)题目描述 已知 n 个整数 x1,x2,x3….,xn ，以及 1 个整数 k ( k&amp;lt;n)。从 n 个整数中任选 k个整数相加，可分别得到一系列的和。例如当 n=4,k=3 , 4 个整数分别为 3,7,12,19 时，可得全部的组合与它们的和为： 3+7+12=22 3+7+19=29 7+12+19=38 3+12+19=34 现在，要求你计算">
 <meta name="keywords" content="算法,DFS,洛谷">
 <meta property="og:type" content="article">
 <meta property="og:title" content="洛谷P1036 选数(DFS解n选m问题)">
 <meta property="og:url" content="c0ldheart.github.io/2018/07/29/洛谷P1036-选数-DFS解n选m问题/index.html">
 <meta property="og:site_name" content="Coldheart&#39;s blog">
-<meta property="og:description" content="洛谷P1036 选数(DFS解n选m问题)题目描述 已知 nn 个整数 x_1,x_2,…,x_nx1,x2,…,xn ，以及 11 个整数 kk ( k&amp;lt;nk&amp;lt;n )。从 nn 个整数中任选 kk 个整数相加，可分别得到一系列的和。例如当 n=4,k=3n=4,k=3 , 44 个整数分别为 3,7,12,193,7,12,19 时，可得全部的组合与它们的和为： 3+7+12=223">
+<meta property="og:description" content="洛谷P1036 选数(DFS解n选m问题)题目描述 已知 n 个整数 x1,x2,x3….,xn ，以及 1 个整数 k ( k&amp;lt;n)。从 n 个整数中任选 k个整数相加，可分别得到一系列的和。例如当 n=4,k=3 , 4 个整数分别为 3,7,12,19 时，可得全部的组合与它们的和为： 3+7+12=22 3+7+19=29 7+12+19=38 3+12+19=34 现在，要求你计算">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-29T03:06:37.327Z">
+<meta property="og:updated_time" content="2018-07-29T03:19:18.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="洛谷P1036 选数(DFS解n选m问题)">
-<meta name="twitter:description" content="洛谷P1036 选数(DFS解n选m问题)题目描述 已知 nn 个整数 x_1,x_2,…,x_nx1,x2,…,xn ，以及 11 个整数 kk ( k&amp;lt;nk&amp;lt;n )。从 nn 个整数中任选 kk 个整数相加，可分别得到一系列的和。例如当 n=4,k=3n=4,k=3 , 44 个整数分别为 3,7,12,193,7,12,19 时，可得全部的组合与它们的和为： 3+7+12=223">
+<meta name="twitter:description" content="洛谷P1036 选数(DFS解n选m问题)题目描述 已知 n 个整数 x1,x2,x3….,xn ，以及 1 个整数 k ( k&amp;lt;n)。从 n 个整数中任选 k个整数相加，可分别得到一系列的和。例如当 n=4,k=3 , 4 个整数分别为 3,7,12,19 时，可得全部的组合与它们的和为： 3+7+12=22 3+7+19=29 7+12+19=38 3+12+19=34 现在，要求你计算">
 
 
 
@@ -377,21 +377,21 @@
 
       
         <h1 id="洛谷P1036-选数-DFS解n选m问题"><a href="#洛谷P1036-选数-DFS解n选m问题" class="headerlink" title="洛谷P1036 选数(DFS解n选m问题)"></a>洛谷P1036 选数(DFS解n选m问题)</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><blockquote>
-<p>已知 nn 个整数 x_1,x_2,…,x_nx1,x2,…,xn ，以及 11 个整数 kk ( k&lt;nk&lt;n )。从 nn 个整数中任选 kk 个整数相加，可分别得到一系列的和。例如当 n=4,k=3n=4,k=3 , 44 个整数分别为 3,7,12,193,7,12,19 时，可得全部的组合与它们的和为：</p>
-<p>3+7+12=223+7+12=22</p>
-<p>3+7+19=293+7+19=29</p>
-<p>7+12+19=387+12+19=38</p>
-<p>3+12+19=343+12+19=34 。</p>
+<p>已知 n 个整数 x1,x2,x3….,xn ，以及 1 个整数 k ( k&lt;n)。从 n 个整数中任选 k个整数相加，可分别得到一系列的和。例如当 n=4,k=3 , 4 个整数分别为 3,7,12,19 时，可得全部的组合与它们的和为：</p>
+<p>3+7+12=22</p>
+<p>3+7+19=29</p>
+<p>7+12+19=38</p>
+<p>3+12+19=34</p>
 <p>现在，要求你计算出和为素数共有多少种。</p>
-<p>例如上例，只有一种的和为素数： 3+7+19=293+7+19=29 。</p>
+<p>例如上例，只有一种的和为素数： 3+7+19=29</p>
 </blockquote>
 <h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><blockquote>
 <p>输入格式：</p>
 <p>键盘输入，格式为：</p>
-<p>n,kn,k ( 1 \le n \le 20,k&lt;n1≤n≤20,k&lt;n )</p>
-<p>x_1,x_2,…,x_n (1 \le x_i \le 5000000)x1,x2,…,xn(1≤xi≤5000000)</p>
+<p>n,k( 1 &lt;n&lt;=20,k&lt;n)</p>
+<p>x1,x2,…,xn(1≤xi≤5000000)</p>
 <p>输出格式：</p>
-<p>屏幕输出，格式为： 11 个整数（满足条件的种数）。</p>
+<p>屏幕输出，格式为： 1 个整数（满足条件的种数）。</p>
 </blockquote>
 <h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><p><strong>输入样例#1：</strong> </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4 3</span><br><span class="line">3 7 12 19</span><br></pre></td></tr></table></figure>

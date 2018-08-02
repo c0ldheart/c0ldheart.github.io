@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[TJOI2013 黄金矿工(01背包改)]]></title>
+    <url>%2F2018%2F08%2F02%2FTJOI2013-%E9%BB%84%E9%87%91%E7%9F%BF%E5%B7%A5-01%E8%83%8C%E5%8C%85%E6%94%B9%2F</url>
+    <content type="text"><![CDATA[题目描述 小A最近迷上了在上课时玩《黄金矿工》这款游戏。为了避免被老师发现,他必须小心翼翼,因此他总是输。在输掉自己所有的金币后,他向你求助。每个黄金可以看做一个点(没有体积)。现在给出你N个黄金的坐标,挖到它们所需要的时间以及它们的价值。有些黄金在同一条直线上,这时候你必须按顺序挖。你可以瞬间把钩子转到任意角度。请你帮助小A算出在时间T内他最多可以得到多少价值的金子。 输入输出格式 输入格式 第一行,两个整数N和T,表示黄金的个数和总时间。接下来N行,每行四个整数x,y,t,v分别表示黄金的坐标,挖到这个黄金的时间,以及这个黄金的价值。(0≤|x|≤200,0&lt;y≤200,0&lt;t≤200,0≤v≤200) 输出格式 一个整数,表示你可以在T时间内得到的最大价值。 输入输出样例输入样例 12343 101 1 1 12 2 2 21 3 15 9 输出样例# 13 说明30%的数据，0 &lt; T ≤ 4000 100%的数据，N ≤ 200, 0 &lt; T ≤ 40000 思路看似分组背包，实际仍是01背包,但是得预先排序，当斜率一样时得做特殊处理，使当前dp下界minTime+=a[i].t 可以尝试打出DP表，发现斜率相等的前后两个黄金在时间限制下会有变化，改变化同时会影响之后的DP数组，从而得出正确答案 可以尝试用这组数据打出DP表感受一下 12343 31 1 1 12 2 1 103 4 1 100 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include&lt;bits/stdc++.h&gt;using namespace std;struct gold&#123; double k;//斜率 int x,y,len,t,v;&#125;a[205];bool cmp(gold g1,gold g2)&#123; if(g1.k==g2.k) return g1.len&lt;g2.len; else return g1.k&lt;g2.k;&#125;int main()&#123; int n,T; while(~scanf("%d %d",&amp;n,&amp;T)) &#123; for(int i=1;i&lt;=n;i++) &#123; scanf("%d %d %d %d",&amp;a[i].x,&amp;a[i].y,&amp;a[i].t,&amp;a[i].v); a[i].k=a[i].x*1.0/a[i].y; a[i].len=a[i].x*a[i].x+a[i].y*a[i].y; &#125; sort(a+1,a+n+1,cmp); int dp[40005]; memset(dp,0,sizeof(dp)); int minTime; for(int i=1;i&lt;=n;i++) &#123; if(a[i].k!=a[i-1].k) minTime=a[i].t; else minTime+=a[i].t; for(int j=T;j&gt;=minTime;j--) &#123; dp[j]=max(dp[j],dp[j-a[i].t]+a[i].v); &#125; &#125; printf("%d\n",dp[T]); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ZCMU2112 聪明的美食家(LIS O(NlogN))算法]]></title>
     <url>%2F2018%2F08%2F01%2FZCMU2112-%E8%81%AA%E6%98%8E%E7%9A%84%E7%BE%8E%E9%A3%9F%E5%AE%B6-LIS-O-NlogN-%E7%AE%97%E6%B3%95%2F</url>
     <content type="text"><![CDATA[ZCMU2112 聪明的美食家(LIS O(NlogN))Description 如果有人认为吃东西只需要嘴巴，那就错了。 都知道舌头有这么一个特性，“由简入奢易，由奢如简难”（据好事者考究，此规律也适合许多其他情况）。具体而言，如果是甜食，当你吃的食物不如前面刚吃过的东西甜，就很不爽了。 大宝是一个聪明的美食家，当然深谙此道。一次他来到某小吃一条街，准备从街的一头吃到另一头。为了吃得爽，他大费周章，得到了各种食物的“美味度”。他拒绝不爽的经历，不走回头路而且还要爽歪歪（爽的次数尽量多）。 Input 两行数据。 第一行为一个整数n，表示小吃街上小吃的数量 第二行为n个整数，分别表示n种食物的“美味度” Output 一个整数，表示吃得爽的次数 Sample Input 10 3 18 7 14 10 12 23 41 16 24 Sample Output 6 思路看题就应该是最长不下降子序列(LIS) 。然后自然就用经典动态规划做，结果又双叒叕 TLE了 一看数据范围，n&lt;200000 ，动态规划时间复杂度为O(N^2^),显然无法承受。 因此就要用到一种带有二分的方法解LIS： 定义d[len]=a[i] len 为一个不下降子序列的长度 a[i] 为长度为len的不下降子序列最末尾元素 具体操作：遍历原数组a[i] 若当前a[i]&gt;=d[len] (当前元素a[i]大于等于长度为len的子序列末尾元素)， 就先把长度len增加1，再把当前a[i]加到d[len] 否则 在d中所有已有元素中找第一个大于当前元素a[i]的d[x],将它替换为a[i]。怎么找？二分查找。 这里的二分查找不用徒手写，用STL中的upper_bound()可以方便很多，具体用法可以百度。 经过上述操作，遍历完成，最终的len也就是答案了 注意a[i]大于等于d[len]时才增加len，别忘了等于，因为题意可以相等，也就是不下降子序列而不是一直上升 奇怪数据如n==0时直接输出0就好了 1pos=upper_bound(d,d+Len,a[i])-d; //别忘了最后的-d 代码123456789101112131415161718192021222324252627282930313233#include&lt;bits/stdc++.h&gt;using namespace std;int a[200005];int d[200005];int main()&#123; memset(d,0,sizeof(d)); int n; while(~scanf("%d",&amp;n)) &#123; if(n==0) &#123; printf("0\n"); continue; &#125; int Len=0; for(int i=0;i&lt;n;i++) &#123; scanf("%d",&amp;a[i]); if(a[i]&gt;=d[Len]) &#123; Len++; d[Len]=a[i]; &#125; else &#123; int pos=upper_bound(d,d+Len,a[i])-d; d[pos]=a[i]; &#125; &#125; printf("%d\n",Len); &#125;&#125;]]></content>
@@ -33,8 +45,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ZCMU</tag>
         <tag>模拟</tag>
+        <tag>ZCMU</tag>
       </tags>
   </entry>
   <entry>
@@ -58,8 +70,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>树状数组</tag>
         <tag>ZCMU</tag>
+        <tag>树状数组</tag>
       </tags>
   </entry>
   <entry>
@@ -111,8 +123,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>ZCMU</tag>
         <tag>模拟</tag>
+        <tag>ZCMU</tag>
       </tags>
   </entry>
   <entry>
@@ -124,8 +136,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>ZCMU</tag>
         <tag>模拟</tag>
+        <tag>ZCMU</tag>
       </tags>
   </entry>
   <entry>
@@ -227,8 +239,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>ZCMU</tag>
         <tag>模拟</tag>
+        <tag>ZCMU</tag>
       </tags>
   </entry>
   <entry>

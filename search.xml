@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[洛谷1162 填涂颜色(DFS漫水填充法)]]></title>
+    <url>%2F2018%2F08%2F06%2FP%E6%B4%9B%E8%B0%B71162-%E5%A1%AB%E6%B6%82%E9%A2%9C%E8%89%B2-DFS%E6%BC%AB%E6%B0%B4%E5%A1%AB%E5%85%85%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[洛谷1162 填涂颜色(DFS漫水填充法)题目描述由数字 0组成的方阵中，有一任意形状闭合圈，闭合圈由数字 1 构成，围圈时只走上下左右 4 个方向。现要求把闭合圈内的所有空间都填写成 2 .例如：6×6 的方阵（ n=6 ），涂色前和涂色后的方阵如下： 1234560 0 0 0 0 00 0 1 1 1 10 1 1 0 0 11 1 0 0 0 11 0 0 0 0 11 1 1 1 1 1 1234560 0 0 0 0 00 0 1 1 1 10 1 1 2 2 11 1 2 2 2 11 2 2 2 2 11 1 1 1 1 1 输入格式 每组测试数据第一行一个整数 n(1 \le n \le 30)n(1≤n≤30) 接下来 nn 行，由 00 和 11 组成的 n \times nn×n 的方阵。 方阵内只有一个闭合圈，圈内至少有一个 00 。 //感谢黄小U饮品指出本题数据和数据格式不一样. 已修改(输入格式) 输出格式已经填好数字 2 的完整方阵。 输入样例#1123456760 0 0 0 0 00 0 1 1 1 10 1 1 0 0 11 1 0 0 0 11 0 0 0 0 11 1 1 1 1 1 输出样例#11234560 0 0 0 0 00 0 1 1 1 10 1 1 2 2 11 1 2 2 2 11 2 2 2 2 11 1 1 1 1 1 说明1&lt;=n&lt;=30 思路在方阵内只有一个闭合圈，也就意味着除了被包围的那些0连通块，其余0连通块都与方阵边界有接触， 先对所有0连通块floodfill预先涂色，每个不同的值为0的连通块都被替换成-1,-2,-3…如下图 再遍历边界，找出并标记与边界有接触的0连通块 123456789101112131415161718192021222324252627282930int temp[maxN]; memset(temp,0,sizeof(temp)); for(int i=1;i&lt;=n;i++) &#123; if(maze[1][i]&lt;0) &#123; temp[-maze[1][i]]=1; &#125; &#125; for(int i=1;i&lt;=n;i++) &#123; if(maze[i][1]&lt;0) &#123; temp[-maze[i][1]]=1; &#125; &#125; for(int i=1;i&lt;=n;i++) &#123; if(maze[n][i]&lt;0) &#123; temp[-maze[n][i]]=1; &#125; &#125; for(int i=1;i&lt;=n;i++) &#123; if(maze[i][n]&lt;0) &#123; temp[-maze[i][n]]=1; &#125; &#125; 最后输出时判断是否是边界上的0，又是否是1即可 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121#include&lt;bits/stdc++.h&gt;using namespace std;const int maxN=35;int maze[maxN][maxN];int book[maxN][maxN];int tX,tY;int n;/*void Move(int x)&#123; if(x==1) &#123; tX=x+1;tY=y; &#125; if(x==2) &#123; tX=x-1;tY=y; &#125; if(x==3) &#123; tX=x;tY=y+1; &#125; if(x==4) &#123; tX=x;tY=y-1; &#125;&#125;*/void DFS(int x,int y,int color)&#123; maze[x][y]=color; for(int k=1;k&lt;=4;k++) &#123; if(k==1) &#123; tX=x+1;tY=y; &#125; if(k==2) &#123; tX=x-1;tY=y; &#125; if(k==3) &#123; tX=x;tY=y+1; &#125; if(k==4) &#123; tX=x;tY=y-1; &#125; if(tX&lt;1||tX&gt;n||tY&lt;1||tY&gt;n) continue; if(maze[tX][tY]==0&amp;&amp;book[tX][tY]==0) &#123; book[tX][tY]=1; DFS(tX,tY,color); &#125; &#125; return;&#125;int main()&#123; int num=0; memset(maze,0,sizeof(maze)); memset(book,0,sizeof(book)); scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) for(int j=1;j&lt;=n;j++) scanf("%d",&amp;maze[i][j]); for(int i=1;i&lt;=n;i++) &#123; for(int j=1;j&lt;=n;j++) &#123; if(maze[i][j]==0) &#123; num--; book[i][j]=1; DFS(i,j,num); &#125; &#125; &#125; printf("变为\n"); for(int i=1;i&lt;=n;i++) &#123; for(int j=1;j&lt;=n;j++) &#123; printf("%3d",maze[i][j]); &#125; printf("\n"); &#125; int temp[maxN]; memset(temp,0,sizeof(temp)); for(int i=1;i&lt;=n;i++) &#123; if(maze[1][i]&lt;0) &#123; temp[-maze[1][i]]=1; &#125; &#125; for(int i=1;i&lt;=n;i++) &#123; if(maze[i][1]&lt;0) &#123; temp[-maze[i][1]]=1; &#125; &#125; for(int i=1;i&lt;=n;i++) &#123; if(maze[n][i]&lt;0) &#123; temp[-maze[n][i]]=1; &#125; &#125; for(int i=1;i&lt;=n;i++) &#123; if(maze[i][n]&lt;0) &#123; temp[-maze[i][n]]=1; &#125; &#125; for(int i=1;i&lt;=n;i++) &#123; for(int j=1;j&lt;=n;j++) &#123; if(maze[i][j]==1) &#123; printf("1"); if(j!=n) printf(" "); &#125; else if(temp[-maze[i][j]]==1) &#123; printf("0"); if(j!=n) printf(" "); &#125; else &#123; printf("2"); if(j!=n) printf(" "); &#125; &#125; printf("\n"); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>洛谷</tag>
+        <tag>DFS</tag>
+        <tag>Floodfill漫水填充</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[一些BFS题集]]></title>
     <url>%2F2018%2F08%2F04%2F%E4%B8%80%E4%BA%9BBFS%E9%A2%98%E9%9B%86%2F</url>
     <content type="text"><![CDATA[一些BFS题集A计划 可怜的公主在一次次被魔王掳走一次次被骑士们救回来之后，而今，不幸的她再一次面临生命的考验。魔王已经发出消息说将在T时刻吃掉公主，因为他听信谣言说吃公主的肉也能长生不老。年迈的国王正是心急如焚，告招天下勇士来拯救公主。不过公主早已习以为常，她深信智勇的骑士LJ肯定能将她救出。 现据密探所报，公主被关在一个两层的迷宫里，迷宫的入口是S（0，0，0），公主的位置用P表示，时空传输机用#表示，墙用*表示，平地用.表示。骑士们一进入时空传输机就会被转到另一层的相对位置，但如果被转到的位置是墙的话，那骑士们就会被撞死。骑士们在一层中只能前后左右移动，每移动一格花1时刻。层间的移动只能通过时空传输机，且不需要任何时间。 Input 输入的第一行C表示共有C个测试数据，每个测试数据的前一行有三个整数N，M，T。 N，M迷宫的大小NM（1 &lt;= N,M &lt;=10)。T如上所意。接下去的前NM表示迷宫的第一层的布置情况，后N*M表示迷宫第二层的布置情况。 Output 如果骑士们能够在T时刻能找到公主就输出“YES”，否则输出“NO”。 Sample Input 15 5 14S#..#……..**.…#. ..*.P #...**..…. .#.. Sample Output YES 思路BFS走迷宫问题，且是张三维地图（有两层） 可以预先处理必死情况，也就是传送门传到传送门，传送门传到墙，把这两种情况的两层迷宫上的点都改为墙就好了。 注意上下层切换可以借助如下操作 1newF^=1;//异或运算换层 超时就剪枝 12if(top.step==maxTime+1)//整个队列全超时 return false; 如果是按行读入数据，记得吃掉不必要的换行符 代码及注释123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;queue&gt;#include&lt;iostream&gt;using namespace std;struct shit&#123; int x,y,f; int step;&#125;temp,P,S;int n,m,maxTime;int newF;int newX;int newY;char maze[2][15][15];//地图邻接矩阵int inq[2][15][15];//标记是否在队列//四个方向int X[4]=&#123;0,0,1,-1&#125;;int Y[4]=&#123;1,-1,0,0&#125;;//判断位置(x,y)是否能走int judge(int f,int x,int y)//能否走&#123; if(x&lt;0||y&lt;0||x&gt;=n||y&gt;=m) return 0; //是否在传送门上 if(maze[f][x][y]=='#') &#123; newF^=1;//异或运算换层 f^=1; &#125; if(maze[f][x][y]=='*')//与前者顺序不能反，不然数组溢出 return 0; if(inq[f][x][y]) return 0; return 1;&#125;void remake()//预先处理死路&#123; for(int i=0;i&lt;n;i++) for(int j=0;j&lt;m;j++) &#123; if(maze[0][i][j]=='#'&amp;&amp;maze[1][i][j]=='#')//双传送门无限叠加至光速！ &#123; maze[0][i][j]=maze[1][i][j]='*';//这两传送门变成墙 &#125; if((maze[0][i][j]=='#'&amp;&amp;maze[1][i][j]=='*')||(maze[0][i][j]=='*'&amp;&amp;maze[1][i][j]=='#'))//传送到墙上 &#123; maze[0][i][j]=maze[1][i][j]='*';//这两传送门变成墙 &#125; &#125;&#125;bool BFS()&#123; queue&lt;shit&gt; q;//定义shit型队列 q.push(S);//起点入队 //printf("S.step:%d,S.f:%d,S.x:%d,S.y:%d\n",S.step,S.f,S.x,S.y); while(!q.empty()) &#123; shit top=q.front();//取队列首 //printf("top.step:%d,top.f:%d,top.x:%d,top.y:%d\n",top.step,top.f,top.x,top.y); q.pop();//队首出列 if(top.step==maxTime+1)//整个队列全超时 return false; else if(maze[top.f][top.x][top.y]=='P')//找到公主 return true; //朝四个方向尝试走 for(int i=0;i&lt;4;i++) &#123; newF=top.f; newX=top.x+X[i]; newY=top.y+Y[i]; //printf("newF:%d newX:%d newY:%d\n",newF,newX,newY); if(judge(newF,newX,newY)) &#123; temp.f=newF; temp.x=newX; temp.y=newY; temp.step=top.step+1;//时间加1 q.push(temp);//结点入队 //printf("temp.step:%d,temp.f:%d,temp.x:%d,temp.y:%d\n",temp.step,temp.f,temp.x,temp.y); inq[newF][newX][newY]=true;//另一层该入吗? &#125; &#125; &#125; return false;//队列空了（超时）还没找到，就false&#125;int main()&#123; //freopen("fopen.txt","r",stdin); int c; scanf("%d",&amp;c); while(c--) &#123; //读入数据 scanf("%d%d%d",&amp;n,&amp;m,&amp;maxTime); //第一层 for(int i=0;i&lt;n;i++) &#123; getchar();//吃掉每次行尾那个换行符 for(int j=0;j&lt;m;j++) &#123; maze[0][i][j]=getchar(); &#125; &#125; getchar();//吃掉两层中间那个换行 //第二层 for(int i=0;i&lt;n;i++) &#123; getchar();//吃掉每次行尾那个换行符 for(int j=0;j&lt;m;j++) &#123; maze[1][i][j]=getchar(); //cout&lt;&lt;maze[1][i][j]; &#125; //cout&lt;&lt;endl; &#125; remake();//处理死路 //初始化 S.f=0;S.x=0;S.y=0;S.step=0; memset(inq,0,sizeof(inq)); ///////////////////////////////////// if(BFS()) printf("YES\n"); else printf("NO\n"); &#125; return 0;&#125; 胜利大逃亡 Ignatius被魔王抓走了,有一天魔王出差去了,这可是Ignatius逃亡的好机会. 魔王住在一个城堡里,城堡是一个ABC的立方体,可以被表示成A个B*C的矩阵,刚开始Ignatius被关在(0,0,0)的位置,离开城堡的门在(A-1,B-1,C-1)的位置,现在知道魔王将在T分钟后回到城堡,Ignatius每分钟能从一个坐标走到相邻的六个坐标中的其中一个.现在给你城堡的地图,请你计算出Ignatius能否在魔王回来前离开城堡(只要走到出口就算离开城堡,如果走到出口的时候魔王刚好回来也算逃亡成功),如果可以请输出需要多少分钟才能离开,如果不能则输出-1. Input 输入数据的第一行是一个正整数K,表明测试数据的数量.每组测试数据的第一行是四个正整数A,B,C和T(1&lt;=A,B,C&lt;=50,1&lt;=T&lt;=1000),它们分别代表城堡的大小和魔王回来的时间.然后是A块输入数据(先是第0块,然后是第1块,第2块……),每块输入数据有B行,每行有C个正整数,代表迷宫的布局,其中0代表路,1代表墙.(如果对输入描述不清楚,可以参考Sample Input中的迷宫描述,它表示的就是上图中的迷宫) 特别注意:本题的测试数据非常大,请使用scanf输入,我不能保证使用cin能不超时.在本OJ上请使用Visual C++提交. Output 对于每组测试数据,如果Ignatius能够在魔王回来前离开城堡,那么请输出他最少需要多少分钟,否则输出-1. Sample Input 13 3 4 200 1 1 10 0 1 10 1 1 11 1 1 11 0 0 10 1 1 10 0 0 00 1 1 00 1 1 0 Sample Output 11 思路BFS走三维迷宫，和A计划差不多，直接上代码了 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;algorithm&gt;#include&lt;cmath&gt;#include&lt;cstring&gt;#include&lt;queue&gt;const int maxN=55;using namespace std;int newX,newY,newZ,A,B,C,maze[maxN][maxN][maxN];int maxTime;struct shit&#123; int x,y,z; int step;&#125;S,E,top,temp;int inq[maxN][maxN][maxN];void Move(int x)&#123; if(x==1) &#123;newX=top.x+1;newY=top.y;newZ=top.z;&#125; if(x==2) &#123;newX=top.x-1;newY=top.y;newZ=top.z;&#125; if(x==3) &#123;newX=top.x;newY=top.y+1;newZ=top.z;&#125; if(x==4) &#123;newX=top.x;newY=top.y-1;newZ=top.z;&#125; if(x==5) &#123;newX=top.x;newY=top.y;newZ=top.z+1;&#125; if(x==6) &#123;newX=top.x;newY=top.y;newZ=top.z-1;&#125;&#125;bool judge(int x,int y,int z)&#123; if(x&lt;0||x&gt;=A||y&lt;0||y&gt;=B||z&lt;0||z&gt;=C) return false; if(maze[x][y][z]==1) return false; if(inq[x][y][z]==1) return false; return true;&#125;int BFS()&#123; queue&lt;shit&gt; q; q.push(S); while(!q.empty()) &#123; top=q.front(); q.pop(); //printf("top.x:%d top.step:%d E.x:%d\n",top.x,top.step,E.x); if(top.step==maxTime+1) return -1; if(top.x==A-1&amp;&amp;top.y==B-1&amp;&amp;top.z==C-1) return top.step; for(int i=1;i&lt;=6;i++) &#123; Move(i); //printf("newX:%d\n",newX); if(judge(newX,newY,newZ)) &#123; temp.x=newX; temp.y=newY; temp.z=newZ; temp.step=top.step+1; //printf("newX:%d top.step:%d\n",newX,top.step); q.push(temp); inq[newX][newY][newZ]=1; &#125; &#125; &#125; return -1;&#125;int main()&#123; int K; scanf("%d",&amp;K); while(K--) &#123; scanf("%d %d %d %d",&amp;A,&amp;B,&amp;C,&amp;maxTime); for(int i=0;i&lt;A;i++) for(int j=0;j&lt;B;j++) for(int k=0;k&lt;C;k++) scanf("%d",&amp;maze[i][j][k]); memset(inq,0,sizeof(inq)); S.step=0; printf("%d\n",BFS()); &#125;&#125; Asteroids! You’re in space. You want to get home. There are asteroids. You don’t want to hit them. Input Input to this problem will consist of a (non-empty) series of up to 100 data sets. Each data set will be formatted according to the following description, and there will be no blank lines separating data sets. A single data set has 5 components: Start line - A single line, “START N”, where 1 &lt;= N &lt;= 10. Slice list - A series of N slices. Each slice is an N x N matrix representing a horizontal slice through the asteroid field. Each position in the matrix will be one of two values: ‘O’ - (the letter “oh”) Empty space ‘X’ - (upper-case) Asteroid present Starting Position - A single line, “A B C”, denoting the &lt;A,B,C&gt; coordinates of your craft’s starting position. The coordinate values will be integers separated by individual spaces. Target Position - A single line, “D E F”, denoting the &lt;D,E,F&gt; coordinates of your target’s position. The coordinate values will be integers separated by individual spaces. End line - A single line, “END” The origin of the coordinate system is &lt;0,0,0&gt;. Therefore, each component of each coordinate vector will be an integer between 0 and N-1, inclusive. The first coordinate in a set indicates the column. Left column = 0. The second coordinate in a set indicates the row. Top row = 0. The third coordinate in a set indicates the slice. First slice = 0. Both the Starting Position and the Target Position will be in empty space. Output For each data set, there will be exactly one output set, and there will be no blank lines separating output sets. A single output set consists of a single line. If a route exists, the line will be in the format “X Y”, where X is the same as N from the corresponding input data set and Y is the least number of moves necessary to get your ship from the starting position to the target position. If there is no route from the starting position to the target position, the line will be “NO ROUTE” instead. A move can only be in one of the six basic directions: up, down, left, right, forward, back. Phrased more precisely, a move will either increment or decrement a single component of your current position vector by 1. Sample Input START 1O0 0 00 0 0ENDSTART 3XXXXXXXXXOOOOOOOOOXXXXXXXXX0 0 12 2 1ENDSTART 5OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXXXXXXXXXXXXXXXXXXXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO0 0 04 4 4END Sample Output 1 03 4NO ROUTE 思路BBBBBBBBBBFFFFFFFFFFFFFFFFSSSSSSSSSSSSSSS! 注意有六个方向可以走哦 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;algorithm&gt;#include&lt;cmath&gt;#include&lt;cstring&gt;#include&lt;queue&gt;const int maxN=55;using namespace std;int newX,newY,newZ,N;char maze[maxN][maxN][maxN];int maxTime;struct shit&#123; int x,y,z; int step;&#125;S,E,top,temp;int inq[maxN][maxN][maxN];void Move(int x)&#123; if(x==1) &#123;newX=top.x+1;newY=top.y;newZ=top.z;&#125; if(x==2) &#123;newX=top.x-1;newY=top.y;newZ=top.z;&#125; if(x==3) &#123;newX=top.x;newY=top.y+1;newZ=top.z;&#125; if(x==4) &#123;newX=top.x;newY=top.y-1;newZ=top.z;&#125; if(x==5) &#123;newX=top.x;newY=top.y;newZ=top.z+1;&#125; if(x==6) &#123;newX=top.x;newY=top.y;newZ=top.z-1;&#125;&#125;bool judge(int x,int y,int z)&#123; if(x&lt;0||x&gt;=N||y&lt;0||y&gt;=N||z&lt;0||z&gt;=N) return false; if(maze[x][y][z]=='X') return false; if(inq[x][y][z]==1) return false; return true;&#125;int BFS()&#123; queue&lt;shit&gt; q; q.push(S); while(!q.empty()) &#123; top=q.front(); q.pop(); //printf("top.x:%d top.step:%d E.x:%d\n",top.x,top.step,E.x); //if(top.step==maxTime+1) //return -1; if(top.x==E.x&amp;&amp;top.y==E.y&amp;&amp;top.z==E.z) return top.step; for(int i=1;i&lt;=6;i++) &#123; Move(i); //printf("newX:%d\n",newX); if(judge(newX,newY,newZ)) &#123; temp.x=newX; temp.y=newY; temp.z=newZ; temp.step=top.step+1; //printf("newX:%d top.step:%d\n",newX,top.step); q.push(temp); inq[newX][newY][newZ]=1; &#125; &#125; &#125; return -1;&#125;int main()&#123; //freopen("fopen.txt","r",stdin); char s[10]; char c; while(~scanf("%s%d",s,&amp;N)) &#123; getchar(); for(int i=0;i&lt;N;i++) &#123; for(int j=0;j&lt;N;j++) &#123; for(int k=0;k&lt;N;k++) &#123; scanf("%c",&amp;maze[j][k][i]); &#125; getchar(); &#125; //getchar(); &#125; /*for(int i=0;i&lt;N;i++) &#123; for(int j=0;j&lt;N;j++) &#123; for(int k=0;k&lt;N;k++) &#123; cout&lt;&lt;maze[j][k][i]; &#125; cout&lt;&lt;endl; &#125; &#125;*/ //cout&lt;&lt;maze[0][0][0]&lt;&lt;"-"&lt;&lt;maze[0][0][1]&lt;&lt;"-"&lt;&lt;maze[0][0][2]; scanf("%d %d %d",&amp;S.x,&amp;S.y,&amp;S.z); scanf("%d %d %d",&amp;E.x,&amp;E.y,&amp;E.z); scanf("%s",s); //printf("%d %d %d\n",S.x,S.y,S.z); //printf("%d %d %d\n",E.x,E.y,E.z); memset(inq,0,sizeof(inq)); S.step=0; int ans=BFS(); if(ans&gt;=0) &#123; printf("%d %d\n",N,ans); &#125; else printf("NO ROUTE\n"); &#125; return 0;&#125; A strange lift There is a strange lift.The lift can stop can at every floor as you want, and there is a number Ki(0 &lt;= Ki &lt;= N) on every floor.The lift have just two buttons: up and down.When you at floor i,if you press the button “UP” , you will go up Ki floor,i.e,you will go to the i+Ki th floor,as the same, if you press the button “DOWN” , you will go down Ki floor,i.e,you will go to the i-Ki th floor. Of course, the lift can’t go up high than N,and can’t go down lower than 1. For example, there is a buliding with 5 floors, and k1 = 3, k2 = 3,k3 = 1,k4 = 2, k5 = 5.Begining from the 1 st floor,you can press the button “UP”, and you’ll go up to the 4 th floor,and if you press the button “DOWN”, the lift can’t do it, because it can’t go down to the -2 th floor,as you know ,the -2 th floor isn’t exist. Here comes the problem: when you are on floor A,and you want to go to floor B,how many times at least he has to press the button “UP” or “DOWN”? Input The input consists of several test cases.,Each test case contains two lines. The first line contains three integers N ,A,B( 1 &lt;= N,A,B &lt;= 200) which describe above,The second line consist N integers k1,k2,….kn. A single 0 indicate the end of the input. Output For each case of the input output a interger, the least times you have to press the button when you on floor A,and you want to go to floor B.If you can’t reach floor B,printf “-1”. Sample Input 5 1 53 3 1 2 50 Sample Output 3 思路一维空间的BFS 两种移动方式 12345void Move(int x)&#123; if(x==1) newX=top.x+a[top.x]; if(x==2) newX=top.x-a[top.x];&#125; 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;algorithm&gt;#include&lt;cmath&gt;#include&lt;cstring&gt;#include&lt;queue&gt;const int maxN=205;using namespace std;int newX,N,a[maxN];struct shit&#123; int x; int step;&#125;S,E,top,temp;int inq[maxN];void Move(int x)&#123; if(x==1) newX=top.x+a[top.x]; if(x==2) newX=top.x-a[top.x];&#125;bool judge(int x)&#123; if(x&lt;0||x&gt;N) return false; if(inq[x]==1) return false; return true;&#125;int BFS()&#123; queue&lt;shit&gt; q; q.push(S); while(!q.empty()) &#123; top=q.front(); q.pop(); //printf("top.x:%d top.step:%d E.x:%d\n",top.x,top.step,E.x); if(top.x==E.x) return top.step; for(int i=1;i&lt;=2;i++) &#123; Move(i); //printf("newX:%d\n",newX); if(judge(newX)) &#123; temp.x=newX; temp.step=top.step+1; //printf("newX:%d top.step:%d\n",newX,top.step); q.push(temp); inq[newX]=1; &#125; &#125; &#125; return -1;&#125;int main()&#123; while(scanf("%d",&amp;N)==1&amp;&amp;N!=0) &#123; scanf("%d %d",&amp;S.x,&amp;E.x); for(int i=1;i&lt;=N;i++) &#123; scanf("%d",&amp;a[i]); &#125; memset(inq,0,sizeof(inq)); S.step=0; printf("%d\n",BFS()); &#125;&#125; Catch That Cow Farmer John has been informed of the location of a fugitive cow and wants to catch her immediately. He starts at a point N (0 ≤ N ≤ 100,000) on a number line and the cow is at a point K (0 ≤ K ≤ 100,000) on the same number line. Farmer John has two modes of transportation: walking and teleporting. Walking: FJ can move from any point X to the points X - 1 or X + 1 in a single minute Teleporting: FJ can move from any point X to the point 2 × X in a single minute. If the cow, unaware of its pursuit, does not move at all, how long does it take for Farmer John to retrieve it? Input Line 1: Two space-separated integers: N and K Output Line 1: The least amount of time, in minutes, it takes for Farmer John to catch the fugitive cow. Sample Input 5 17 Sample Output 4 思路一维BFS 注意广搜超过10000时及时推出，不然会爆 1if(x&lt;0||x&gt;100000) return false; 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;algorithm&gt;#include&lt;cmath&gt;#include&lt;cstring&gt;#include&lt;queue&gt;using namespace std;int newX;struct shit&#123; int x; int step;&#125;S,E,top,temp;const int maxN=100005;int inq[maxN];void Move(int x)&#123; if(x==1) newX=top.x + 1; if(x==2) newX=top.x - 1; if(x==3) newX=top.x * 2;&#125;bool judge(int x)&#123; if(x&lt;0||x&gt;100000) return false; if(inq[x]==1) return false; return true;&#125;int BFS()&#123; queue&lt;shit&gt; q; q.push(S); while(!q.empty()) &#123; top=q.front(); q.pop(); //printf("top.x:%d E.x:%d\n",top.x,E.x); if(top.x==E.x) return top.step; for(int i=1;i&lt;=3;i++) &#123; Move(i); //printf("newX:%d\n",newX); if(judge(newX)) &#123; temp.x=newX; temp.step=top.step+1; q.push(temp); inq[newX]=1; &#125; &#125; &#125; return -1;&#125;int main()&#123; while(~scanf("%d %d",&amp;S.x,&amp;E.x)) &#123; memset(inq,0,sizeof(inq)); S.step=0; printf("%d\n",BFS()); &#125;&#125;]]></content>
@@ -57,8 +71,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ZCMU</tag>
         <tag>模拟</tag>
+        <tag>ZCMU</tag>
       </tags>
   </entry>
   <entry>
@@ -82,8 +96,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>树状数组</tag>
         <tag>ZCMU</tag>
+        <tag>树状数组</tag>
       </tags>
   </entry>
   <entry>
@@ -95,8 +109,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>DFS</tag>
         <tag>洛谷</tag>
+        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
@@ -108,8 +122,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>二分查找</tag>
         <tag>POJ</tag>
+        <tag>二分查找</tag>
       </tags>
   </entry>
   <entry>
@@ -121,8 +135,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>二分查找</tag>
         <tag>POJ</tag>
+        <tag>二分查找</tag>
         <tag>最小值最大化</tag>
       </tags>
   </entry>
@@ -135,8 +149,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>ZCMU</tag>
         <tag>模拟</tag>
+        <tag>ZCMU</tag>
       </tags>
   </entry>
   <entry>
@@ -148,8 +162,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>ZCMU</tag>
         <tag>模拟</tag>
+        <tag>ZCMU</tag>
       </tags>
   </entry>
   <entry>
@@ -237,8 +251,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>ZCMU</tag>
         <tag>DFS</tag>
+        <tag>ZCMU</tag>
         <tag>背包</tag>
       </tags>
   </entry>
@@ -251,8 +265,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>ZCMU</tag>
         <tag>模拟</tag>
+        <tag>ZCMU</tag>
       </tags>
   </entry>
   <entry>
@@ -303,8 +317,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>洛谷</tag>
+        <tag>ACM</tag>
       </tags>
   </entry>
   <entry>

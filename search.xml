@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[[USACO1.5]回文质数 Prime Palindromes]]></title>
+    <url>%2F2018%2F08%2F07%2FUSACO1-5-%E5%9B%9E%E6%96%87%E8%B4%A8%E6%95%B0-Prime-Palindromes%2F</url>
+    <content type="text"><![CDATA[题目描述 因为151既是一个质数又是一个回文数(从左到右和从右到左是看一样的)，所以 151 是回文质数。 写一个程序来找出范围a,b( 一亿)间的所有回文质数 输入格式 第 1 行: 二个整数 a 和 b . 输出格式 输出一个回文质数的列表，一行一个。 输入样例 5 500 输出样例 5711101131151181191313353373383 思路建立两个函数分别判断质数和回文数 质数判断用枚举或埃氏筛选法，回文判断只要将数字倒过来与原数字比较 但是直接交，不管哪个函数先运行，都会吃T（虽然先判断回文整个程序能更快）。因此要投机取巧优化：拥有偶数数位的质数不可能是回文数，所以可以选择直接忽略10^8^到10^9^之间的数，就正好不被TLE 代码123456789101112131415161718192021222324252627282930313233343536373839#include&lt;bits/stdc++.h&gt;using namespace std;bool is_Prime(int x)&#123; if(x&lt;=1) return false; int sqr=(int)sqrt(1.0*x); for(int i=2;i&lt;=sqr;i++) &#123; if(x%i==0) return false; &#125; return true;&#125;bool is_Palindromes(int x)&#123; int t=x,x1=0; while (t!=0) &#123; x1=x1*10+t%10; t/=10; &#125; if (x1==x) return true; else return false;&#125;int main()&#123; int ans=0; int a,b; cin&gt;&gt;a&gt;&gt;b; if(b&gt;10000000) b=10000000; for(int i=a;i&lt;=b;i++) &#123; if(is_Palindromes(i)) &#123; if(is_Prime(i)) cout&lt;&lt;i&lt;&lt;endl; &#125; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[洛谷P1032 字串变换(BFS+STL字符串处理)]]></title>
     <url>%2F2018%2F08%2F07%2F%E6%B4%9B%E8%B0%B7P1032-%E5%AD%97%E4%B8%B2%E5%8F%98%E6%8D%A2-BFS-STL%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%2F</url>
     <content type="text"><![CDATA[洛谷P1032 字串变换(BFS+STL字符串处理)题目描述 已知有两个字串 A,BA,B 及一组字串变换的规则（至多 66 个规则）: A1 -&gt; B1 A2 -&gt; B2 规则的含义为：在 AA 中的子串 A1 可以变换为 B1 ， A2 可以变换为 B2 …。 例如： A =’ abcd ‘ BB ＝’ xyz ‘ 变换规则为： ‘ abc ’-&gt;‘ xu ’‘ ud ’-&gt;‘ y ’‘ y ’-&gt;‘ yz ’ 则此时， A 可以经过一系列的变换变为 B ，其变换的过程为： ‘ abcd ’-&gt;‘ xud ’-&gt;‘ xy ’-&gt;‘ xxyz ’ 共进行了 3 次变换，使得 A 变换为 B 。 输入格式 输入格式如下： A BA1 B1A2 B2 |-&gt; 变换规则 … … / 所有字符串长度的上限为 20 。 输出格式 输出至屏幕。格式如下： 若在 10 步（包含 10 步）以内能将 A 变换为 B ，则输出最少的变换步数；否则输出”NO ANSWER!” 输入样例 abcd xyzabc xuud yy yz 输出样例 3 思路string类型存各个输入数据 用BFS搜索多种规则，一旦匹配，替换成新字符串后入队。 判断匹配用的是string.find() ,替换用repalce() ，判重用map 映射当前字符串是否已经出现过。 注意先替换再判断替换后的字符串是否已经出现过，顺序不能反 待替换字符串可能存在多个符合替换规则的子串，所以要让字符串中每个字符都当一次起点进行find(目标,起点) 不能直接对队列顶替换，否则影响其他替换规则的搜索，要用临时变量存队列顶的结构体元素，再对临时变量替换并入队 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162#include&lt;bits/stdc++.h&gt;using namespace std;string A,B,before[10],after[10];int n;map&lt;string,int&gt; vis;//判重struct shit&#123; int step; string s;&#125;S,T,top,newStr,temp;int reFind;int BFS()&#123; queue&lt;shit&gt; q; q.push(S); while(!q.empty()) &#123; top=q.front(); q.pop(); if(top.step&gt;10)//超时 &#123; return -1; &#125; if(top.s==T.s)//找到 &#123; return top.step; &#125; for(int i=1;i&lt;=n;i++) &#123; reFind=-1; while(++reFind&lt;=top.s.length())//以每个字符串为起点 &#123; if(top.s.find(before[i],reFind)!=string::npos)//找字串 &#123; temp=top; newStr.s=temp.s.replace(temp.s.find(before[i],reFind),before[i].length(),after[i]); if(vis[newStr.s]==1) continue;//重复 newStr.step=temp.step+1; q.push(newStr); vis[newStr.s]=1; &#125; &#125; &#125; &#125; return -1;&#125;int main()&#123; cin&gt;&gt;A&gt;&gt;B; S.s=A;S.step=0; T.s=B; n=1; while(cin&gt;&gt;before[n]&gt;&gt;after[n]) &#123; n++; &#125; n--; int ans=BFS(); if(ans==-1) cout&lt;&lt;"NO ANSWER!"; else cout&lt;&lt;ans; return 0;&#125;]]></content>

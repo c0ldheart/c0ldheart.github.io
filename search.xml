@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[洛谷P1032 字串变换(BFS+STL字符串处理)]]></title>
+    <url>%2F2018%2F08%2F07%2F%E6%B4%9B%E8%B0%B7P1032-%E5%AD%97%E4%B8%B2%E5%8F%98%E6%8D%A2-BFS-STL%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%2F</url>
+    <content type="text"><![CDATA[洛谷P1032 字串变换(BFS+STL字符串处理)题目描述 已知有两个字串 A,BA,B 及一组字串变换的规则（至多 66 个规则）: A1 -&gt; B1 A2 -&gt; B2 规则的含义为：在 AA 中的子串 A1 可以变换为 B1 ， A2 可以变换为 B2 …。 例如： A =’ abcd ‘ BB ＝’ xyz ‘ 变换规则为： ‘ abc ’-&gt;‘ xu ’‘ ud ’-&gt;‘ y ’‘ y ’-&gt;‘ yz ’ 则此时， A 可以经过一系列的变换变为 B ，其变换的过程为： ‘ abcd ’-&gt;‘ xud ’-&gt;‘ xy ’-&gt;‘ xxyz ’ 共进行了 3 次变换，使得 A 变换为 B 。 输入格式 输入格式如下： A BA1 B1A2 B2 |-&gt; 变换规则 … … / 所有字符串长度的上限为 20 。 输出格式 输出至屏幕。格式如下： 若在 10 步（包含 10 步）以内能将 A 变换为 B ，则输出最少的变换步数；否则输出”NO ANSWER!” 输入样例 abcd xyzabc xuud yy yz 输出样例 3 思路string类型存各个输入数据 用BFS搜索多种规则，一旦匹配，替换成新字符串后入队。 判断匹配用的是string.find() ,替换用repalce() ，判重用map 映射当前字符串是否已经出现过。 注意先替换再判断替换后的字符串是否已经出现过，顺序不能反 待替换字符串可能存在多个符合替换规则的子串，所以要让字符串中每个字符都当一次起点进行find(目标,起点) 不能直接对队列顶替换，否则影响其他替换规则的搜索，要用临时变量存队列顶的结构体元素，再对临时变量替换并入队 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162#include&lt;bits/stdc++.h&gt;using namespace std;string A,B,before[10],after[10];int n;map&lt;string,int&gt; vis;//判重struct shit&#123; int step; string s;&#125;S,T,top,newStr,temp;int reFind;int BFS()&#123; queue&lt;shit&gt; q; q.push(S); while(!q.empty()) &#123; top=q.front(); q.pop(); if(top.step&gt;10)//超时 &#123; return -1; &#125; if(top.s==T.s)//找到 &#123; return top.step; &#125; for(int i=1;i&lt;=n;i++) &#123; reFind=-1; while(++reFind&lt;=top.s.length())//以每个字符串为起点 &#123; if(top.s.find(before[i],reFind)!=string::npos)//找字串 &#123; temp=top; newStr.s=temp.s.replace(temp.s.find(before[i],reFind),before[i].length(),after[i]); if(vis[newStr.s]==1) continue;//重复 newStr.step=temp.step+1; q.push(newStr); vis[newStr.s]=1; &#125; &#125; &#125; &#125; return -1;&#125;int main()&#123; cin&gt;&gt;A&gt;&gt;B; S.s=A;S.step=0; T.s=B; n=1; while(cin&gt;&gt;before[n]&gt;&gt;after[n]) &#123; n++; &#125; n--; int ans=BFS(); if(ans==-1) cout&lt;&lt;"NO ANSWER!"; else cout&lt;&lt;ans; return 0;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>BFS</tag>
+        <tag>STL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[洛谷1162 填涂颜色(DFS漫水填充法)]]></title>
     <url>%2F2018%2F08%2F06%2FP%E6%B4%9B%E8%B0%B71162-%E5%A1%AB%E6%B6%82%E9%A2%9C%E8%89%B2-DFS%E6%BC%AB%E6%B0%B4%E5%A1%AB%E5%85%85%E6%B3%95%2F</url>
     <content type="text"><![CDATA[洛谷1162 填涂颜色(DFS漫水填充法)题目描述由数字 0组成的方阵中，有一任意形状闭合圈，闭合圈由数字 1 构成，围圈时只走上下左右 4 个方向。现要求把闭合圈内的所有空间都填写成 2 .例如：6×6 的方阵（ n=6 ），涂色前和涂色后的方阵如下： 1234560 0 0 0 0 00 0 1 1 1 10 1 1 0 0 11 1 0 0 0 11 0 0 0 0 11 1 1 1 1 1 1234560 0 0 0 0 00 0 1 1 1 10 1 1 2 2 11 1 2 2 2 11 2 2 2 2 11 1 1 1 1 1 输入格式 每组测试数据第一行一个整数 n(1 \le n \le 30)n(1≤n≤30) 接下来 nn 行，由 00 和 11 组成的 n \times nn×n 的方阵。 方阵内只有一个闭合圈，圈内至少有一个 00 。 //感谢黄小U饮品指出本题数据和数据格式不一样. 已修改(输入格式) 输出格式已经填好数字 2 的完整方阵。 输入样例#1123456760 0 0 0 0 00 0 1 1 1 10 1 1 0 0 11 1 0 0 0 11 0 0 0 0 11 1 1 1 1 1 输出样例#11234560 0 0 0 0 00 0 1 1 1 10 1 1 2 2 11 1 2 2 2 11 2 2 2 2 11 1 1 1 1 1 说明1&lt;=n&lt;=30 思路在方阵内只有一个闭合圈，也就意味着除了被包围的那些0连通块，其余0连通块都与方阵边界有接触， 先对所有0连通块floodfill预先涂色，每个不同的值为0的连通块都被替换成-1,-2,-3…如下图 再遍历边界，找出并标记与边界有接触的0连通块 123456789101112131415161718192021222324252627282930int temp[maxN]; memset(temp,0,sizeof(temp)); for(int i=1;i&lt;=n;i++) &#123; if(maze[1][i]&lt;0) &#123; temp[-maze[1][i]]=1; &#125; &#125; for(int i=1;i&lt;=n;i++) &#123; if(maze[i][1]&lt;0) &#123; temp[-maze[i][1]]=1; &#125; &#125; for(int i=1;i&lt;=n;i++) &#123; if(maze[n][i]&lt;0) &#123; temp[-maze[n][i]]=1; &#125; &#125; for(int i=1;i&lt;=n;i++) &#123; if(maze[i][n]&lt;0) &#123; temp[-maze[i][n]]=1; &#125; &#125; 最后输出时判断是否是边界上的0，又是否是1即可 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121#include&lt;bits/stdc++.h&gt;using namespace std;const int maxN=35;int maze[maxN][maxN];int book[maxN][maxN];int tX,tY;int n;/*void Move(int x)&#123; if(x==1) &#123; tX=x+1;tY=y; &#125; if(x==2) &#123; tX=x-1;tY=y; &#125; if(x==3) &#123; tX=x;tY=y+1; &#125; if(x==4) &#123; tX=x;tY=y-1; &#125;&#125;*/void DFS(int x,int y,int color)&#123; maze[x][y]=color; for(int k=1;k&lt;=4;k++) &#123; if(k==1) &#123; tX=x+1;tY=y; &#125; if(k==2) &#123; tX=x-1;tY=y; &#125; if(k==3) &#123; tX=x;tY=y+1; &#125; if(k==4) &#123; tX=x;tY=y-1; &#125; if(tX&lt;1||tX&gt;n||tY&lt;1||tY&gt;n) continue; if(maze[tX][tY]==0&amp;&amp;book[tX][tY]==0) &#123; book[tX][tY]=1; DFS(tX,tY,color); &#125; &#125; return;&#125;int main()&#123; int num=0; memset(maze,0,sizeof(maze)); memset(book,0,sizeof(book)); scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) for(int j=1;j&lt;=n;j++) scanf("%d",&amp;maze[i][j]); for(int i=1;i&lt;=n;i++) &#123; for(int j=1;j&lt;=n;j++) &#123; if(maze[i][j]==0) &#123; num--; book[i][j]=1; DFS(i,j,num); &#125; &#125; &#125; printf("变为\n"); for(int i=1;i&lt;=n;i++) &#123; for(int j=1;j&lt;=n;j++) &#123; printf("%3d",maze[i][j]); &#125; printf("\n"); &#125; int temp[maxN]; memset(temp,0,sizeof(temp)); for(int i=1;i&lt;=n;i++) &#123; if(maze[1][i]&lt;0) &#123; temp[-maze[1][i]]=1; &#125; &#125; for(int i=1;i&lt;=n;i++) &#123; if(maze[i][1]&lt;0) &#123; temp[-maze[i][1]]=1; &#125; &#125; for(int i=1;i&lt;=n;i++) &#123; if(maze[n][i]&lt;0) &#123; temp[-maze[n][i]]=1; &#125; &#125; for(int i=1;i&lt;=n;i++) &#123; if(maze[i][n]&lt;0) &#123; temp[-maze[i][n]]=1; &#125; &#125; for(int i=1;i&lt;=n;i++) &#123; for(int j=1;j&lt;=n;j++) &#123; if(maze[i][j]==1) &#123; printf("1"); if(j!=n) printf(" "); &#125; else if(temp[-maze[i][j]]==1) &#123; printf("0"); if(j!=n) printf(" "); &#125; else &#123; printf("2"); if(j!=n) printf(" "); &#125; &#125; printf("\n"); &#125; return 0;&#125;]]></content>
@@ -121,9 +134,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>POJ</tag>
         <tag>二分查找</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -134,9 +147,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>POJ</tag>
         <tag>二分查找</tag>
+        <tag>算法</tag>
         <tag>最小值最大化</tag>
       </tags>
   </entry>
@@ -174,8 +187,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>二分查找</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -186,8 +199,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>二分查找</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -237,8 +250,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>二分查找</tag>
+        <tag>算法</tag>
         <tag>ZCMU</tag>
       </tags>
   </entry>

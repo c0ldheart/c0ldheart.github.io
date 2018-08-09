@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[洛谷P1618 三连击(升级版) (暴力全排列枚举)]]></title>
+    <url>%2F2018%2F08%2F09%2F%E6%B4%9B%E8%B0%B7P1618-%E4%B8%89%E8%BF%9E%E5%87%BB-%E5%8D%87%E7%BA%A7%E7%89%88-%E6%9A%B4%E5%8A%9B%E5%85%A8%E6%8E%92%E5%88%97%E6%9E%9A%E4%B8%BE%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[CF758D Ability To Convert(贪心模拟)]]></title>
     <url>%2F2018%2F08%2F09%2FCF758D-Ability-To-Convert-%E8%B4%AA%E5%BF%83%E6%A8%A1%E6%8B%9F%2F</url>
     <content type="text"><![CDATA[CF758D Ability To Convert(贪心模拟)题目描述 Alexander is learning how to convert numbers from the decimal system to any other, however, he doesn’t know English letters, so he writes any number only as a decimal number, it means that instead of the letter A he will write the number 10. Thus, by converting the number 475 from decimal to hexadecimal system, he gets 11311 (475 = 1·162 + 13·161 + 11·160). Alexander lived calmly until he tried to convert the number back to the decimal number system. Alexander remembers that he worked with little numbers so he asks to find the minimum decimal number so that by converting it to the system with the base n he will get the number k. Input The first line contains the integer n (2 ≤ n ≤ 109). The second line contains the integer k (0 ≤ k &lt; 1060), it is guaranteed that the number k contains no more than 60 symbols. All digits in the second line are strictly less than n. Alexander guarantees that the answer exists and does not exceed 1018. The number k doesn’t contain leading zeros. Output Print the number x (0 ≤ x ≤ 1018) — the answer to the problem. ExamplesInput1 1312 Output1 12 Input2 1611311 Output2 475 Input3 20999 Output3 3789 Input4 172016 Output4 594 翻译及题意 亚历山大正在学习如何把十进制数字转换成其他进制，但是他不懂英文字母，所以他只是把数值按照十进制数字的方式写出来。这意味着他会用 10 代替英文字母 A。这样，他就会把十进制的 475 转换成十六进制的 11311（475=1·16^2+13·16^1+11·16^0）。亚历山大平静的生活着，直到有一天他试着把这些数字转换回十进制数字。 亚历山大记着他总是用较小的数字工作，所以他需要找到在 n 进制的基础下，用他的转换系统得出数字 k 的最小十进制数。 输入输出格式 输入格式： 第一行是一个正整数 n ( 2&lt;=n&lt;=10^9)，第二行有一个正整数 k ，满足数字 k中包含不超过 60 个数值。第二行整数中的没每一个数字都严格小于 n。 亚历山大保证答案存在且不超过 10^18，数字 k 不含前导 0. 输出格式： 输出一个数字 x —— 问题的答案。 一串用十进制数字代替字母的n进制数字，组合方式不同最终在十进制下大小也不同，要求输出最小的数字 思路可以用DP做，同时不断用贪心也满足条件 数字位数越多永远越大，所以尽可能让位数小，也就要求n进制某一位所含数字个数尽可能多 用字符串存储n进制数字，从后往前遍历（也就是n进制0次方那一位开始），每次经可能多的选（当然加起来不能大于n），找出最大能选的个数后，删除这些数(string中的erase())，再从尾找，直到数字选完（字符串为空s.size()==0） 题中有分别要处理10进制n进制两种进制的数，10进制数是当前末尾选的数的大小（与n比较），会不断刷新，找到目标后加到n进制的最前面那一位。 注意大致思路定下来后，先注意数据类型：答案不超过 10^18，因此要用long long存各个数据 此外设计到大数的幂运算，所以要自己编写快速幂函数 之后再考虑边界和特殊情况的细节问题 不同实现方法，细节处理也不相同，对于我的代码，有以下要注意 若n进制数字小于n，直接输出n进制数字 末尾为0且不能与前面的数合并为一位，就要独占一位 某一位数返回的结果是一个起始为0的数，就要不断往回找，选择第一位不为0的最大数 上一种特殊情况如果前导0过多，会爆long long，所以要判断0过多情况并及时退出 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465#include &lt;iostream&gt;#include&lt;cstring&gt;using namespace std;typedef unsigned long long LL;LL n;string k;LL binaryPow(LL a,LL b)&#123; if(b==0) return 1; if(b%2==1) return a*binaryPow(a,b-1); else &#123; LL mul=binaryPow(a,b/2); return mul*mul; &#125;&#125;int main()&#123; ios::sync_with_stdio(false); cin&gt;&gt;n&gt;&gt;k; LL ans=0; LL p_n=0; while(k.size()) &#123; LL p_10=0; LL End=0; LL i=k.size()-1; while(End+(k[i]-'0')*binaryPow(10,p_10)&lt;n&amp;&amp;i&gt;=0 &amp;&amp;p_10&lt;10) &#123; End+=(k[i--]-'0')*binaryPow(10,p_10++); &#125; if(i&lt;0) &#123; ans+=End*binaryPow(n,p_n); cout&lt;&lt;ans; return 0; &#125; if(k[i+1]=='0') &#123; if(k[k.size()-1]=='0') &#123; i=k.size()-1; End=0; p_10=1; &#125; else &#123; i++; while(k[i]=='0') &#123; i++; p_10--; &#125; &#125; &#125; ans+=End*binaryPow(n,p_n++); k.erase(k.end()-p_10,k.end()); &#125; cout&lt;&lt;ans; return 0;&#125;]]></content>
@@ -133,8 +138,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>ZCMU</tag>
         <tag>树状数组</tag>
+        <tag>ZCMU</tag>
       </tags>
   </entry>
   <entry>
@@ -158,9 +163,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>POJ</tag>
         <tag>二分查找</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -171,9 +176,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>POJ</tag>
         <tag>二分查找</tag>
+        <tag>算法</tag>
         <tag>最小值最大化</tag>
       </tags>
   </entry>
@@ -211,8 +216,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>二分查找</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -223,8 +228,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>二分查找</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -274,8 +279,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>二分查找</tag>
+        <tag>算法</tag>
         <tag>ZCMU</tag>
       </tags>
   </entry>

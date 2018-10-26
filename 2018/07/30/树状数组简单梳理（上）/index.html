@@ -1,133 +1,336 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <link rel="alternate" href="/atom.xml" title="Coldheart's blog" type="application/atom+xml" />
-    
-    
-    
-    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="/css/index.css">
-    
-    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
-    
-    
-<link rel="stylesheet" type="text/css" href="/css/page.css">
-<link rel="stylesheet" type="text/css" href="/css/post.css">
 
-    <link rel="stylesheet" type="text/css" href="/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="/css/[object Object].css">
-    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script defer type="text/javascript" src="/js/util.js"></script>
-    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
-    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
-    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="树状数组,梳理," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Coldheart's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="树状数组简单梳理（上）背景平时做题时我们经常会碰到一类问题： 有一个数组，多次往这个数组上某个点的值增加k，再多次求数组上某个区间所有数组之和。 有一个数组，多次往这个数组某个区间上的值增加k，再多次求某个点的值。 以第一个问题为例，用正常的思路想就有如下操作 123456789//多次往某个点增加kwhile(t1--)    a[x]+=k;//多次求某个区间所有数字之和while(t2--)">
+<meta name="keywords" content="树状数组,梳理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树状数组简单梳理（上）">
+<meta property="og:url" content="c0ldheart.github.io/2018/07/30/树状数组简单梳理（上）/index.html">
+<meta property="og:site_name" content="Coldheart&#39;s blog">
+<meta property="og:description" content="树状数组简单梳理（上）背景平时做题时我们经常会碰到一类问题： 有一个数组，多次往这个数组上某个点的值增加k，再多次求数组上某个区间所有数组之和。 有一个数组，多次往这个数组某个区间上的值增加k，再多次求某个点的值。 以第一个问题为例，用正常的思路想就有如下操作 123456789//多次往某个点增加kwhile(t1--)    a[x]+=k;//多次求某个区间所有数字之和while(t2--)">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/30/PdmQQ1.jpg">
+<meta property="og:updated_time" content="2018-07-30T11:22:25.256Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="树状数组简单梳理（上）">
+<meta name="twitter:description" content="树状数组简单梳理（上）背景平时做题时我们经常会碰到一类问题： 有一个数组，多次往这个数组上某个点的值增加k，再多次求数组上某个区间所有数组之和。 有一个数组，多次往这个数组某个区间上的值增加k，再多次求某个点的值。 以第一个问题为例，用正常的思路想就有如下操作 123456789//多次往某个点增加kwhile(t1--)    a[x]+=k;//多次求某个区间所有数字之和while(t2--)">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/07/30/PdmQQ1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="c0ldheart.github.io/2018/07/30/树状数组简单梳理（上）/"/>
+
+
+
+
+
+  <title>树状数组简单梳理（上） | Coldheart's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
     
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
     
-    <script defer type="text/javascript" src="/js/search.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function () {
-      var searchPath = "search.xml";
-      if (searchPath.length === 0) {
-        searchPath = "search.xml";
-      }
-      var path = "/" + searchPath;
-      searchFunc(path, "search-input", "search-result");
-    });
-    </script>
-    
-    
-    <script defer type="text/javascript" src="/js/index.js"></script>
-    
-    <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>树状数组简单梳理（上） | Coldheart's blog</title>
-  </head>
-  <body itemscope itemtype="http://schema.org/WebPage" lang="default"  data-spy="scroll" data-target=".list-group">
-    
-<header id="header" class="header">
-  <div class="container">
-    <div class="header-container">
-      <div class="header-title">
-        <h1 class="title"><a href="/">Coldheart's blog</a></h1>
-        <h2 class="subtitle"></h2>
-      </div>
-      
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coldheart's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
-    <nav id="nav" class="nav">
-      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="Toggle Navbar"></i></a>
-      <ul id="menu" role="menubar" aria-hidden="false">
-        
-      </ul>
-    </nav>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
-</header>
 
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
 
     <main id="main" class="main">
-      <div class="container">
-        <div class="main-container">
-          <div class="content">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
             
-<div id="post" class="page">
+
+  <div id="posts" class="posts-expand">
+    
+
   
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="c0ldheart.github.io/2018/07/30/树状数组简单梳理（上）/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-       <meta itemprop="name" content="coldheart">
-       <meta itemprop="description" content="poweroverwhelming">
-       <meta itemprop="image" content="/">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-       <meta itemprop="name" content="Coldheart's blog">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">树状数组简单梳理（上）</h1>
-      <div class="post-meta">
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="c0ldheart.github.io/2018/07/30/树状数组简单梳理（上）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="coldheart">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coldheart's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-07-30T19:21:31+08:00">2018-07-30 19:21:31</time></span>
-        </span>
         
+          <h1 class="post-title" itemprop="name headline">树状数组简单梳理（上）</h1>
         
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-30T19:21:31+08:00">
+                2018-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-        </span>
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      <h1 id="树状数组简单梳理（上）"><a href="#树状数组简单梳理（上）" class="headerlink" title="树状数组简单梳理（上）"></a>树状数组简单梳理（上）</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>平时做题时我们经常会碰到一类问题：</p>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="树状数组简单梳理（上）"><a href="#树状数组简单梳理（上）" class="headerlink" title="树状数组简单梳理（上）"></a>树状数组简单梳理（上）</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>平时做题时我们经常会碰到一类问题：</p>
 <p>有一个数组，<strong>多次</strong>往这个数组上某个<strong>点</strong>的值增加k，再<strong>多次</strong>求数组上某个<strong>区间</strong>所有数组之和。</p>
 <p>有一个数组，<strong>多次</strong>往这个数组某个<strong>区间</strong>上的值增加k，再<strong>多次</strong>求某个<strong>点</strong>的值。</p>
 <p>以第一个问题为例，用正常的思路想就有如下操作</p>
-<figure class="hljs highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//多次往某个点增加k</span></span><br><span class="line"><span class="keyword">while</span>(t1--)</span><br><span class="line">    a[x]+=k;</span><br><span class="line"><span class="comment">//多次求某个区间所有数字之和</span></span><br><span class="line"><span class="keyword">while</span>(t2--)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=r;i++)</span><br><span class="line">    	sum+=a[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//多次往某个点增加k</span></span><br><span class="line"><span class="keyword">while</span>(t1--)</span><br><span class="line">    a[x]+=k;</span><br><span class="line"><span class="comment">//多次求某个区间所有数字之和</span></span><br><span class="line"><span class="keyword">while</span>(t2--)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=r;i++)</span><br><span class="line">    	sum+=a[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>虽然直观易懂，但如果多次要求往某个数增加k，并多次求不同的区间和，它的时间复杂度为O(KN)，若区间过长且求和次数过多，就无法承受。</p>
 <p>那么该怎么办呢，这里就要请出树状数组了，树状数组基本应用就是用来解决这些带有关键词<strong>多次、单点、区间、修改、查询(求和)</strong> 的问题。</p>
 <h2 id="树状数组原理"><a href="#树状数组原理" class="headerlink" title="树状数组原理"></a>树状数组原理</h2><h3 id="lowbit运算"><a href="#lowbit运算" class="headerlink" title="lowbit运算"></a>lowbit运算</h3><p>先介绍一下树状数组中用到的二进制的按位运算，一个是<strong>&amp;</strong>运算，称为按位与运算，当对两个数进行&amp;运算，就有<strong>有0出0，全1出1</strong>这个结果，例如1&amp;1=1,0&amp;1=0,1&amp;0=0,0&amp;0=0 ，若是十进制的数，则先将它转化为二进制，再对对应位进行上述运算；还有一个是<strong>~</strong>运算，称为按位非运算，具体表现就是0变为1，1变为0，十进制数转换为二进制再进行上述变换。</p>
@@ -152,7 +355,7 @@
 </blockquote>
 <p>记sum(x)=A[1]+A[2]+…A[x],由于C[x]的覆盖长度是lowbit(x)，即C[x]=A[ x-lowbit(x)+1 ]+A[ x-lowbit(x)+2 ]+…A[x]</p>
 <p>结合两者可以得到：sum(x)=sum( lowbit(x) )+C[x], 所以sum(x)由如下代码实现</p>
-<figure class="hljs highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(;x&gt;<span class="number">0</span>;x-=x&amp;-x)<span class="comment">//x&amp;-x就是lowbit(x)</span></span><br><span class="line">        sum+=c[x];<span class="comment">//累加c[i]，再把问题缩小为sum( x-lowbit(x) )</span></span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(;x&gt;<span class="number">0</span>;x-=x&amp;-x)<span class="comment">//x&amp;-x就是lowbit(x)</span></span><br><span class="line">        sum+=c[x];<span class="comment">//累加c[i]，再把问题缩小为sum( x-lowbit(x) )</span></span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>对二进制稍作模拟，可以得出<strong>sum(x)函数</strong> 的时间复杂度为<strong>O(logN)</strong> ,相比较与传统方法O(N)，时间复杂度大大减小。</p>
 <h4 id="add-x-k"><a href="#add-x-k" class="headerlink" title="add(x,k)"></a>add(x,k)</h4><blockquote>
 <p>将第x个数加上k，即A[X]=A[x]+k</p>
@@ -160,18 +363,18 @@
 <p>虽然传统做法中，该操作时间复杂度只是O(1)，即不用循环操作，但为了实现上面的sum函数，更新操作就要做出牺牲（即使牺牲了，两者加起来的时间复杂度仍然小于传统的O(N)，这样整个程序的实现时间就被大大缩短了）。</p>
 <p>要让sum函数能够顺利求和，<strong>这步对原数组A[x]增加k的操作就应该变为对树状数组C中能覆盖A[x]的那些元素增加k</strong>，理解这个变化对理解树状数组相当重要！！！</p>
 <p>那么，如何找到覆盖A[x]的树状数组的元素呢？自然还是要用到lowbit运算。读者可以根据sum函数的解释，理解以下代码</p>
-<figure class="hljs highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(;x&lt;=n;x+=x&amp;-x)</span><br><span class="line">        c[x]+=k;<span class="comment">//让c[x]加上k，然后让c[ x+lowbit(x) ]加上k</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(;x&lt;=n;x+=x&amp;-x)</span><br><span class="line">        c[x]+=k;<span class="comment">//让c[x]加上k，然后让c[ x+lowbit(x) ]加上k</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="树状数组应用"><a href="#树状数组应用" class="headerlink" title="树状数组应用"></a>树状数组应用</h3><p>有了对树状数组的理解，我们再回过头解决第一个问题</p>
 <blockquote>
 <p>有一个数组，<strong>多次</strong>往这个数组上某个<strong>点</strong>的值增加k，再<strong>多次</strong>求数组上某个<strong>区间</strong>所有数组之和。</p>
 </blockquote>
 <p>1.首先读入原数组的初始数据</p>
-<figure class="hljs highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">memset</span>(c,<span class="number">0</span>,<span class="keyword">sizeof</span>(c));<span class="comment">//初始树状数组值为0</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="comment">//下标从1开始</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);<span class="comment">//读取原数组</span></span><br><span class="line">    add(c[i],a);<span class="comment">//对树状数组修改或赋值都用add函数，而不是简单相加</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">memset</span>(c,<span class="number">0</span>,<span class="keyword">sizeof</span>(c));<span class="comment">//初始树状数组值为0</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="comment">//下标从1开始</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);<span class="comment">//读取原数组</span></span><br><span class="line">    add(c[i],a);<span class="comment">//对树状数组修改或赋值都用add函数，而不是简单相加</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>2.按要求对某个点的值增加k</p>
-<figure class="hljs highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add(c[i],k);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add(c[i],k);</span><br></pre></td></tr></table></figure>
 <p>同样的，要用add函数对树状数组修改而不能直接修改</p>
 <p>3.求某一区间和，并输出</p>
-<figure class="hljs highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ans=sum(r)-sum(<span class="number">1</span><span class="number">-1</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ans=sum(r)-sum(<span class="number">1</span><span class="number">-1</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br></pre></td></tr></table></figure>
 <p>这里要注意，sum(x)设计成返回<strong>区间[1,x]</strong>的值，如果要求区间[l,r]的和,就要用<strong>sum(r)-sum(l-1)</strong> 。</p>
 <p>问题一解决，总时间复杂度O(Nlog$^2$N),不会超时。</p>
 <p>再来看第二个问题</p>
@@ -187,7 +390,7 @@
 <p>进一步发现这时候再对差分数组求前x个和，对应的值就时当前x的值。</p>
 <p>所以<strong>这时sum(x)不再是前x个数之和，而是原数组a[x]的值，即实现了单点查询</strong></p>
 <p>所以该类问题对区间[l,r]增加k，就要变为对<strong>c[l]处+k，对c[r+1]处-k，</strong>（当然，还是用add函数修改），再直接用sum(x)查询对应单点值，代码如下，问题二迎刃而解。</p>
-<figure class="hljs highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add(l,k);add(r+<span class="number">1</span>,-k);</span><br><span class="line">ans=sum(x);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add(l,k);add(r+<span class="number">1</span>,-k);</span><br><span class="line">ans=sum(x);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br></pre></td></tr></table></figure>
 <h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p>在了解树状数组的原理、区间查询，单点更新和单点查询，区间更新的应用后，读者应当能够自行解决类似问题，这里先给出一些题</p>
 <p><a href="http://poj.org/problem?id=2299" target="_blank" rel="noopener">POJ 2299 Ultra-QuickSort</a> （单点更新区间查询）</p>
 <p><a href="http://acm.zcmu.edu.cn/JudgeOnline/problem.php?id=1156" target="_blank" rel="noopener">ZCMU1156 新年彩灯Ⅰ</a> （区间更新单点查询）</p>
@@ -195,116 +398,392 @@
 <h3 id="留个坑"><a href="#留个坑" class="headerlink" title="留个坑"></a>留个坑</h3><p>以上就是关于状数组的原理以及区间查询单点更新问题和单点查询区间更新问题的简单梳理，</p>
 <p>树状数组还有其他高阶应用如多维树状数组、区间查询区间更新等问题，就在另外一篇博客见吧（逃</p>
 
-    </main>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
     <footer class="post-footer">
       
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/树状数组/" rel="tag"><i class="fas fa-tags"></i>树状数组</a>
-        
-        <a class="post-tag button" href="/tags/梳理/" rel="tag"><i class="fas fa-tags"></i>梳理</a>
-        
-      </div>
+        <div class="post-tags">
+          
+            <a href="/tags/树状数组/" rel="tag"># 树状数组</a>
+          
+            <a href="/tags/梳理/" rel="tag"># 梳理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/29/ZCMU1156-新年彩灯1-树状数组区间更新单点查询/" rel="next" title="ZCMU1156 新年彩灯1(树状数组区间更新单点查询)">
+                <i class="fa fa-chevron-left"></i> ZCMU1156 新年彩灯1(树状数组区间更新单点查询)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/31/ZCMU2188-Frames/" rel="prev" title="ZCMU2188 Frames">
+                ZCMU2188 Frames <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
+  </div>
+  
+  
+  
   </article>
-  
-  
-  <nav class="page-nav">
-    <div class="page-nav-next page-nav-item">
-      
-      <a href="/2018/07/29/ZCMU1156-新年彩灯1-树状数组区间更新单点查询/" rel="next" title="ZCMU1156 新年彩灯1(树状数组区间更新单点查询)"><i class="fas fa-angle-left"></i><span class="nav-title">ZCMU1156 新年彩灯1(树状数组区间更新单点查询)</span></a>
+
+
+
+    <div class="post-spread">
       
     </div>
-    <div class="page-nav-prev page-nav-item">
-      
-      <a href="/2018/07/31/ZCMU2188-Frames/" rel="prev" title="ZCMU2188 Frames"><span class="nav-title">ZCMU2188 Frames</span><i class="fas fa-angle-right"></i></a>
-      
-    </div>
-  </nav>
-  
-  
-</div>
+  </div>
+
 
           </div>
           
+
+
           
-          
-<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+
   
-  <div class="search">
-    <div class="form-group">
-      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="Search" class="form-control"/>
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
-  <div class="search-result-box" id="search-result"></div>
-  
-  
-<div class="info sidebar-item" id="info">
-  
-  <h1 class="author-name">coldheart</h1>
-  <h2 class="author-description">poweroverwhelming</h2>
-  <div class="site-count">
+
+  <aside id="sidebar" class="sidebar">
     
-    
-    
-  </div>
-  
-  <div class="rss">
-    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
-  </div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">coldheart</p>
+              <p class="site-description motion-element" itemprop="description">poweroverwhelming</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#树状数组简单梳理（上）"><span class="nav-number">1.</span> <span class="nav-text">树状数组简单梳理（上）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树状数组原理"><span class="nav-number">1.2.</span> <span class="nav-text">树状数组原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lowbit运算"><span class="nav-number">1.2.1.</span> <span class="nav-text">lowbit运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树状数组的定义"><span class="nav-number">1.2.2.</span> <span class="nav-text">树状数组的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树状数组函数设计"><span class="nav-number">1.2.3.</span> <span class="nav-text">树状数组函数设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sum-x"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">sum(x)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#add-x-k"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">add(x,k)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树状数组应用"><span class="nav-number">1.2.4.</span> <span class="nav-text">树状数组应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题"><span class="nav-number">1.2.5.</span> <span class="nav-text">例题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#留个坑"><span class="nav-number">1.2.6.</span> <span class="nav-text">留个坑</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">coldheart</span>
+
   
 </div>
 
 
-  <div class="sidebar-sticky">
-    
-    
-    
-    
-    
-    <hr>
-    <div class="post-toc sidebar-item" id="toc-div">
-      <div><i class="fas fa-list-ol"></i>Table of Contents</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#树状数组简单梳理（上）"><span class="toc-text">树状数组简单梳理（上）</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#树状数组原理"><span class="toc-text">树状数组原理</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#lowbit运算"><span class="toc-text">lowbit运算</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#树状数组的定义"><span class="toc-text">树状数组的定义</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#树状数组函数设计"><span class="toc-text">树状数组函数设计</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#sum-x"><span class="toc-text">sum(x)</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#add-x-k"><span class="toc-text">add(x,k)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#树状数组应用"><span class="toc-text">树状数组应用</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#例题"><span class="toc-text">例题</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#留个坑"><span class="toc-text">留个坑</span></a></li></ol></li></ol></li></ol></div>
-    </div>
-    
-    
-    
-    
-  </div>
-</aside>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
-          
-        </div>
-      </div>
-    </main>
-    
-<footer id="footer" class="footer">
-  <div class="container">
-    <div class="back-to-top">
-      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="Back to Top"></i></button>
-    </div>
-    <div class="footer-container">
-      <div class="footer-left">
-        <div class="copyright">
-          <span class="author">coldheart</span><span class="year"><i class="far fa-copyright"></i>2018</span>
-        </div>
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
         
       </div>
-      <div class="footer-right">
-        <div class="custom-info">
-          
-        </div>
-        <div class="powered-by">
-          Proudly Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> | Theme is <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
-        </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
       </div>
-    </div>
+    
+
+    
+
   </div>
-</footer>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
 
 
-  </body>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
 </html>

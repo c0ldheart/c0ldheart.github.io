@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>ZCMU1265 数三角形 | Coldheart&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ZCMU1265 数三角形Description 给定一个等边三角形，它的每条边被分成n等分，分别用平行于三边的直线过各个n等分点截这个三角形，如图所示：  请问，图中总共有多少个三角形？  Input 输入包含多组测试数据，直至EOF。 每组测试数据包含一个正整数n，表示三角形三边被分为了n等份（n&amp;lt;500）。  Output  输出三角形的个数。   Sample Input 1  2">
+<meta name="keywords" content="算法,模拟,ZCMU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ZCMU1265 数三角形">
+<meta property="og:url" content="c0ldheart.github.io/2018/07/24/ZCMU1265-数三角形/index.html">
+<meta property="og:site_name" content="Coldheart&#39;s blog">
+<meta property="og:description" content="ZCMU1265 数三角形Description 给定一个等边三角形，它的每条边被分成n等分，分别用平行于三边的直线过各个n等分点截这个三角形，如图所示：  请问，图中总共有多少个三角形？  Input 输入包含多组测试数据，直至EOF。 每组测试数据包含一个正整数n，表示三角形三边被分为了n等份（n&amp;lt;500）。  Output  输出三角形的个数。   Sample Input 1  2">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://acm.zcmu.edu.cn/JudgeOnline/upload/201311/image/123/%E4%B8%89%E8%A7%92%E5%BD%A2.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/24/PYyaVg.jpg">
+<meta property="og:updated_time" content="2018-07-24T13:17:17.252Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ZCMU1265 数三角形">
+<meta name="twitter:description" content="ZCMU1265 数三角形Description 给定一个等边三角形，它的每条边被分成n等分，分别用平行于三边的直线过各个n等分点截这个三角形，如图所示：  请问，图中总共有多少个三角形？  Input 输入包含多组测试数据，直至EOF。 每组测试数据包含一个正整数n，表示三角形三边被分为了n等份（n&amp;lt;500）。  Output  输出三角形的个数。   Sample Input 1  2">
+<meta name="twitter:image" content="http://acm.zcmu.edu.cn/JudgeOnline/upload/201311/image/123/%E4%B8%89%E8%A7%92%E5%BD%A2.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Coldheart&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Coldheart&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="c0ldheart.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ZCMU1265-数三角形" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/24/ZCMU1265-数三角形/" class="article-date">
+  <time datetime="2018-07-24T13:16:15.000Z" itemprop="datePublished">2018-07-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ZCMU1265 数三角形
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ZCMU1265-数三角形"><a href="#ZCMU1265-数三角形" class="headerlink" title="ZCMU1265 数三角形"></a>ZCMU1265 数三角形</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><blockquote>
+<p>给定一个等边三角形，它的每条边被分成n等分，分别用平行于三边的直线过各个n等分点截这个三角形，如图所示：</p>
+<p><img src="http://acm.zcmu.edu.cn/JudgeOnline/upload/201311/image/123/%E4%B8%89%E8%A7%92%E5%BD%A2.jpg" alt="img"></p>
+<p>请问，图中总共有多少个三角形？</p>
+</blockquote>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><blockquote>
+<p>输入包含多组测试数据，直至EOF。</p>
+<p>每组测试数据包含一个正整数n，表示三角形三边被分为了n等份（n&lt;500）。</p>
+</blockquote>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><blockquote>
+<p> 输出三角形的个数。 </p>
+</blockquote>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><blockquote>
+<p>1</p>
+<p> 2</p>
+<p> 3 </p>
+</blockquote>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><blockquote>
+<p>1 </p>
+<p>5 </p>
+<p>13 </p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>用数学方法找出三角形个数的递推公式即可。</p>
+<p><img src="https://s1.ax1x.com/2018/07/24/PYyaVg.jpg" alt="img"></p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>有箭头朝上和箭头朝下两种三角形，箭头朝下个数表达式要分奇偶。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"1\n"</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(n%<span class="number">2</span>==<span class="number">0</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,n*(n+<span class="number">2</span>)*(<span class="number">2</span>*n+<span class="number">1</span>)/<span class="number">8</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,(n+<span class="number">1</span>)*(<span class="number">2</span>*n*n+<span class="number">3</span>*n<span class="number">-1</span>)/<span class="number">8</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="c0ldheart.github.io/2018/07/24/ZCMU1265-数三角形/" data-id="cjnpn2ve2000w1su3n2aklxnm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ZCMU/">ZCMU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模拟/">模拟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/25/ZCMU1711-背包/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ZCMU1711 背包
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/24/ZCMU2163-项链/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ZCMU2163 项链</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/摄影/">摄影</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常/">日常</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/">ACM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Floodfill漫水填充/">Floodfill漫水填充</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Floyd算法/">Floyd算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LIS/">LIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/POJ/">POJ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ZCMU/">ZCMU</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分查找/">二分查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/全排列/">全排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/摄影/">摄影</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日常/">日常</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力，洛谷/">暴力，洛谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小值最大化/">最小值最大化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树状数组/">树状数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/梳理/">梳理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/洛谷/">洛谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/牛客网/">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/离线查询/">离线查询</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简书/">简书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法，BFS/">算法，BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背包/">背包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闲聊/">闲聊</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/题集/">题集</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ACM/" style="font-size: 11.67px;">ACM</a> <a href="/tags/BFS/" style="font-size: 11.67px;">BFS</a> <a href="/tags/DFS/" style="font-size: 13.33px;">DFS</a> <a href="/tags/Floodfill漫水填充/" style="font-size: 10px;">Floodfill漫水填充</a> <a href="/tags/Floyd算法/" style="font-size: 10px;">Floyd算法</a> <a href="/tags/LIS/" style="font-size: 11.67px;">LIS</a> <a href="/tags/POJ/" style="font-size: 11.67px;">POJ</a> <a href="/tags/STL/" style="font-size: 11.67px;">STL</a> <a href="/tags/ZCMU/" style="font-size: 18.33px;">ZCMU</a> <a href="/tags/二分查找/" style="font-size: 16.67px;">二分查找</a> <a href="/tags/全排列/" style="font-size: 10px;">全排列</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/摄影/" style="font-size: 10px;">摄影</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日常/" style="font-size: 10px;">日常</a> <a href="/tags/暴力，洛谷/" style="font-size: 10px;">暴力，洛谷</a> <a href="/tags/最小值最大化/" style="font-size: 10px;">最小值最大化</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/树状数组/" style="font-size: 13.33px;">树状数组</a> <a href="/tags/梳理/" style="font-size: 10px;">梳理</a> <a href="/tags/模拟/" style="font-size: 15px;">模拟</a> <a href="/tags/洛谷/" style="font-size: 13.33px;">洛谷</a> <a href="/tags/牛客网/" style="font-size: 10px;">牛客网</a> <a href="/tags/离线查询/" style="font-size: 10px;">离线查询</a> <a href="/tags/简书/" style="font-size: 10px;">简书</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/算法，BFS/" style="font-size: 10px;">算法，BFS</a> <a href="/tags/背包/" style="font-size: 10px;">背包</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/软件安装/" style="font-size: 10px;">软件安装</a> <a href="/tags/闲聊/" style="font-size: 10px;">闲聊</a> <a href="/tags/题集/" style="font-size: 10px;">题集</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/26/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/26/线性表操作（一元多项式的运算）/">线性表操作（一元多项式的运算）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/26/MySQL安装报告/">MySQL安装报告</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/16/Almost-Sorted-Array-O-NlogN-LIS/">Almost Sorted Array(O(NlogN)LIS)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/09/洛谷P1618-三连击-升级版-暴力全排列枚举/">洛谷P1618 三连击(升级版) (暴力全排列枚举)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 coldheart<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

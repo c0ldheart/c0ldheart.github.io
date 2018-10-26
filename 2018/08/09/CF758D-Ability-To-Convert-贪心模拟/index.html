@@ -1,97 +1,129 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Coldheart's blog" type="application/atom+xml" />
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
 
-  
-  <title>CF758D Ability To Convert(贪心模拟) | Coldheart&#39;s blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CF758D Ability To Convert(贪心模拟)题目描述 Alexander is learning how to convert numbers from the decimal system to any other, however, he doesn’t know English letters, so he writes any number only as a decim">
-<meta name="keywords" content="算法,贪心,模拟">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CF758D Ability To Convert(贪心模拟)">
-<meta property="og:url" content="c0ldheart.github.io/2018/08/09/CF758D-Ability-To-Convert-贪心模拟/index.html">
-<meta property="og:site_name" content="Coldheart&#39;s blog">
-<meta property="og:description" content="CF758D Ability To Convert(贪心模拟)题目描述 Alexander is learning how to convert numbers from the decimal system to any other, however, he doesn’t know English letters, so he writes any number only as a decim">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-09T07:49:23.035Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CF758D Ability To Convert(贪心模拟)">
-<meta name="twitter:description" content="CF758D Ability To Convert(贪心模拟)题目描述 Alexander is learning how to convert numbers from the decimal system to any other, however, he doesn’t know English letters, so he writes any number only as a decim">
-  
-    <link rel="alternate" href="/atom.xml" title="Coldheart&#39;s blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Coldheart&#39;s blog</a>
-      </h1>
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/[object Object].css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>CF758D Ability To Convert(贪心模拟) | Coldheart's blog</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="default"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Coldheart's blog</a></h1>
+        <h2 class="subtitle"></h2>
+      </div>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="Toggle Navbar"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="c0ldheart.github.io"></form>
-      </div>
-    </div>
+      </ul>
+    </nav>
   </div>
 </header>
-      <div class="outer">
-        <section id="main"><article id="post-CF758D-Ability-To-Convert-贪心模拟" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/09/CF758D-Ability-To-Convert-贪心模拟/" class="article-date">
-  <time datetime="2018-08-09T07:23:30.000Z" itemprop="datePublished">2018-08-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-  </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="c0ldheart.github.io/2018/08/09/CF758D-Ability-To-Convert-贪心模拟/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="coldheart">
+       <meta itemprop="description" content="poweroverwhelming">
+       <meta itemprop="image" content="/">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Coldheart's blog">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">CF758D Ability To Convert(贪心模拟)</h1>
+      <div class="post-meta">
         
-  
-    <h1 class="article-title" itemprop="name">
-      CF758D Ability To Convert(贪心模拟)
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="CF758D-Ability-To-Convert-贪心模拟"><a href="#CF758D-Ability-To-Convert-贪心模拟" class="headerlink" title="CF758D Ability To Convert(贪心模拟)"></a>CF758D Ability To Convert(贪心模拟)</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><blockquote>
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-08-09T15:23:30+08:00">2018-08-09 15:23:30</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <h1 id="CF758D-Ability-To-Convert-贪心模拟"><a href="#CF758D-Ability-To-Convert-贪心模拟" class="headerlink" title="CF758D Ability To Convert(贪心模拟)"></a>CF758D Ability To Convert(贪心模拟)</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><blockquote>
 <p>Alexander is learning how to convert numbers from the decimal system to any other, however, he doesn’t know English letters, so he writes any number only as a decimal number, it means that instead of the letter <em>A</em> he will write the number 10. Thus, by converting the number 475 from decimal to hexadecimal system, he gets 11311 (475 = 1·162 + 13·161 + 11·160). Alexander lived calmly until he tried to convert the number back to the decimal number system.</p>
 <p>Alexander remembers that he worked with little numbers so he asks to find the minimum decimal number so that by converting it to the system with the base <em>n</em> he will get the number <em>k</em>.</p>
 </blockquote>
@@ -147,149 +179,120 @@
 <p>末尾为0且不能与前面的数合并为一位，就要独占一位</p>
 <p>某一位数返回的结果是一个起始为0的数，就要不断往回找，选择第一位不为0的最大数</p>
 <p>上一种特殊情况如果前导0过多，会爆long long，所以要判断0过多情况并及时退出</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line">LL n;</span><br><span class="line"><span class="built_in">string</span> k;</span><br><span class="line"><span class="function">LL <span class="title">binaryPow</span><span class="params">(LL a,LL b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(b%<span class="number">2</span>==<span class="number">1</span>) <span class="keyword">return</span> a*binaryPow(a,b<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        LL mul=binaryPow(a,b/<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">return</span> mul*mul;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    LL ans=<span class="number">0</span>;</span><br><span class="line">    LL p_n=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(k.size())</span><br><span class="line">    &#123;</span><br><span class="line">        LL p_10=<span class="number">0</span>;</span><br><span class="line">        LL End=<span class="number">0</span>;</span><br><span class="line">        LL i=k.size()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(End+(k[i]-<span class="string">'0'</span>)*binaryPow(<span class="number">10</span>,p_10)&lt;n&amp;&amp;i&gt;=<span class="number">0</span>   &amp;&amp;p_10&lt;<span class="number">10</span>)</span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">            End+=(k[i--]-<span class="string">'0'</span>)*binaryPow(<span class="number">10</span>,p_10++);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i&lt;<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            ans+=End*binaryPow(n,p_n);</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;ans;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(k[i+<span class="number">1</span>]==<span class="string">'0'</span>)</span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(k[k.size()<span class="number">-1</span>]==<span class="string">'0'</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                i=k.size()<span class="number">-1</span>;</span><br><span class="line">                End=<span class="number">0</span>;</span><br><span class="line">                p_10=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">                <span class="keyword">while</span>(k[i]==<span class="string">'0'</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    i++;</span><br><span class="line">                    p_10--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        ans+=End*binaryPow(n,p_n++);</span><br><span class="line">        k.erase(k.end()-p_10,k.end());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="hljs highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line">LL n;</span><br><span class="line"><span class="built_in">string</span> k;</span><br><span class="line"><span class="function">LL <span class="title">binaryPow</span><span class="params">(LL a,LL b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(b%<span class="number">2</span>==<span class="number">1</span>) <span class="keyword">return</span> a*binaryPow(a,b<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        LL mul=binaryPow(a,b/<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">return</span> mul*mul;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    LL ans=<span class="number">0</span>;</span><br><span class="line">    LL p_n=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(k.size())</span><br><span class="line">    &#123;</span><br><span class="line">        LL p_10=<span class="number">0</span>;</span><br><span class="line">        LL End=<span class="number">0</span>;</span><br><span class="line">        LL i=k.size()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(End+(k[i]-<span class="string">'0'</span>)*binaryPow(<span class="number">10</span>,p_10)&lt;n&amp;&amp;i&gt;=<span class="number">0</span>   &amp;&amp;p_10&lt;<span class="number">10</span>)</span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">            End+=(k[i--]-<span class="string">'0'</span>)*binaryPow(<span class="number">10</span>,p_10++);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i&lt;<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            ans+=End*binaryPow(n,p_n);</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;ans;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(k[i+<span class="number">1</span>]==<span class="string">'0'</span>)</span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(k[k.size()<span class="number">-1</span>]==<span class="string">'0'</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                i=k.size()<span class="number">-1</span>;</span><br><span class="line">                End=<span class="number">0</span>;</span><br><span class="line">                p_10=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">                <span class="keyword">while</span>(k[i]==<span class="string">'0'</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    i++;</span><br><span class="line">                    p_10--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        ans+=End*binaryPow(n,p_n++);</span><br><span class="line">        k.erase(k.end()-p_10,k.end());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+    </main>
+    <footer class="post-footer">
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="c0ldheart.github.io/2018/08/09/CF758D-Ability-To-Convert-贪心模拟/" data-id="cjnpn7vx20006wku3l7s385uj" class="article-share-link">Share</a>
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/算法/" rel="tag"><i class="fas fa-tags"></i>算法</a>
+        
+        <a class="post-tag button" href="/tags/贪心/" rel="tag"><i class="fas fa-tags"></i>贪心</a>
+        
+        <a class="post-tag button" href="/tags/模拟/" rel="tag"><i class="fas fa-tags"></i>模拟</a>
+        
+      </div>
       
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模拟/">模拟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/贪心/">贪心</a></li></ul>
-
     </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/08/09/洛谷P1618-三连击-升级版-暴力全排列枚举/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          洛谷P1618 三连击(升级版) (暴力全排列枚举)
-        
-      </div>
-    </a>
+  </article>
   
   
-    <a href="/2018/08/07/USACO1-5-回文质数-Prime-Palindromes/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">[USACO1.5]回文质数 Prime Palindromes</div>
-    </a>
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2018/08/07/USACO1-5-回文质数-Prime-Palindromes/" rel="next" title="[USACO1.5]回文质数 Prime Palindromes"><i class="fas fa-angle-left"></i><span class="nav-title">[USACO1.5]回文质数 Prime Palindromes</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2018/08/09/洛谷P1618-三连击-升级版-暴力全排列枚举/" rel="prev" title="洛谷P1618 三连击(升级版) (暴力全排列枚举)"><span class="nav-title">洛谷P1618 三连击(升级版) (暴力全排列枚举)</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
   
-</nav>
+  
+</div>
 
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
   
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/摄影/">摄影</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常/">日常</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li></ul>
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="Search" class="form-control"/>
     </div>
   </div>
-
-
+  <div class="search-result-box" id="search-result"></div>
   
+  
+<div class="info sidebar-item" id="info">
+  
+  <h1 class="author-name">coldheart</h1>
+  <h2 class="author-description">poweroverwhelming</h2>
+  <div class="site-count">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/">ACM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Floodfill漫水填充/">Floodfill漫水填充</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Floyd算法/">Floyd算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LIS/">LIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/POJ/">POJ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ZCMU/">ZCMU</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分查找/">二分查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/全排列/">全排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/摄影/">摄影</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日常/">日常</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力，洛谷/">暴力，洛谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小值最大化/">最小值最大化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树状数组/">树状数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/梳理/">梳理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/洛谷/">洛谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/牛客网/">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/离线查询/">离线查询</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简书/">简书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法，BFS/">算法，BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背包/">背包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闲聊/">闲聊</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/题集/">题集</a></li></ul>
-    </div>
-  </div>
-
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/ACM/" style="font-size: 11.67px;">ACM</a> <a href="/tags/BFS/" style="font-size: 11.67px;">BFS</a> <a href="/tags/DFS/" style="font-size: 13.33px;">DFS</a> <a href="/tags/Floodfill漫水填充/" style="font-size: 10px;">Floodfill漫水填充</a> <a href="/tags/Floyd算法/" style="font-size: 10px;">Floyd算法</a> <a href="/tags/LIS/" style="font-size: 11.67px;">LIS</a> <a href="/tags/POJ/" style="font-size: 11.67px;">POJ</a> <a href="/tags/STL/" style="font-size: 11.67px;">STL</a> <a href="/tags/ZCMU/" style="font-size: 18.33px;">ZCMU</a> <a href="/tags/二分查找/" style="font-size: 16.67px;">二分查找</a> <a href="/tags/全排列/" style="font-size: 10px;">全排列</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/摄影/" style="font-size: 10px;">摄影</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日常/" style="font-size: 10px;">日常</a> <a href="/tags/暴力，洛谷/" style="font-size: 10px;">暴力，洛谷</a> <a href="/tags/最小值最大化/" style="font-size: 10px;">最小值最大化</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/树状数组/" style="font-size: 13.33px;">树状数组</a> <a href="/tags/梳理/" style="font-size: 10px;">梳理</a> <a href="/tags/模拟/" style="font-size: 15px;">模拟</a> <a href="/tags/洛谷/" style="font-size: 13.33px;">洛谷</a> <a href="/tags/牛客网/" style="font-size: 10px;">牛客网</a> <a href="/tags/离线查询/" style="font-size: 10px;">离线查询</a> <a href="/tags/简书/" style="font-size: 10px;">简书</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/算法，BFS/" style="font-size: 10px;">算法，BFS</a> <a href="/tags/背包/" style="font-size: 10px;">背包</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/软件安装/" style="font-size: 10px;">软件安装</a> <a href="/tags/闲聊/" style="font-size: 10px;">闲聊</a> <a href="/tags/题集/" style="font-size: 10px;">题集</a>
-    </div>
-  </div>
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
-    </div>
   </div>
-
-
   
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/10/26/test/">test</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/26/线性表操作（一元多项式的运算）/">线性表操作（一元多项式的运算）</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/26/MySQL安装报告/">MySQL安装报告</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/16/Almost-Sorted-Array-O-NlogN-LIS/">Almost Sorted Array(O(NlogN)LIS)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/09/洛谷P1618-三连击-升级版-暴力全排列枚举/">洛谷P1618 三连击(升级版) (暴力全排列枚举)</a>
-          </li>
-        
-      </ul>
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>Table of Contents</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#CF758D-Ability-To-Convert-贪心模拟"><span class="toc-text">CF758D Ability To Convert(贪心模拟)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Input"><span class="toc-text">Input</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Output"><span class="toc-text">Output</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Examples"><span class="toc-text">Examples</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Input1"><span class="toc-text">Input1</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Output1"><span class="toc-text">Output1</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Input2"><span class="toc-text">Input2</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Output2"><span class="toc-text">Output2</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Input3"><span class="toc-text">Input3</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Output3"><span class="toc-text">Output3</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Input4"><span class="toc-text">Input4</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Output4"><span class="toc-text">Output4</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#翻译及题意"><span class="toc-text">翻译及题意</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#注意"><span class="toc-text">注意</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol></li></ol></div>
     </div>
+    
+    
+    
+    
   </div>
-
-  
 </aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="Back to Top"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">coldheart</span><span class="year"><i class="far fa-copyright"></i>2018</span>
+        </div>
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 coldheart<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+        </div>
+        <div class="powered-by">
+          Proudly Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> | Theme is <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
-</body>
+  </body>
 </html>

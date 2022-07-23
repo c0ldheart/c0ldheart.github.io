@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Floyd算法 - 标签 - coldheart&#39;s blog</title>
+    <link>http://example.org/tags/floyd%E7%AE%97%E6%B3%95/</link>
+    <description>Floyd算法 - 标签 - coldheart&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 25 Jul 2018 19:28:21 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/floyd%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+  <title>ZCMU1398 工程</title>
+  <link>http://example.org/posts/zcmu1398-%E5%B7%A5%E7%A8%8B/</link>
+  <pubDate>Wed, 25 Jul 2018 19:28:21 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu1398-%E5%B7%A5%E7%A8%8B/</guid>
+  <description><![CDATA[ZCMU1398 工程 Description 某省自从实行了很多年的畅通工程计划后，终于修建了很多路。不过路多了也不好，每次要从一个城镇到另一个城镇时，都有许多种道路方案可以选择]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>牛客网 Different Integers - coldheart&#39;s blog</title><meta name="author" content="coldheart">
+<meta name="author-link" content="">
+<meta name="description" content="牛客网 Different Integers 题目描述 Given a sequence of integers a1, a2, &hellip;, an and q pairs of integers (l1, r1), (l2, r2), &hellip;, (lq, rq), find count(l1, r1), count(l2, r2), &hellip;, count(lq, rq) where count(i, j) is the number of different integers among a1, a2, &hellip;, ai, aj, aj &#43; 1, &hellip;, an. 输入描述 The input consists of several test cases and" /><meta name="keywords" content='牛客网, 算法, 树状数组, 离线查询' /><meta itemprop="name" content="牛客网 Different Integers">
+<meta itemprop="description" content="牛客网 Different Integers 题目描述 Given a sequence of integers a1, a2, &hellip;, an and q pairs of integers (l1, r1), (l2, r2), &hellip;, (lq, rq), find count(l1, r1), count(l2, r2), &hellip;, count(lq, rq) where count(i, j) is the number of different integers among a1, a2, &hellip;, ai, aj, aj &#43; 1, &hellip;, an. 输入描述 The input consists of several test cases and"><meta itemprop="datePublished" content="2018-07-23T13:33:34+00:00" />
+<meta itemprop="dateModified" content="2018-07-23T13:33:34+00:00" />
+<meta itemprop="wordCount" content="1470"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="牛客网,算法,树状数组,离线查询," /><meta property="og:title" content="牛客网 Different Integers" />
+<meta property="og:description" content="牛客网 Different Integers 题目描述 Given a sequence of integers a1, a2, &hellip;, an and q pairs of integers (l1, r1), (l2, r2), &hellip;, (lq, rq), find count(l1, r1), count(l2, r2), &hellip;, count(lq, rq) where count(i, j) is the number of different integers among a1, a2, &hellip;, ai, aj, aj &#43; 1, &hellip;, an. 输入描述 The input consists of several test cases and" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/%E7%89%9B%E5%AE%A2%E7%BD%91-different-integers/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-07-23T13:33:34+00:00" />
+<meta property="article:modified_time" content="2018-07-23T13:33:34+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="牛客网 Different Integers"/>
+<meta name="twitter:description" content="牛客网 Different Integers 题目描述 Given a sequence of integers a1, a2, &hellip;, an and q pairs of integers (l1, r1), (l2, r2), &hellip;, (lq, rq), find count(l1, r1), count(l2, r2), &hellip;, count(lq, rq) where count(i, j) is the number of different integers among a1, a2, &hellip;, ai, aj, aj &#43; 1, &hellip;, an. 输入描述 The input consists of several test cases and"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/%E7%89%9B%E5%AE%A2%E7%BD%91-different-integers/" /><link rel="prev" href="http://example.org/posts/%E5%9C%A8%E7%BA%BF%E5%92%8C%E7%A6%BB%E7%BA%BF%E7%AE%97%E6%B3%95/" /><link rel="next" href="http://example.org/posts/zcmu2163-%E9%A1%B9%E9%93%BE/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "牛客网 Different Integers",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/%E7%89%9B%E5%AE%A2%E7%BD%91-different-integers\/"
+    },"genre": "posts","keywords": "牛客网, 算法, 树状数组, 离线查询","wordcount":  1470 ,
+    "url": "http:\/\/example.org\/posts\/%E7%89%9B%E5%AE%A2%E7%BD%91-different-integers\/","datePublished": "2018-07-23T13:33:34+00:00","dateModified": "2018-07-23T13:33:34+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "coldheart"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="coldheart&#39;s blog"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/images/fixit.svg"
+    data-srcset="/images/fixit.svg, /images/fixit.svg 1.5x, /images/fixit.svg 2x"
+    data-sizes="auto"
+    alt="coldheart&#39;s blog"
+    title="coldheart&#39;s blog" /><span class="header-title-text">coldheart&#39;s blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >文章</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >分类</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >标签</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="coldheart&#39;s blog"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/images/fixit.svg"
+    data-srcset="/images/fixit.svg, /images/fixit.svg 1.5x, /images/fixit.svg 2x"
+    data-sizes="auto"
+    alt="/images/fixit.svg"
+    title="/images/fixit.svg" /><span class="header-title-text">coldheart&#39;s blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >文章</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >分类</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >标签</a></li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录 <i class="toc-icon fa-solid fa-angle-down fa-fw"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
+        <span>牛客网 Different Integers</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle"></i>
+      coldheart</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E7%AE%97%E6%B3%95/"><i class="fa-regular fa-folder fa-fw"></i>&nbsp;算法</a></span></div>
+      <div class="post-meta-line"><span title=2018-07-23&#32;13:33:34>
+            <i class="fa-regular fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2018-07-23" >2018-07-23</time>
+          </span>&nbsp;<i class="fa-solid fa-pencil-alt fa-fw"></i>&nbsp;约 1470 字&nbsp;
+        <i class="fa-regular fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#题目描述">题目描述</a></li>
+    <li><a href="#输入描述">输入描述</a></li>
+    <li><a href="#输出描述">输出描述</a></li>
+    <li><a href="#示例输入">示例输入</a></li>
+    <li><a href="#示例输出">示例输出</a></li>
+    <li><a href="#备注">备注</a></li>
+    <li><a href="#题意理解">题意理解</a></li>
+    <li><a href="#思考">思考</a></li>
+    <li><a href="#用代码实现">用代码实现</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#完整代码">完整代码</a></li>
+  </ul>
+</nav></div>
+      </div><div
+      class="content"
+      id="content"
+      
+      
+    ><h1 id="牛客网-different-integers">牛客网 Different Integers</h1>
+<h2 id="题目描述">题目描述</h2>
+<blockquote>
+<p>Given a sequence of integers a1, a2, &hellip;, an and q pairs of integers (l1, r1), (l2, r2), &hellip;, (lq, rq), find count(l1, r1), count(l2, r2), &hellip;, count(lq, rq) where count(i, j) is the number of different integers among a1, a2, &hellip;, ai, aj, aj + 1, &hellip;, an.</p>
+</blockquote>
+<h2 id="输入描述">输入描述</h2>
+<blockquote>
+<p>The input consists of several test cases and is terminated by end-of-file.
+The first line of each test cases contains two integers n and q.
+The second line contains n integers a1, a2, &hellip;, an.
+The i-th of the following q lines contains two integers li and ri.</p>
+</blockquote>
+<h2 id="输出描述">输出描述</h2>
+<blockquote>
+<p>For each test case, print q integers which denote the result.</p>
+</blockquote>
+<h2 id="示例输入">示例输入</h2>
+<pre tabindex="0"><code>3 2
+1 2 1
+1 2
+1 3
+4 1
+1 2 3 4
+1 3
+</code></pre><h2 id="示例输出">示例输出</h2>
+<pre tabindex="0"><code>2
+1
+3
+</code></pre><h2 id="备注">备注</h2>
+<pre tabindex="0"><code>* 1 ≤ n, q ≤ 105
+* 1 ≤ ai ≤ n
+* 1 ≤ li, ri ≤ n
+* The number of test cases does not exceed 10.
+</code></pre><h2 id="题意理解">题意理解</h2>
+<p>题目给出N个数，Q次查询，每次查询区间[1,l]和[r,n]之间不相同的的数字的数量。</p>
+<h2 id="思考">思考</h2>
+<p>Q次查询，范围有10^5，时间复杂度O(N)在外部循环预定。若用hash数组记录是否重复，每次查询从该区间的头枚举到尾求不同数的数量，不论是让<!-- raw HTML omitted -->更新复杂度为1查询复杂度为N<!-- raw HTML omitted -->，还是让<!-- raw HTML omitted -->更新复杂度为N查询复杂度为1<!-- raw HTML omitted -->，时间复杂度都为O(N)，总时间复杂度O(N^2)无法接受。</p>
+<p>本题有关键词<strong>区间查询</strong>、<strong>区间更新</strong>，自然想到利用树状数组维护这两个操作，树状数组算法时间复杂度为O(logN)，总时间复杂度O(NlogN)，不会超时。</p>
+<p>**简化问题：**大小为n的数组扩大一倍，用原数组再填充一遍新扩大的空数组，这样查询区间[1,l]和[r,n]这两个区间简化为查询[r,n+l]这一个区间。</p>
+<h2 id="用代码实现">用代码实现</h2>
+<h4 id="创建结构体">创建结构体</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="k">struct</span> <span class="nc">Q</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">l</span><span class="p">,</span><span class="n">r</span><span class="p">;</span><span class="c1">//区间首尾
+</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">pos</span><span class="p">;</span><span class="c1">//记录这是第几次查询方便输出
+</span><span class="c1"></span><span class="p">}</span><span class="n">q</span><span class="p">[</span><span class="mi">200005</span><span class="p">];</span>
+</code></pre></div><h5 id="自定义结构体排序规则">自定义结构体排序规则</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">//自定义结构体排序规则
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">cmp</span><span class="p">(</span><span class="n">Q</span> <span class="n">a</span><span class="p">,</span> <span class="n">Q</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">l</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><h4 id="树状数组基本函数">树状数组基本函数</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">//lowbit运算
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">lowbit</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="n">k</span><span class="o">&amp;</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">//更新操作
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">modify</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+=</span> <span class="n">v</span><span class="p">;</span>
+        <span class="n">n</span> <span class="o">+=</span> <span class="n">lowbit</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">//查询操作
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">while</span><span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">ans</span> <span class="o">+=</span> <span class="n">c</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+		<span class="n">n</span> <span class="o">-=</span> <span class="n">lowbit</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><h4 id="从尾遍历并处理">从尾遍历并处理</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">--</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">show</span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span><span class="c1">//show没出现过
+</span><span class="c1"></span>	<span class="p">{</span>
+		<span class="n">show</span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+		<span class="n">fir</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span><span class="c1">//当前位置的数是第一次出现
+</span><span class="c1"></span>	<span class="p">}</span>
+<span class="k">else</span>
+	<span class="p">{</span>	
+    	<span class="c1">//show出现过
+</span><span class="c1"></span>        <span class="n">Next</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">show</span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span><span class="c1">//记录他下一次出现的位置
+</span><span class="c1"></span>        <span class="n">fir</span><span class="p">[</span><span class="n">Next</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span><span class="c1">//下一个位置不是第一次出现
+</span><span class="c1"></span>        <span class="n">fir</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span><span class="c1">//这个位置是第一次出现
+</span><span class="c1"></span>        <span class="n">show</span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span><span class="c1">//记录出现位置
+</span><span class="c1"></span>	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>经过上述遍历，整个数组的每一个数字有了 <strong>是否第一次出现、该数下一次出现位置</strong>的信息，让树状数组利用这些信息更新并查询。</p>
+<h4 id="查询结果处理">查询结果处理</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">//求数组下标在[r,l]的和可以转换成sum(l)-sum(r-1)
+</span><span class="c1"></span><span class="n">res</span><span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">r</span><span class="p">)</span> <span class="o">-</span> <span class="n">sum</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">l</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div><h2 id="完整代码">完整代码</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;cstring&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span><span class="cp"></span> 
+ 
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+ 
+ 
+<span class="kt">int</span> <span class="n">N</span><span class="p">,</span><span class="n">M</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">SIZE</span> <span class="o">=</span> <span class="mi">250005</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">c</span><span class="p">[</span><span class="n">SIZE</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">A</span><span class="p">[</span><span class="n">SIZE</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">Next</span><span class="p">[</span><span class="n">SIZE</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">res</span><span class="p">[</span><span class="mi">200005</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">show</span><span class="p">[</span><span class="mi">2000005</span><span class="p">];</span>
+<span class="kt">bool</span> <span class="n">fir</span><span class="p">[</span><span class="n">SIZE</span><span class="p">];</span>
+ 
+ 
+<span class="k">struct</span> <span class="nc">Q</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">l</span><span class="p">,</span><span class="n">r</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">pos</span><span class="p">;</span>
+<span class="p">}</span><span class="n">q</span><span class="p">[</span><span class="mi">200005</span><span class="p">];</span>
+ 
+ 
+<span class="kt">int</span> <span class="nf">lowbit</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">k</span><span class="o">&amp;</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="p">);</span>
+<span class="p">}</span>
+ 
+ 
+<span class="kt">void</span> <span class="nf">modify</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+=</span> <span class="n">v</span><span class="p">;</span>
+        <span class="n">n</span> <span class="o">+=</span> <span class="n">lowbit</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+ 
+ 
+<span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ans</span> <span class="o">+=</span> <span class="n">c</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="n">lowbit</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+ 
+ 
+<span class="kt">int</span> <span class="nf">cmp</span><span class="p">(</span><span class="n">Q</span> <span class="n">a</span><span class="p">,</span> <span class="n">Q</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">l</span><span class="p">;</span>
+<span class="p">}</span>
+ 
+ 
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">~</span><span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">N</span><span class="p">)){</span>
+    	<span class="n">memset</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
+    	<span class="n">memset</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">c</span><span class="p">));</span>
+    	<span class="n">memset</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">A</span><span class="p">));</span>
+    	<span class="n">memset</span><span class="p">(</span><span class="n">Next</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Next</span><span class="p">));</span>
+    	<span class="n">memset</span><span class="p">(</span><span class="n">fir</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">fir</span><span class="p">));</span>
+    	<span class="n">memset</span><span class="p">(</span><span class="n">show</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">show</span><span class="p">));</span>
+    	<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">M</span><span class="p">);</span>
+	    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="c1">//A原数组 
+</span><span class="c1"></span>	 	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">A</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="c1">//A原数组 
+</span><span class="c1"></span>	 	<span class="n">N</span><span class="o">=</span><span class="n">N</span><span class="o">*</span><span class="mi">2</span><span class="p">;</span>
+	    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">--</span><span class="p">)</span>
+	    <span class="p">{</span>
+	        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">show</span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span><span class="c1">//show没出现过 
+</span><span class="c1"></span>	        <span class="p">{</span>
+	            <span class="n">show</span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+	            <span class="n">fir</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span><span class="c1">//当前位置的数是第一次出现 
+</span><span class="c1"></span>	        <span class="p">}</span>
+	        <span class="k">else</span>
+	        <span class="p">{</span><span class="c1">//show出现过 
+</span><span class="c1"></span>	            <span class="n">Next</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">show</span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span><span class="c1">//记录他下一次出现的位置 
+</span><span class="c1"></span>	            <span class="n">fir</span><span class="p">[</span><span class="n">Next</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span><span class="c1">//下一个位置不是第一次出现 
+</span><span class="c1"></span>	            <span class="n">fir</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span><span class="c1">//这个位置是第一次出现
+</span><span class="c1"></span>	            <span class="n">show</span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span><span class="c1">//记录出现位置
+</span><span class="c1"></span>	        <span class="p">}</span>
+	    <span class="p">}</span>
+	 
+	    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">M</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	    <span class="p">{</span>
+	    	<span class="kt">int</span> <span class="n">l</span><span class="p">,</span><span class="n">r</span><span class="p">;</span>
+	        <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">l</span><span class="p">,</span><span class="o">&amp;</span><span class="n">r</span><span class="p">);</span>
+	        <span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">l</span><span class="o">=</span><span class="n">r</span><span class="p">;</span>
+	        <span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">r</span><span class="o">=</span><span class="n">l</span><span class="o">+</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+<span class="c1">//	        cout&lt;&lt;q[i].l&lt;&lt;q[i].r&lt;&lt;endl;
+</span><span class="c1"></span>	        <span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">pos</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+	    <span class="p">}</span>
+	    <span class="n">sort</span><span class="p">(</span><span class="n">q</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">q</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">M</span><span class="p">,</span><span class="n">cmp</span><span class="p">);</span>
+	 
+	 
+	    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	        <span class="k">if</span><span class="p">(</span><span class="n">fir</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="c1">//如果这个数是第一次出现 
+</span><span class="c1"></span>	        <span class="p">{</span>
+	            <span class="n">modify</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="c1">//初始化
+</span><span class="c1"></span>	        <span class="p">}</span>
+	    <span class="kt">int</span> <span class="n">qtemp</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">l</span><span class="p">;</span><span class="c1">//当前位置 
+</span><span class="c1"></span>	    <span class="kt">int</span> <span class="n">ptr</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="c1">//下标位置 
+</span><span class="c1"></span>	    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">M</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	    <span class="p">{</span>
+	        <span class="k">for</span><span class="p">(;</span><span class="n">ptr</span><span class="o">&lt;</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">l</span><span class="p">;</span><span class="n">ptr</span><span class="o">++</span><span class="p">)</span>
+	        <span class="p">{</span>
+	            <span class="k">if</span><span class="p">(</span><span class="n">fir</span><span class="p">[</span><span class="n">ptr</span><span class="p">])</span><span class="c1">//如果第一次出现 
+</span><span class="c1"></span>	            <span class="p">{</span>
+	                <span class="n">modify</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span> 
+	                <span class="n">fir</span><span class="p">[</span><span class="n">ptr</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span><span class="c1">//下标在l之前不在区间内 
+</span><span class="c1"></span>	                <span class="k">if</span><span class="p">(</span><span class="n">Next</span><span class="p">[</span><span class="n">ptr</span><span class="p">])</span><span class="c1">//如果后面还有重复 
+</span><span class="c1"></span>	                <span class="p">{</span>
+	                    <span class="n">fir</span><span class="p">[</span><span class="n">Next</span><span class="p">[</span><span class="n">ptr</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span><span class="c1">//下一个是第一次出现 
+</span><span class="c1"></span>	                    <span class="n">modify</span><span class="p">(</span><span class="n">Next</span><span class="p">[</span><span class="n">ptr</span><span class="p">],</span><span class="mi">1</span><span class="p">);</span><span class="c1">//这个位置的前一个位置次数
+</span><span class="c1"></span>	                <span class="p">}</span>
+	            <span class="p">}</span>
+	        <span class="p">}</span>
+	        <span class="n">ptr</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">l</span><span class="p">;</span>
+	        <span class="n">qtemp</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">l</span><span class="p">;</span>
+	        <span class="n">res</span><span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">r</span><span class="p">)</span> <span class="o">-</span> <span class="n">sum</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">l</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+	    <span class="p">}</span>
+	    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">M</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2018-07-23&#32;13:33:34>更新于 2018-07-23</span>
+      </div>
+      <div class="post-info-license "><span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://example.org/posts/%E7%89%9B%E5%AE%A2%E7%BD%91-different-integers/" data-title="牛客网 Different Integers" data-hashtags="牛客网,算法,树状数组,离线查询"><i class="fa-brands fa-twitter fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://example.org/posts/%E7%89%9B%E5%AE%A2%E7%BD%91-different-integers/" data-hashtag="牛客网"><i class="fa-brands fa-facebook-square fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="http://example.org/posts/%E7%89%9B%E5%AE%A2%E7%BD%91-different-integers/" data-title="牛客网 Different Integers" data-web><i class="fa-brands fa-whatsapp fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://example.org/posts/%E7%89%9B%E5%AE%A2%E7%BD%91-different-integers/" data-title="牛客网 Different Integers"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://example.org/posts/%E7%89%9B%E5%AE%A2%E7%BD%91-different-integers/" data-title="牛客网 Different Integers"><i class="fa-brands fa-weibo fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="http://example.org/posts/%E7%89%9B%E5%AE%A2%E7%BD%91-different-integers/" data-title="牛客网 Different Integers" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a>
+  <a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="http://example.org/posts/%E7%89%9B%E5%AE%A2%E7%BD%91-different-integers/" data-title="牛客网 Different Integers" data-description=""><i class="fa-brands fa-blogger fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="http://example.org/posts/%E7%89%9B%E5%AE%A2%E7%BD%91-different-integers/" data-title="牛客网 Different Integers"><i class="fa-brands fa-evernote fa-fw"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/">牛客网</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">树状数组</a>,&nbsp;<a href="/tags/%E7%A6%BB%E7%BA%BF%E6%9F%A5%E8%AF%A2/">离线查询</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/%E5%9C%A8%E7%BA%BF%E5%92%8C%E7%A6%BB%E7%BA%BF%E7%AE%97%E6%B3%95/" class="prev" rel="prev" title="在线和离线算法"><i class="fa-solid fa-angle-left fa-fw"></i>在线和离线算法</a>
+      <a href="/posts/zcmu2163-%E9%A1%B9%E9%93%BE/" class="next" rel="next" title="ZCMU2163 项链">ZCMU2163 项链<i class="fa-solid fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/Lruihao/FixIt" target="_blank" rel="external nofollow noopener noreferrer" title="FixIt v0.2.15-RC"><img class="fixit-icon" src="/images/fixit.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright"><i class="fa-regular fa-copyright fa-fw"></i>
+            <span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">
+              <a
+  href="/"
+  
+  
+  
+  
+  
+>coldheart</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets">
+  <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+      <i class="fa-solid fa-arrow-up fa-fw"></i>
+    </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+      <i class="fa-solid fa-comment fa-fw"></i>
+    </a>
+  </div><div id="mask"></div>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/sharer/sharer.min.js" async defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":100},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"enablePWA":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="/js/_custom.min.js" defer></script></body>
+</html>

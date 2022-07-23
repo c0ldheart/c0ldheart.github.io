@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>背包 - 标签 - coldheart&#39;s blog</title>
+    <link>http://example.org/tags/%E8%83%8C%E5%8C%85/</link>
+    <description>背包 - 标签 - coldheart&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 25 Jul 2018 11:52:13 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/%E8%83%8C%E5%8C%85/" rel="self" type="application/rss+xml" /><item>
+  <title>ZCMU1711 背包</title>
+  <link>http://example.org/posts/zcmu1711-%E8%83%8C%E5%8C%85/</link>
+  <pubDate>Wed, 25 Jul 2018 11:52:13 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu1711-%E8%83%8C%E5%8C%85/</guid>
+  <description><![CDATA[ZCMU1711 背包 Description 你有一个神奇的背包，他的容积是m(0&lt;m&lt;=80)，只有你装满他，你才能拿走他，现在给你n(1&lt;=n&lt;=20]]></description>
+</item></channel>
+</rss>

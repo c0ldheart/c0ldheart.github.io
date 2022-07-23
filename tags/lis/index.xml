@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>LIS - 标签 - coldheart&#39;s blog</title>
+    <link>http://example.org/tags/lis/</link>
+    <description>LIS - 标签 - coldheart&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 16 Aug 2018 20:34:41 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/lis/" rel="self" type="application/rss+xml" /><item>
+  <title>Almost Sorted Array(O(NlogN)LIS)</title>
+  <link>http://example.org/posts/almost-sorted-array-o-nlogn-lis/</link>
+  <pubDate>Thu, 16 Aug 2018 20:34:41 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/almost-sorted-array-o-nlogn-lis/</guid>
+  <description><![CDATA[Almost Sorted Array（nlogn的LIS） We are all familiar with sorting algorithms: quick sort, merge sort, heap sort, insertion sort, selection sort, bubble sort, etc. But sometimes it is an overkill to use these algorithms for an almost sorted array. We say an array is sorted if its elements are in non-decreasing order or non-increasing order. We]]></description>
+</item><item>
+  <title>ZCMU2112 聪明的美食家(LIS O(NlogN))算法</title>
+  <link>http://example.org/posts/zcmu2112-%E8%81%AA%E6%98%8E%E7%9A%84%E7%BE%8E%E9%A3%9F%E5%AE%B6-lis-o-nlogn-%E7%AE%97%E6%B3%95/</link>
+  <pubDate>Wed, 01 Aug 2018 13:45:06 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu2112-%E8%81%AA%E6%98%8E%E7%9A%84%E7%BE%8E%E9%A3%9F%E5%AE%B6-lis-o-nlogn-%E7%AE%97%E6%B3%95/</guid>
+  <description><![CDATA[ZCMU2112 聪明的美食家(LIS O(NlogN)) Description 如果有人认为吃东西只需要嘴巴，那就错了。 都知道舌头有这么一个特性，“由简入奢易，由奢如简难”（据好事者考究，此规律]]></description>
+</item></channel>
+</rss>

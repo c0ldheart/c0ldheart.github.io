@@ -1,0 +1,49 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>二分查找 - 标签 - coldheart&#39;s blog</title>
+    <link>http://example.org/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</link>
+    <description>二分查找 - 标签 - coldheart&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 01 Aug 2018 13:45:06 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="self" type="application/rss+xml" /><item>
+  <title>ZCMU2112 聪明的美食家(LIS O(NlogN))算法</title>
+  <link>http://example.org/posts/zcmu2112-%E8%81%AA%E6%98%8E%E7%9A%84%E7%BE%8E%E9%A3%9F%E5%AE%B6-lis-o-nlogn-%E7%AE%97%E6%B3%95/</link>
+  <pubDate>Wed, 01 Aug 2018 13:45:06 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu2112-%E8%81%AA%E6%98%8E%E7%9A%84%E7%BE%8E%E9%A3%9F%E5%AE%B6-lis-o-nlogn-%E7%AE%97%E6%B3%95/</guid>
+  <description><![CDATA[ZCMU2112 聪明的美食家(LIS O(NlogN)) Description 如果有人认为吃东西只需要嘴巴，那就错了。 都知道舌头有这么一个特性，“由简入奢易，由奢如简难”（据好事者考究，此规律]]></description>
+</item><item>
+  <title>POJ 3122 Pie(二分查找求最大值)</title>
+  <link>http://example.org/posts/poj-3122-pie-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B1%82%E6%9C%80%E5%A4%A7%E5%80%BC/</link>
+  <pubDate>Sat, 28 Jul 2018 22:10:39 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/poj-3122-pie-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B1%82%E6%9C%80%E5%A4%A7%E5%80%BC/</guid>
+  <description><![CDATA[POJ3122 Pie 描述 My birthday is coming up and traditionally I&rsquo;m serving pie. Not just one pie, no, I have a number N of them, of various tastes and of various sizes. F of my friends are coming to my party and each of them gets a piece of pie. This should be one piece of one pie, not several small pieces since that looks messy. This piece can]]></description>
+</item><item>
+  <title>VJudge River Hopscotch(二分查找解最小值最大)</title>
+  <link>http://example.org/posts/vjudge-river-hopscotch-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E8%A7%A3%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7/</link>
+  <pubDate>Sat, 28 Jul 2018 20:13:45 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/vjudge-river-hopscotch-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E8%A7%A3%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7/</guid>
+  <description><![CDATA[描述 Every year the cows hold an event featuring a peculiar version of hopscotch that involves carefully jumping from rock to rock in a river. The excitement takes place on a long, straight river with a rock at the start and another rock at the end, L units away from the start (1 ≤ L ≤ 1,000,000,000). Along the river between the starting and ending rocks, N (0 ≤]]></description>
+</item><item>
+  <title>VOJ Expanding Rods(二分法解方程)</title>
+  <link>http://example.org/posts/voj-expanding-rods-%E4%BA%8C%E5%88%86%E6%B3%95%E8%A7%A3%E6%96%B9%E7%A8%8B/</link>
+  <pubDate>Sat, 28 Jul 2018 10:27:08 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/voj-expanding-rods-%E4%BA%8C%E5%88%86%E6%B3%95%E8%A7%A3%E6%96%B9%E7%A8%8B/</guid>
+  <description><![CDATA[描述 When a thin rod of length L is heated n degrees, it expands to a new length *L' = (1+n*C)L, where C is the coefficient of heat expansion. When a thin rod is mounted on two solid walls and then heated, it expands and takes the shape of a circular segment, the original rod being the chord of the segment. Your task is to compute the distance by]]></description>
+</item><item>
+  <title>VOJ Aggressive Cows(二分法查找最小值最大)</title>
+  <link>http://example.org/posts/voj-aggressive-cows-%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7/</link>
+  <pubDate>Sat, 28 Jul 2018 10:15:27 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/voj-aggressive-cows-%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7/</guid>
+  <description><![CDATA[VOJ Aggressive cows 描述 Farmer John has built a new long barn, with N (2 &lt;= N &lt;= 100,000) stalls. The stalls are located along a straight line at positions x1,&hellip;,xN (0 &lt;= xi &lt;= 1,000,000,000). His C (2 &lt;= C &lt;= N) cows don&rsquo;t like this barn layout and become aggressive towards each other once put into a stall. To prevent the cows from hurting each other, FJ]]></description>
+</item><item>
+  <title>ZCMU1375 阶乘的零</title>
+  <link>http://example.org/posts/zcmu1375-%E9%98%B6%E4%B9%98%E7%9A%84%E9%9B%B6/</link>
+  <pubDate>Wed, 25 Jul 2018 18:12:14 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu1375-%E9%98%B6%E4%B9%98%E7%9A%84%E9%9B%B6/</guid>
+  <description><![CDATA[ZCMU1375 阶乘的零 Description 定义f(n)为n！的末尾零的个数，例如f(4)=0，f(5)=1。你的任务是对于一个给定的的值x找出最小的n满足f(n)=x。 Input]]></description>
+</item></channel>
+</rss>

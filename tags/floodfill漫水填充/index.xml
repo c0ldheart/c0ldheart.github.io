@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Floodfill漫水填充 - 标签 - coldheart&#39;s blog</title>
+    <link>http://example.org/tags/floodfill%E6%BC%AB%E6%B0%B4%E5%A1%AB%E5%85%85/</link>
+    <description>Floodfill漫水填充 - 标签 - coldheart&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 06 Aug 2018 13:21:06 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/floodfill%E6%BC%AB%E6%B0%B4%E5%A1%AB%E5%85%85/" rel="self" type="application/rss+xml" /><item>
+  <title>洛谷1162 填涂颜色(DFS漫水填充法)</title>
+  <link>http://example.org/posts/p%E6%B4%9B%E8%B0%B71162-%E5%A1%AB%E6%B6%82%E9%A2%9C%E8%89%B2-dfs%E6%BC%AB%E6%B0%B4%E5%A1%AB%E5%85%85%E6%B3%95/</link>
+  <pubDate>Mon, 06 Aug 2018 13:21:06 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/p%E6%B4%9B%E8%B0%B71162-%E5%A1%AB%E6%B6%82%E9%A2%9C%E8%89%B2-dfs%E6%BC%AB%E6%B0%B4%E5%A1%AB%E5%85%85%E6%B3%95/</guid>
+  <description><![CDATA[洛谷1162 填涂颜色(DFS漫水填充法) 题目描述 由数字 0组成的方阵中，有一任意形状闭合圈，闭合圈由数字 1 构成，围圈时只走上下左右 4 个方向。现]]></description>
+</item></channel>
+</rss>

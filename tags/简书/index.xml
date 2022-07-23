@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>简书 - 标签 - coldheart&#39;s blog</title>
+    <link>http://example.org/tags/%E7%AE%80%E4%B9%A6/</link>
+    <description>简书 - 标签 - coldheart&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 23 Jul 2018 09:06:17 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/%E7%AE%80%E4%B9%A6/" rel="self" type="application/rss+xml" /><item>
+  <title>在线和离线算法</title>
+  <link>http://example.org/posts/%E5%9C%A8%E7%BA%BF%E5%92%8C%E7%A6%BB%E7%BA%BF%E7%AE%97%E6%B3%95/</link>
+  <pubDate>Mon, 23 Jul 2018 09:06:17 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/%E5%9C%A8%E7%BA%BF%E5%92%8C%E7%A6%BB%E7%BA%BF%E7%AE%97%E6%B3%95/</guid>
+  <description><![CDATA[在OI/ACM中，我们常常会听到对于区间修改、区间查询等问题的处理时，大佬们口中说的“离线”，“在线”等名词，一开始自然是一脸蒙逼。 在线和离]]></description>
+</item></channel>
+</rss>

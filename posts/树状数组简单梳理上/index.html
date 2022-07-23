@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>树状数组简单梳理（上） - coldheart&#39;s blog</title><meta name="author" content="coldheart">
+<meta name="author-link" content="">
+<meta name="description" content="树状数组简单梳理（上） 背景 平时做题时我们经常会碰到一类问题： 有一个数组，多次往这个数组上某个点的值增加k，再多次求数组上某个区间所有数组之和" /><meta name="keywords" content='树状数组, 梳理' /><meta itemprop="name" content="树状数组简单梳理（上）">
+<meta itemprop="description" content="树状数组简单梳理（上） 背景 平时做题时我们经常会碰到一类问题： 有一个数组，多次往这个数组上某个点的值增加k，再多次求数组上某个区间所有数组之和"><meta itemprop="datePublished" content="2018-07-30T19:21:31+00:00" />
+<meta itemprop="dateModified" content="2018-07-30T19:21:31+00:00" />
+<meta itemprop="wordCount" content="2715"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="树状数组,梳理," /><meta property="og:title" content="树状数组简单梳理（上）" />
+<meta property="og:description" content="树状数组简单梳理（上） 背景 平时做题时我们经常会碰到一类问题： 有一个数组，多次往这个数组上某个点的值增加k，再多次求数组上某个区间所有数组之和" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%AE%80%E5%8D%95%E6%A2%B3%E7%90%86%E4%B8%8A/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-07-30T19:21:31+00:00" />
+<meta property="article:modified_time" content="2018-07-30T19:21:31+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="树状数组简单梳理（上）"/>
+<meta name="twitter:description" content="树状数组简单梳理（上） 背景 平时做题时我们经常会碰到一类问题： 有一个数组，多次往这个数组上某个点的值增加k，再多次求数组上某个区间所有数组之和"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%AE%80%E5%8D%95%E6%A2%B3%E7%90%86%E4%B8%8A/" /><link rel="prev" href="http://example.org/posts/zcmu1156-%E6%96%B0%E5%B9%B4%E5%BD%A9%E7%81%AF1-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%8C%BA%E9%97%B4%E6%9B%B4%E6%96%B0%E5%8D%95%E7%82%B9%E6%9F%A5%E8%AF%A2/" /><link rel="next" href="http://example.org/posts/zcmu2188-frames/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "树状数组简单梳理（上）",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%AE%80%E5%8D%95%E6%A2%B3%E7%90%86%E4%B8%8A\/"
+    },"genre": "posts","keywords": "树状数组, 梳理","wordcount":  2715 ,
+    "url": "http:\/\/example.org\/posts\/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%AE%80%E5%8D%95%E6%A2%B3%E7%90%86%E4%B8%8A\/","datePublished": "2018-07-30T19:21:31+00:00","dateModified": "2018-07-30T19:21:31+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "coldheart"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="coldheart&#39;s blog"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/images/fixit.svg"
+    data-srcset="/images/fixit.svg, /images/fixit.svg 1.5x, /images/fixit.svg 2x"
+    data-sizes="auto"
+    alt="coldheart&#39;s blog"
+    title="coldheart&#39;s blog" /><span class="header-title-text">coldheart&#39;s blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >文章</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >分类</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >标签</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="coldheart&#39;s blog"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/images/fixit.svg"
+    data-srcset="/images/fixit.svg, /images/fixit.svg 1.5x, /images/fixit.svg 2x"
+    data-sizes="auto"
+    alt="/images/fixit.svg"
+    title="/images/fixit.svg" /><span class="header-title-text">coldheart&#39;s blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >文章</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >分类</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >标签</a></li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录 <i class="toc-icon fa-solid fa-angle-down fa-fw"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
+        <span>树状数组简单梳理（上）</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle"></i>
+      coldheart</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E7%AE%97%E6%B3%95/"><i class="fa-regular fa-folder fa-fw"></i>&nbsp;算法</a></span></div>
+      <div class="post-meta-line"><span title=2018-07-30&#32;19:21:31>
+            <i class="fa-regular fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2018-07-30" >2018-07-30</time>
+          </span>&nbsp;<i class="fa-solid fa-pencil-alt fa-fw"></i>&nbsp;约 2715 字&nbsp;
+        <i class="fa-regular fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#树状数组原理">树状数组原理</a>
+      <ul>
+        <li><a href="#lowbit运算">lowbit运算</a></li>
+        <li><a href="#树状数组的定义">树状数组的定义</a></li>
+        <li><a href="#树状数组函数设计">树状数组函数设计</a></li>
+        <li><a href="#树状数组应用">树状数组应用</a></li>
+        <li><a href="#例题">例题</a></li>
+        <li><a href="#留个坑">留个坑</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div
+      class="content"
+      id="content"
+      
+      
+    ><h1 id="树状数组简单梳理上">树状数组简单梳理（上）</h1>
+<h2 id="背景">背景</h2>
+<p>平时做题时我们经常会碰到一类问题：</p>
+<p>有一个数组，<strong>多次</strong>往这个数组上某个<strong>点</strong>的值增加k，再<strong>多次</strong>求数组上某个<strong>区间</strong>所有数组之和。</p>
+<p>有一个数组，<strong>多次</strong>往这个数组某个<strong>区间</strong>上的值增加k，再<strong>多次</strong>求某个<strong>点</strong>的值。</p>
+<p>以第一个问题为例，用正常的思路想就有如下操作</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">//多次往某个点增加k
+</span><span class="c1"></span><span class="k">while</span><span class="p">(</span><span class="n">t1</span><span class="o">--</span><span class="p">)</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">+=</span><span class="n">k</span><span class="p">;</span>
+<span class="c1">//多次求某个区间所有数字之和
+</span><span class="c1"></span><span class="k">while</span><span class="p">(</span><span class="n">t2</span><span class="o">--</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">l</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">r</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    	<span class="n">sum</span><span class="o">+=</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div><p>虽然直观易懂，但如果多次要求往某个数增加k，并多次求不同的区间和，它的时间复杂度为O(KN)，若区间过长且求和次数过多，就无法承受。</p>
+<p>那么该怎么办呢，这里就要请出树状数组了，树状数组基本应用就是用来解决这些带有关键词<strong>多次、单点、区间、修改、查询(求和)</strong> 的问题。</p>
+<h2 id="树状数组原理">树状数组原理</h2>
+<h3 id="lowbit运算">lowbit运算</h3>
+<p>先介绍一下树状数组中用到的二进制的按位运算，一个是**&amp;**运算，称为按位与运算，当对两个数进行&amp;运算，就有**有0出0，全1出1**这个结果，例如1&amp;1=1,0&amp;1=0,1&amp;0=0,0&amp;0=0 ，若是十进制的数，则先将它转化为二进制，再对对应位进行上述运算；还有一个是**~**运算，称为按位非运算，具体表现就是0变为1，1变为0，十进制数转换为二进制再进行上述变换。</p>
+<p>lowbit运算，用到了这两个操作:<strong>lowbit(x)=x&amp;(-x)</strong> 。说是用到了这两个操作，为什么只看到了&amp;，没有看到了**~**呢，因为 **~**藏在了**-x**里。在计算机中把一个整数x取相反数·x，就是把x的二进制最右边的1左边的每一位取反（~运算）。通过它可以很容易推得**lowbit(x)=x&amp;(-x)**就是取x得二进制最右边得1和它右边所有的0（可以自己操作验证一下），因此它一定是2的幂次，即1、2、4、8等，**lowbit(x)**也可以理解为能整除x的最大2的幂次。</p>
+<h3 id="树状数组的定义">树状数组的定义</h3>
+<p>树状数组其实还是一个数组(虽然看起来像多个数组），它是一个用来记录和的数组，类似于sum[i]，只不过它存放的并不是前i个整数之和，而是**i之前(包含i)lowbit(i)**个整数之和。<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://s1.ax1x.com/2018/07/30/PdmQQ1.jpg"
+    data-srcset="https://s1.ax1x.com/2018/07/30/PdmQQ1.jpg, https://s1.ax1x.com/2018/07/30/PdmQQ1.jpg 1.5x, https://s1.ax1x.com/2018/07/30/PdmQQ1.jpg 2x"
+    data-sizes="auto"
+    alt="https://s1.ax1x.com/2018/07/30/PdmQQ1.jpg"
+    title="img" /></p>
+<p>上图最底下的A代表原数组<del>请忽略手写字体XD</del>，，上面的C数组就是树状数组了。</p>
+<p>A[1]到A[16]共16个元素，数组C[I]存放数组A中i号位之前<strong>lowbit(i)个元素之和</strong> ，显然C[I]的<strong>覆盖长度是lowbit[i]（也可以理解成管辖范围</strong>、<del>势力范围、前lowbit(i)个A数组元素的父亲</del>  ）。</p>
+<blockquote>
+<p>C[1]=A[1]</p>
+<p>C[2]=A[1]+A[2]</p>
+<p>C[3]=A[3]</p>
+<p>C[4]=A[1]+A[2]+A[3]+A[4]</p>
+<p>C[5]=A[5]</p>
+<p>C[6]=A[5]+A[6]</p>
+<p>C[7]=A[7]</p>
+<p>C[8]=A[1]+A[2]+A[3]+A[4]+A[5]+A[6]+A[7]+A[8]</p>
+</blockquote>
+<p><strong>此处强调：树状数组的下标是从1开始的</strong> ，<strong>C[I]覆盖lowbit[i]个原数组</strong></p>
+<h3 id="树状数组函数设计">树状数组函数设计</h3>
+<p>从一开始我们就知道，树状数组的构造需求来源于 **更新 **和 <strong>查找</strong> 这两步操作。因此我们需要设计两个函数</p>
+<h4 id="sumx">sum(x)</h4>
+<blockquote>
+<p>返回前x个数之和A[1]+A[2]+&hellip;A[x]</p>
+</blockquote>
+<p>记sum(x)=A[1]+A[2]+&hellip;A[x],由于C[x]的覆盖长度是lowbit(x)，即C[x]=A[ x-lowbit(x)+1 ]+A[ x-lowbit(x)+2 ]+&hellip;A[x]</p>
+<p>结合两者可以得到：sum(x)=sum( lowbit(x) )+C[x], 所以sum(x)由如下代码实现</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(;</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">;</span><span class="n">x</span><span class="o">-=</span><span class="n">x</span><span class="o">&amp;-</span><span class="n">x</span><span class="p">)</span><span class="c1">//x&amp;-x就是lowbit(x)
+</span><span class="c1"></span>        <span class="n">sum</span><span class="o">+=</span><span class="n">c</span><span class="p">[</span><span class="n">x</span><span class="p">];</span><span class="c1">//累加c[i]，再把问题缩小为sum( x-lowbit(x) )
+</span><span class="c1"></span>    <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>对二进制稍作模拟，可以得出<strong>sum(x)函数</strong> 的时间复杂度为<strong>O(logN)</strong> ,相比较与传统方法O(N)，时间复杂度大大减小。</p>
+<h4 id="addxk">add(x,k)</h4>
+<blockquote>
+<p>将第x个数加上k，即A[X]=A[x]+k</p>
+</blockquote>
+<p>虽然传统做法中，该操作时间复杂度只是O(1)，即不用循环操作，但为了实现上面的sum函数，更新操作就要做出牺牲（即使牺牲了，两者加起来的时间复杂度仍然小于传统的O(N)，这样整个程序的实现时间就被大大缩短了）。</p>
+<p>要让sum函数能够顺利求和，<strong>这步对原数组A[x]增加k的操作就应该变为对树状数组C中能覆盖A[x]的那些元素增加k</strong>，理解这个变化对理解树状数组相当重要！！！</p>
+<p>那么，如何找到覆盖A[x]的树状数组的元素呢？自然还是要用到lowbit运算。读者可以根据sum函数的解释，理解以下代码</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span><span class="p">(;</span><span class="n">x</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">x</span><span class="o">+=</span><span class="n">x</span><span class="o">&amp;-</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">+=</span><span class="n">k</span><span class="p">;</span><span class="c1">//让c[x]加上k，然后让c[ x+lowbit(x) ]加上k
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><h3 id="树状数组应用">树状数组应用</h3>
+<p>有了对树状数组的理解，我们再回过头解决第一个问题</p>
+<blockquote>
+<p>有一个数组，<strong>多次</strong>往这个数组上某个<strong>点</strong>的值增加k，再<strong>多次</strong>求数组上某个<strong>区间</strong>所有数组之和。</p>
+</blockquote>
+<p>1.首先读入原数组的初始数据</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="n">memset</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">c</span><span class="p">));</span><span class="c1">//初始树状数组值为0
+</span><span class="c1"></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="c1">//下标从1开始
+</span><span class="c1"></span><span class="p">{</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="c1">//读取原数组
+</span><span class="c1"></span>    <span class="n">add</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">a</span><span class="p">);</span><span class="c1">//对树状数组修改或赋值都用add函数，而不是简单相加
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><p>2.按要求对某个点的值增加k</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="n">add</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">k</span><span class="p">);</span>
+</code></pre></div><p>同样的，要用add函数对树状数组修改而不能直接修改</p>
+<p>3.求某一区间和，并输出</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="n">ans</span><span class="o">=</span><span class="n">sum</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">-</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">ans</span><span class="p">);</span>
+</code></pre></div><p>这里要注意，sum(x)设计成返回<strong>区间[1,x]<strong>的值，如果要求区间[l,r]的和,就要用</strong>sum(r)-sum(l-1)</strong> 。</p>
+<p>问题一解决，总时间复杂度O(Nlog$^2$N),不会超时。</p>
+<p>再来看第二个问题</p>
+<blockquote>
+<p>有一个数组，<strong>多次</strong>往这个数组某个<strong>区间</strong>上的值增加k，再<strong>多次</strong>求某个<strong>点</strong>的值。</p>
+</blockquote>
+<p>按照题意，事先编写的两个函数似乎不能满足需求，但事实上，利用<strong>差分</strong>的思想，在数据处理时稍作修改，就能在不改变两个核心函数的前提下求出答案。</p>
+<p><strong>差分：</strong> 差分数组中的某个元素b[i]为原数组对应元素与上一个元素之差a[i]-a[i-1]</p>
+<p>设数组a[]=(1,2,4,1,1)，那么差分数组b[]=(1,1,2,-3,0)</p>
+<p>假设往原数组区间[2,4]加2</p>
+<p>a[]=(1,4,6,3,1)，差分数组就变成b[]=(1,<strong>3</strong>,2,-3,<strong>-2</strong>)</p>
+<p>可以发现，差分数组只有b[2] (对应区间左端+k)和b[5] (对应区间右端+1处-k）变化了</p>
+<p>进一步发现这时候再对差分数组求前x个和，对应的值就时当前x的值。</p>
+<p>所以<strong>这时sum(x)不再是前x个数之和，而是原数组a[x]的值，即实现了单点查询</strong></p>
+<p>所以该类问题对区间[l,r]增加k，就要变为对<strong>c[l]处+k，对c[r+1]处-k，</strong>（当然，还是用add函数修改），再直接用sum(x)查询对应单点值，代码如下，问题二迎刃而解。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="n">add</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">k</span><span class="p">);</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="n">k</span><span class="p">);</span>
+<span class="n">ans</span><span class="o">=</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">ans</span><span class="p">);</span>
+</code></pre></div><h3 id="例题">例题</h3>
+<p>在了解树状数组的原理、区间查询，单点更新和单点查询，区间更新的应用后，读者应当能够自行解决类似问题，这里先给出一些题</p>
+<p><a
+  href="http://poj.org/problem?id=2299"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreferrer"
+  
+  
+  
+>POJ 2299 Ultra-QuickSort</a> （单点更新区间查询）</p>
+<p><a
+  href="http://acm.zcmu.edu.cn/JudgeOnline/problem.php?id=1156"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreferrer"
+  
+  
+  
+>ZCMU1156 新年彩灯Ⅰ</a> （区间更新单点查询）</p>
+<p><a
+  href="http://acm.hdu.edu.cn/showproblem.php?pid=1556"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreferrer"
+  
+  
+  
+>HDU1556 Color the ball</a> （区间更新单点查询）</p>
+<h3 id="留个坑">留个坑</h3>
+<p>以上就是关于状数组的原理以及区间查询单点更新问题和单点查询区间更新问题的简单梳理，</p>
+<p>树状数组还有其他高阶应用如多维树状数组、区间查询区间更新等问题，就在另外一篇博客见吧（逃</p>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2018-07-30&#32;19:21:31>更新于 2018-07-30</span>
+      </div>
+      <div class="post-info-license "><span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://example.org/posts/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%AE%80%E5%8D%95%E6%A2%B3%E7%90%86%E4%B8%8A/" data-title="树状数组简单梳理（上）" data-hashtags="树状数组,梳理"><i class="fa-brands fa-twitter fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://example.org/posts/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%AE%80%E5%8D%95%E6%A2%B3%E7%90%86%E4%B8%8A/" data-hashtag="树状数组"><i class="fa-brands fa-facebook-square fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="http://example.org/posts/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%AE%80%E5%8D%95%E6%A2%B3%E7%90%86%E4%B8%8A/" data-title="树状数组简单梳理（上）" data-web><i class="fa-brands fa-whatsapp fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://example.org/posts/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%AE%80%E5%8D%95%E6%A2%B3%E7%90%86%E4%B8%8A/" data-title="树状数组简单梳理（上）"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://example.org/posts/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%AE%80%E5%8D%95%E6%A2%B3%E7%90%86%E4%B8%8A/" data-title="树状数组简单梳理（上）"><i class="fa-brands fa-weibo fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="http://example.org/posts/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%AE%80%E5%8D%95%E6%A2%B3%E7%90%86%E4%B8%8A/" data-title="树状数组简单梳理（上）" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a>
+  <a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="http://example.org/posts/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%AE%80%E5%8D%95%E6%A2%B3%E7%90%86%E4%B8%8A/" data-title="树状数组简单梳理（上）" data-description=""><i class="fa-brands fa-blogger fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="http://example.org/posts/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%AE%80%E5%8D%95%E6%A2%B3%E7%90%86%E4%B8%8A/" data-title="树状数组简单梳理（上）"><i class="fa-brands fa-evernote fa-fw"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">树状数组</a>,&nbsp;<a href="/tags/%E6%A2%B3%E7%90%86/">梳理</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/zcmu1156-%E6%96%B0%E5%B9%B4%E5%BD%A9%E7%81%AF1-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%8C%BA%E9%97%B4%E6%9B%B4%E6%96%B0%E5%8D%95%E7%82%B9%E6%9F%A5%E8%AF%A2/" class="prev" rel="prev" title="ZCMU1156 新年彩灯1(树状数组区间更新单点查询)"><i class="fa-solid fa-angle-left fa-fw"></i>ZCMU1156 新年彩灯1(树状数组区间更新单点查询)</a>
+      <a href="/posts/zcmu2188-frames/" class="next" rel="next" title="ZCMU2188 Frames">ZCMU2188 Frames<i class="fa-solid fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/Lruihao/FixIt" target="_blank" rel="external nofollow noopener noreferrer" title="FixIt v0.2.15-RC"><img class="fixit-icon" src="/images/fixit.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright"><i class="fa-regular fa-copyright fa-fw"></i>
+            <span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">
+              <a
+  href="/"
+  
+  
+  
+  
+  
+>coldheart</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets">
+  <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+      <i class="fa-solid fa-arrow-up fa-fw"></i>
+    </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+      <i class="fa-solid fa-comment fa-fw"></i>
+    </a>
+  </div><div id="mask"></div>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/sharer/sharer.min.js" async defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":100},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"enablePWA":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="/js/_custom.min.js" defer></script></body>
+</html>

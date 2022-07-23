@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>POJ - 标签 - coldheart&#39;s blog</title>
+    <link>http://example.org/tags/poj/</link>
+    <description>POJ - 标签 - coldheart&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 28 Jul 2018 22:10:39 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/poj/" rel="self" type="application/rss+xml" /><item>
+  <title>POJ 3122 Pie(二分查找求最大值)</title>
+  <link>http://example.org/posts/poj-3122-pie-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B1%82%E6%9C%80%E5%A4%A7%E5%80%BC/</link>
+  <pubDate>Sat, 28 Jul 2018 22:10:39 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/poj-3122-pie-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B1%82%E6%9C%80%E5%A4%A7%E5%80%BC/</guid>
+  <description><![CDATA[POJ3122 Pie 描述 My birthday is coming up and traditionally I&rsquo;m serving pie. Not just one pie, no, I have a number N of them, of various tastes and of various sizes. F of my friends are coming to my party and each of them gets a piece of pie. This should be one piece of one pie, not several small pieces since that looks messy. This piece can]]></description>
+</item><item>
+  <title>VJudge River Hopscotch(二分查找解最小值最大)</title>
+  <link>http://example.org/posts/vjudge-river-hopscotch-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E8%A7%A3%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7/</link>
+  <pubDate>Sat, 28 Jul 2018 20:13:45 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/vjudge-river-hopscotch-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E8%A7%A3%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7/</guid>
+  <description><![CDATA[描述 Every year the cows hold an event featuring a peculiar version of hopscotch that involves carefully jumping from rock to rock in a river. The excitement takes place on a long, straight river with a rock at the start and another rock at the end, L units away from the start (1 ≤ L ≤ 1,000,000,000). Along the river between the starting and ending rocks, N (0 ≤]]></description>
+</item></channel>
+</rss>

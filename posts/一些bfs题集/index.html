@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>一些BFS题集 - coldheart&#39;s blog</title><meta name="author" content="coldheart">
+<meta name="author-link" content="">
+<meta name="description" content="一些BFS题集 A计划 可怜的公主在一次次被魔王掳走一次次被骑士们救回来之后，而今，不幸的她再一次面临生命的考验。魔王已经发出消息说将在T时刻吃" /><meta name="keywords" content='算法，BFS, 题集' /><meta itemprop="name" content="一些BFS题集">
+<meta itemprop="description" content="一些BFS题集 A计划 可怜的公主在一次次被魔王掳走一次次被骑士们救回来之后，而今，不幸的她再一次面临生命的考验。魔王已经发出消息说将在T时刻吃"><meta itemprop="datePublished" content="2018-08-04T21:01:00+00:00" />
+<meta itemprop="dateModified" content="2018-08-04T21:01:00+00:00" />
+<meta itemprop="wordCount" content="3832"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="算法，BFS,题集," /><meta property="og:title" content="一些BFS题集" />
+<meta property="og:description" content="一些BFS题集 A计划 可怜的公主在一次次被魔王掳走一次次被骑士们救回来之后，而今，不幸的她再一次面临生命的考验。魔王已经发出消息说将在T时刻吃" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/%E4%B8%80%E4%BA%9Bbfs%E9%A2%98%E9%9B%86/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-08-04T21:01:00+00:00" />
+<meta property="article:modified_time" content="2018-08-04T21:01:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="一些BFS题集"/>
+<meta name="twitter:description" content="一些BFS题集 A计划 可怜的公主在一次次被魔王掳走一次次被骑士们救回来之后，而今，不幸的她再一次面临生命的考验。魔王已经发出消息说将在T时刻吃"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/%E4%B8%80%E4%BA%9Bbfs%E9%A2%98%E9%9B%86/" /><link rel="prev" href="http://example.org/posts/tjoi2013-%E9%BB%84%E9%87%91%E7%9F%BF%E5%B7%A5-01%E8%83%8C%E5%8C%85%E6%94%B9/" /><link rel="next" href="http://example.org/posts/p%E6%B4%9B%E8%B0%B71162-%E5%A1%AB%E6%B6%82%E9%A2%9C%E8%89%B2-dfs%E6%BC%AB%E6%B0%B4%E5%A1%AB%E5%85%85%E6%B3%95/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "一些BFS题集",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/%E4%B8%80%E4%BA%9Bbfs%E9%A2%98%E9%9B%86\/"
+    },"genre": "posts","keywords": "算法，BFS, 题集","wordcount":  3832 ,
+    "url": "http:\/\/example.org\/posts\/%E4%B8%80%E4%BA%9Bbfs%E9%A2%98%E9%9B%86\/","datePublished": "2018-08-04T21:01:00+00:00","dateModified": "2018-08-04T21:01:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "coldheart"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="coldheart&#39;s blog"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/images/fixit.svg"
+    data-srcset="/images/fixit.svg, /images/fixit.svg 1.5x, /images/fixit.svg 2x"
+    data-sizes="auto"
+    alt="coldheart&#39;s blog"
+    title="coldheart&#39;s blog" /><span class="header-title-text">coldheart&#39;s blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >文章</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >分类</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >标签</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="coldheart&#39;s blog"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/images/fixit.svg"
+    data-srcset="/images/fixit.svg, /images/fixit.svg 1.5x, /images/fixit.svg 2x"
+    data-sizes="auto"
+    alt="/images/fixit.svg"
+    title="/images/fixit.svg" /><span class="header-title-text">coldheart&#39;s blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >文章</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >分类</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >标签</a></li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录 <i class="toc-icon fa-solid fa-angle-down fa-fw"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
+        <span>一些BFS题集</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle"></i>
+      coldheart</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E7%AE%97%E6%B3%95/"><i class="fa-regular fa-folder fa-fw"></i>&nbsp;算法</a></span></div>
+      <div class="post-meta-line"><span title=2018-08-04&#32;21:01:00>
+            <i class="fa-regular fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2018-08-04" >2018-08-04</time>
+          </span>&nbsp;<i class="fa-solid fa-pencil-alt fa-fw"></i>&nbsp;约 3832 字&nbsp;
+        <i class="fa-regular fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#a计划">A计划</a>
+      <ul>
+        <li><a href="#input">Input</a></li>
+        <li><a href="#output">Output</a></li>
+        <li><a href="#sample-input">Sample Input</a></li>
+        <li><a href="#sample-output">Sample Output</a></li>
+        <li><a href="#思路">思路</a></li>
+        <li><a href="#注意">注意</a></li>
+        <li><a href="#代码及注释">代码及注释</a></li>
+      </ul>
+    </li>
+    <li><a href="#胜利大逃亡">胜利大逃亡</a>
+      <ul>
+        <li><a href="#input-1">Input</a></li>
+        <li><a href="#output-1">Output</a></li>
+        <li><a href="#sample-input-1">Sample Input</a></li>
+        <li><a href="#sample-output-1">Sample Output</a></li>
+        <li><a href="#思路-1">思路</a></li>
+        <li><a href="#代码">代码</a></li>
+      </ul>
+    </li>
+    <li><a href="#asteroids">Asteroids!</a>
+      <ul>
+        <li><a href="#input-2">Input</a></li>
+        <li><a href="#output-2">Output</a></li>
+        <li><a href="#sample-input-2">Sample Input</a></li>
+        <li><a href="#sample-output-2">Sample Output</a></li>
+        <li><a href="#思路-2">思路</a></li>
+        <li><a href="#注意-1">注意</a></li>
+        <li><a href="#代码-1">代码</a></li>
+      </ul>
+    </li>
+    <li><a href="#a-strange-lift">A strange lift</a>
+      <ul>
+        <li><a href="#input-3">Input</a></li>
+        <li><a href="#output-3">Output</a></li>
+        <li><a href="#sample-input-3">Sample Input</a></li>
+        <li><a href="#sample-output-3">Sample Output</a></li>
+        <li><a href="#思路-3">思路</a></li>
+        <li><a href="#代码-2">代码</a></li>
+      </ul>
+    </li>
+    <li><a href="#catch-that-cow">Catch That Cow</a>
+      <ul>
+        <li><a href="#input-4">Input</a></li>
+        <li><a href="#output-4">Output</a></li>
+        <li><a href="#sample-input-4">Sample Input</a></li>
+        <li><a href="#sample-output-4">Sample Output</a></li>
+        <li><a href="#思路-4">思路</a></li>
+        <li><a href="#注意-2">注意</a></li>
+        <li><a href="#代码-3">代码</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div
+      class="content"
+      id="content"
+      
+      
+    ><h1 id="一些bfs题集">一些BFS题集</h1>
+<h2 id="a计划">A计划</h2>
+<blockquote>
+<p>可怜的公主在一次次被魔王掳走一次次被骑士们救回来之后，而今，不幸的她再一次面临生命的考验。魔王已经发出消息说将在T时刻吃掉公主，因为他听信谣言说吃公主的肉也能长生不老。年迈的国王正是心急如焚，告招天下勇士来拯救公主。不过公主早已习以为常，她深信智勇的骑士LJ肯定能将她救出。  现据密探所报，公主被关在一个两层的迷宫里，迷宫的入口是S（0，0，0），公主的位置用P表示，时空传输机用#表示，墙用*表示，平地用.表示。骑士们一进入时空传输机就会被转到另一层的相对位置，但如果被转到的位置是墙的话，那骑士们就会被撞死。骑士们在一层中只能前后左右移动，每移动一格花1时刻。层间的移动只能通过时空传输机，且不需要任何时间。</p>
+</blockquote>
+<h3 id="input">Input</h3>
+<blockquote>
+<p>输入的第一行C表示共有C个测试数据，每个测试数据的前一行有三个整数N，M，T。 N，M迷宫的大小N<em>M（1 &lt;= N,M &lt;=10)。T如上所意。接下去的前N</em>M表示迷宫的第一层的布置情况，后N*M表示迷宫第二层的布置情况。</p>
+</blockquote>
+<h3 id="output">Output</h3>
+<blockquote>
+<p>如果骑士们能够在T时刻能找到公主就输出“YES”，否则输出“NO”。</p>
+</blockquote>
+<h3 id="sample-input">Sample Input</h3>
+<blockquote>
+<p>1
+5 5 14
+S*#*.
+.#&hellip;
+&hellip;..
+****.
+&hellip;#.</p>
+<p>..<em>.P
+#.</em>..
+**<em>..
+&hellip;</em>.
+*.#..</p>
+</blockquote>
+<h3 id="sample-output">Sample Output</h3>
+<blockquote>
+<p>YES</p>
+</blockquote>
+<h3 id="思路">思路</h3>
+<p>BFS走迷宫问题，且是张三维地图（有两层）</p>
+<p>可以预先处理必死情况，也就是传送门传到传送门，传送门传到墙，把这两种情况的两层迷宫上的点都改为墙就好了。</p>
+<h3 id="注意">注意</h3>
+<p>上下层切换可以借助如下操作</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="n">newF</span><span class="o">^=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//异或运算换层
+</span></code></pre></div><p>超时就剪枝</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="k">if</span><span class="p">(</span><span class="n">top</span><span class="p">.</span><span class="n">step</span><span class="o">==</span><span class="n">maxTime</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="c1">//整个队列全超时
+</span><span class="c1"></span>	<span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</code></pre></div><p>如果是按行读入数据，记得吃掉不必要的换行符</p>
+<h3 id="代码及注释">代码及注释</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;cstring&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;queue&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">shit</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">f</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">step</span><span class="p">;</span>
+<span class="p">}</span><span class="n">temp</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">S</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">maxTime</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">newF</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">newX</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">newY</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">maze</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">15</span><span class="p">][</span><span class="mi">15</span><span class="p">];</span><span class="c1">//地图邻接矩阵
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">inq</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">15</span><span class="p">][</span><span class="mi">15</span><span class="p">];</span><span class="c1">//标记是否在队列
+</span><span class="c1">//四个方向
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">X</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">};</span>
+<span class="kt">int</span> <span class="n">Y</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">};</span>
+<span class="c1">//判断位置(x,y)是否能走
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">judge</span><span class="p">(</span><span class="kt">int</span> <span class="n">f</span><span class="p">,</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="kt">int</span> <span class="n">y</span><span class="p">)</span><span class="c1">//能否走
+</span><span class="c1"></span><span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">||</span><span class="n">y</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">||</span><span class="n">x</span><span class="o">&gt;=</span><span class="n">n</span><span class="o">||</span><span class="n">y</span><span class="o">&gt;=</span><span class="n">m</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">//是否在传送门上
+</span><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="n">maze</span><span class="p">[</span><span class="n">f</span><span class="p">][</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;#&#39;</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">newF</span><span class="o">^=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//异或运算换层
+</span><span class="c1"></span>        <span class="n">f</span><span class="o">^=</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">maze</span><span class="p">[</span><span class="n">f</span><span class="p">][</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;*&#39;</span><span class="p">)</span><span class="c1">//与前者顺序不能反，不然数组溢出
+</span><span class="c1"></span>        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">inq</span><span class="p">[</span><span class="n">f</span><span class="p">][</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">])</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">remake</span><span class="p">()</span><span class="c1">//预先处理死路
+</span><span class="c1"></span><span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">m</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">maze</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;#&#39;</span><span class="o">&amp;&amp;</span><span class="n">maze</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;#&#39;</span><span class="p">)</span><span class="c1">//双传送门无限叠加至光速！
+</span><span class="c1"></span>            <span class="p">{</span>
+                <span class="n">maze</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">maze</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="sc">&#39;*&#39;</span><span class="p">;</span><span class="c1">//这两传送门变成墙
+</span><span class="c1"></span>            <span class="p">}</span>
+            <span class="k">if</span><span class="p">((</span><span class="n">maze</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;#&#39;</span><span class="o">&amp;&amp;</span><span class="n">maze</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;*&#39;</span><span class="p">)</span><span class="o">||</span><span class="p">(</span><span class="n">maze</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;*&#39;</span><span class="o">&amp;&amp;</span><span class="n">maze</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;#&#39;</span><span class="p">))</span><span class="c1">//传送到墙上
+</span><span class="c1"></span>            <span class="p">{</span>
+                <span class="n">maze</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">maze</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="sc">&#39;*&#39;</span><span class="p">;</span><span class="c1">//这两传送门变成墙
+</span><span class="c1"></span>            <span class="p">}</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">bool</span> <span class="nf">BFS</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">queue</span><span class="o">&lt;</span><span class="n">shit</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span><span class="c1">//定义shit型队列
+</span><span class="c1"></span>    <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">S</span><span class="p">);</span><span class="c1">//起点入队
+</span><span class="c1"></span>    <span class="c1">//printf(&#34;S.step:%d,S.f:%d,S.x:%d,S.y:%d\n&#34;,S.step,S.f,S.x,S.y);
+</span><span class="c1"></span>    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">shit</span> <span class="n">top</span><span class="o">=</span><span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span><span class="c1">//取队列首
+</span><span class="c1"></span>   <span class="c1">//printf(&#34;top.step:%d,top.f:%d,top.x:%d,top.y:%d\n&#34;,top.step,top.f,top.x,top.y);
+</span><span class="c1"></span>        <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span><span class="c1">//队首出列
+</span><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">top</span><span class="p">.</span><span class="n">step</span><span class="o">==</span><span class="n">maxTime</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="c1">//整个队列全超时
+</span><span class="c1"></span>            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">maze</span><span class="p">[</span><span class="n">top</span><span class="p">.</span><span class="n">f</span><span class="p">][</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="p">][</span><span class="n">top</span><span class="p">.</span><span class="n">y</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;P&#39;</span><span class="p">)</span><span class="c1">//找到公主
+</span><span class="c1"></span>                <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+
+        <span class="c1">//朝四个方向尝试走
+</span><span class="c1"></span>        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">newF</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">f</span><span class="p">;</span>
+            <span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="o">+</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="n">newY</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">y</span><span class="o">+</span><span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+                <span class="c1">//printf(&#34;newF:%d newX:%d newY:%d\n&#34;,newF,newX,newY);
+</span><span class="c1"></span>            <span class="k">if</span><span class="p">(</span><span class="n">judge</span><span class="p">(</span><span class="n">newF</span><span class="p">,</span><span class="n">newX</span><span class="p">,</span><span class="n">newY</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">temp</span><span class="p">.</span><span class="n">f</span><span class="o">=</span><span class="n">newF</span><span class="p">;</span>
+                <span class="n">temp</span><span class="p">.</span><span class="n">x</span><span class="o">=</span><span class="n">newX</span><span class="p">;</span>
+                <span class="n">temp</span><span class="p">.</span><span class="n">y</span><span class="o">=</span><span class="n">newY</span><span class="p">;</span>
+                <span class="n">temp</span><span class="p">.</span><span class="n">step</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">step</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="c1">//时间加1
+</span><span class="c1"></span>                <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span><span class="c1">//结点入队           //printf(&#34;temp.step:%d,temp.f:%d,temp.x:%d,temp.y:%d\n&#34;,temp.step,temp.f,temp.x,temp.y);
+</span><span class="c1"></span>                <span class="n">inq</span><span class="p">[</span><span class="n">newF</span><span class="p">][</span><span class="n">newX</span><span class="p">][</span><span class="n">newY</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span><span class="c1">//另一层该入吗?
+</span><span class="c1"></span>            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span><span class="c1">//队列空了（超时）还没找到，就false
+</span><span class="c1"></span><span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">//freopen(&#34;fopen.txt&#34;,&#34;r&#34;,stdin);
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">c</span><span class="o">--</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//读入数据
+</span><span class="c1"></span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d%d%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">,</span><span class="o">&amp;</span><span class="n">m</span><span class="p">,</span><span class="o">&amp;</span><span class="n">maxTime</span><span class="p">);</span>
+        <span class="c1">//第一层
+</span><span class="c1"></span>        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">getchar</span><span class="p">();</span><span class="c1">//吃掉每次行尾那个换行符
+</span><span class="c1"></span>            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">m</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">maze</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">getchar</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">getchar</span><span class="p">();</span><span class="c1">//吃掉两层中间那个换行
+</span><span class="c1"></span>        <span class="c1">//第二层
+</span><span class="c1"></span>        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">getchar</span><span class="p">();</span><span class="c1">//吃掉每次行尾那个换行符
+</span><span class="c1"></span>            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">m</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">maze</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">getchar</span><span class="p">();</span>
+                                <span class="c1">//cout&lt;&lt;maze[1][i][j];
+</span><span class="c1"></span>            <span class="p">}</span>
+            <span class="c1">//cout&lt;&lt;endl;
+</span><span class="c1"></span>        <span class="p">}</span>
+        <span class="n">remake</span><span class="p">();</span><span class="c1">//处理死路
+</span><span class="c1"></span>        <span class="c1">//初始化
+</span><span class="c1"></span>        <span class="n">S</span><span class="p">.</span><span class="n">f</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">S</span><span class="p">.</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">S</span><span class="p">.</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">S</span><span class="p">.</span><span class="n">step</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+
+        <span class="n">memset</span><span class="p">(</span><span class="n">inq</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">inq</span><span class="p">));</span>
+        <span class="c1">/////////////////////////////////////
+</span><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">BFS</span><span class="p">())</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&#34;YES</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&#34;NO</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+</code></pre></div><h2 id="胜利大逃亡">胜利大逃亡</h2>
+<blockquote>
+<p>Ignatius被魔王抓走了,有一天魔王出差去了,这可是Ignatius逃亡的好机会.   魔王住在一个城堡里,城堡是一个A<em>B</em>C的立方体,可以被表示成A个B*C的矩阵,刚开始Ignatius被关在(0,0,0)的位置,离开城堡的门在(A-1,B-1,C-1)的位置,现在知道魔王将在T分钟后回到城堡,Ignatius每分钟能从一个坐标走到相邻的六个坐标中的其中一个.现在给你城堡的地图,请你计算出Ignatius能否在魔王回来前离开城堡(只要走到出口就算离开城堡,如果走到出口的时候魔王刚好回来也算逃亡成功),如果可以请输出需要多少分钟才能离开,如果不能则输出-1.   <img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://odzkskevi.qnssl.com/0f053183294ddae1965d627766ac05ad?v=1533039432"
+    data-srcset="https://odzkskevi.qnssl.com/0f053183294ddae1965d627766ac05ad?v=1533039432, https://odzkskevi.qnssl.com/0f053183294ddae1965d627766ac05ad?v=1533039432 1.5x, https://odzkskevi.qnssl.com/0f053183294ddae1965d627766ac05ad?v=1533039432 2x"
+    data-sizes="auto"
+    alt="https://odzkskevi.qnssl.com/0f053183294ddae1965d627766ac05ad?v=1533039432"
+    title="img" /></p>
+</blockquote>
+<h3 id="input-1">Input</h3>
+<blockquote>
+<p>输入数据的第一行是一个正整数K,表明测试数据的数量.每组测试数据的第一行是四个正整数A,B,C和T(1&lt;=A,B,C&lt;=50,1&lt;=T&lt;=1000),它们分别代表城堡的大小和魔王回来的时间.然后是A块输入数据(先是第0块,然后是第1块,第2块&hellip;&hellip;),每块输入数据有B行,每行有C个正整数,代表迷宫的布局,其中0代表路,1代表墙.(如果对输入描述不清楚,可以参考Sample Input中的迷宫描述,它表示的就是上图中的迷宫)   特别注意:本题的测试数据非常大,请使用scanf输入,我不能保证使用cin能不超时.在本OJ上请使用Visual C++提交.</p>
+</blockquote>
+<h3 id="output-1">Output</h3>
+<blockquote>
+<p>对于每组测试数据,如果Ignatius能够在魔王回来前离开城堡,那么请输出他最少需要多少分钟,否则输出-1.</p>
+</blockquote>
+<h3 id="sample-input-1">Sample Input</h3>
+<blockquote>
+<p>1
+3 3 4 20
+0 1 1 1
+0 0 1 1
+0 1 1 1
+1 1 1 1
+1 0 0 1
+0 1 1 1
+0 0 0 0
+0 1 1 0
+0 1 1 0</p>
+</blockquote>
+<h3 id="sample-output-1">Sample Output</h3>
+<blockquote>
+<p>11</p>
+</blockquote>
+<h3 id="思路-1">思路</h3>
+<p>BFS走三维迷宫，和A计划差不多，直接上代码了</p>
+<h3 id="代码">代码</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;cmath&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;cstring&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;queue&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">const</span> <span class="kt">int</span> <span class="n">maxN</span><span class="o">=</span><span class="mi">55</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">newX</span><span class="p">,</span><span class="n">newY</span><span class="p">,</span><span class="n">newZ</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">maze</span><span class="p">[</span><span class="n">maxN</span><span class="p">][</span><span class="n">maxN</span><span class="p">][</span><span class="n">maxN</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">maxTime</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">shit</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">step</span><span class="p">;</span>
+<span class="p">}</span><span class="n">S</span><span class="p">,</span><span class="n">E</span><span class="p">,</span><span class="n">top</span><span class="p">,</span><span class="n">temp</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">inq</span><span class="p">[</span><span class="n">maxN</span><span class="p">][</span><span class="n">maxN</span><span class="p">][</span><span class="n">maxN</span><span class="p">];</span>
+<span class="kt">void</span> <span class="nf">Move</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="n">newY</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">y</span><span class="p">;</span><span class="n">newZ</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">z</span><span class="p">;}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span><span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n">newY</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">y</span><span class="p">;</span><span class="n">newZ</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">z</span><span class="p">;}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">3</span><span class="p">)</span> <span class="p">{</span><span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="p">;</span><span class="n">newY</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="n">newZ</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">z</span><span class="p">;}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">4</span><span class="p">)</span> <span class="p">{</span><span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="p">;</span><span class="n">newY</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n">newZ</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">z</span><span class="p">;}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">5</span><span class="p">)</span> <span class="p">{</span><span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="p">;</span><span class="n">newY</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">y</span><span class="p">;</span><span class="n">newZ</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">z</span><span class="o">+</span><span class="mi">1</span><span class="p">;}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">6</span><span class="p">)</span> <span class="p">{</span><span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="p">;</span><span class="n">newY</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">y</span><span class="p">;</span><span class="n">newZ</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">z</span><span class="o">-</span><span class="mi">1</span><span class="p">;}</span>
+
+<span class="p">}</span>
+<span class="kt">bool</span> <span class="nf">judge</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="kt">int</span> <span class="n">y</span><span class="p">,</span><span class="kt">int</span> <span class="n">z</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">||</span><span class="n">x</span><span class="o">&gt;=</span><span class="n">A</span><span class="o">||</span><span class="n">y</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">||</span><span class="n">y</span><span class="o">&gt;=</span><span class="n">B</span><span class="o">||</span><span class="n">z</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">||</span><span class="n">z</span><span class="o">&gt;=</span><span class="n">C</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">maze</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">][</span><span class="n">z</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">inq</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">][</span><span class="n">z</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">BFS</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">queue</span><span class="o">&lt;</span><span class="n">shit</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+    <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">top</span><span class="o">=</span><span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="c1">//printf(&#34;top.x:%d top.step:%d E.x:%d\n&#34;,top.x,top.step,E.x);
+</span><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">top</span><span class="p">.</span><span class="n">step</span><span class="o">==</span><span class="n">maxTime</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+         <span class="k">if</span><span class="p">(</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="o">==</span><span class="n">A</span><span class="o">-</span><span class="mi">1</span><span class="o">&amp;&amp;</span><span class="n">top</span><span class="p">.</span><span class="n">y</span><span class="o">==</span><span class="n">B</span><span class="o">-</span><span class="mi">1</span><span class="o">&amp;&amp;</span><span class="n">top</span><span class="p">.</span><span class="n">z</span><span class="o">==</span><span class="n">C</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">top</span><span class="p">.</span><span class="n">step</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">6</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Move</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+            <span class="c1">//printf(&#34;newX:%d\n&#34;,newX);
+</span><span class="c1"></span>            <span class="k">if</span><span class="p">(</span><span class="n">judge</span><span class="p">(</span><span class="n">newX</span><span class="p">,</span><span class="n">newY</span><span class="p">,</span><span class="n">newZ</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">temp</span><span class="p">.</span><span class="n">x</span><span class="o">=</span><span class="n">newX</span><span class="p">;</span>
+                <span class="n">temp</span><span class="p">.</span><span class="n">y</span><span class="o">=</span><span class="n">newY</span><span class="p">;</span>
+                <span class="n">temp</span><span class="p">.</span><span class="n">z</span><span class="o">=</span><span class="n">newZ</span><span class="p">;</span>
+                <span class="n">temp</span><span class="p">.</span><span class="n">step</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">step</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+                <span class="c1">//printf(&#34;newX:%d top.step:%d\n&#34;,newX,top.step);
+</span><span class="c1"></span>                <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+                <span class="n">inq</span><span class="p">[</span><span class="n">newX</span><span class="p">][</span><span class="n">newY</span><span class="p">][</span><span class="n">newZ</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">K</span><span class="p">;</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">K</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">K</span><span class="o">--</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d %d %d %d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">A</span><span class="p">,</span><span class="o">&amp;</span><span class="n">B</span><span class="p">,</span><span class="o">&amp;</span><span class="n">C</span><span class="p">,</span><span class="o">&amp;</span><span class="n">maxTime</span><span class="p">);</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">A</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">B</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+                <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">k</span><span class="o">&lt;</span><span class="n">C</span><span class="p">;</span><span class="n">k</span><span class="o">++</span><span class="p">)</span>
+                    <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">maze</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]);</span>
+        <span class="n">memset</span><span class="p">(</span><span class="n">inq</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">inq</span><span class="p">));</span>
+        <span class="n">S</span><span class="p">.</span><span class="n">step</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">BFS</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="asteroids">Asteroids!</h2>
+<blockquote>
+<p>You&rsquo;re in space.</p>
+<p>You want to get home.</p>
+<p>There are asteroids.</p>
+<p>You don&rsquo;t want to hit them.</p>
+</blockquote>
+<h3 id="input-2">Input</h3>
+<blockquote>
+<p>Input to this problem will consist of a (non-empty) series of up to 100 data sets. Each data set will be formatted according to the following description, and there will be no blank lines separating data sets.   A single data set has 5 components:   Start line - A single line, &ldquo;START N&rdquo;, where 1 &lt;= N &lt;= 10.   Slice list - A series of N slices. Each slice is an N x N matrix representing a horizontal slice through the asteroid field. Each position in the matrix will be one of two values:   &lsquo;O&rsquo; - (the letter &ldquo;oh&rdquo;) Empty space   &lsquo;X&rsquo; - (upper-case) Asteroid present   Starting Position - A single line, &ldquo;A B C&rdquo;, denoting the &lt;A,B,C&gt; coordinates of your craft&rsquo;s starting position. The coordinate values will be integers separated by individual spaces.   Target Position - A single line, &ldquo;D E F&rdquo;, denoting the &lt;D,E,F&gt; coordinates of your target&rsquo;s position. The coordinate values will be integers separated by individual spaces.   End line - A single line, &ldquo;END&rdquo;   The origin of the coordinate system is &lt;0,0,0&gt;. Therefore, each component of each coordinate vector will be an integer between 0 and N-1, inclusive.   The first coordinate in a set indicates the column. Left column = 0.   The second coordinate in a set indicates the row. Top row = 0.   The third coordinate in a set indicates the slice. First slice = 0.   Both the Starting Position and the Target Position will be in empty space.</p>
+</blockquote>
+<h3 id="output-2">Output</h3>
+<blockquote>
+<p>For each data set, there will be exactly one output set, and there will be no blank lines separating output sets.   A single output set consists of a single line. If a route exists, the line will be in the format &ldquo;X Y&rdquo;, where X is the same as N from the corresponding input data set and Y is the least number of moves necessary to get your ship from the starting position to the target position. If there is no route from the starting position to the target position, the line will be &ldquo;NO ROUTE&rdquo; instead.   A move can only be in one of the six basic directions: up, down, left, right, forward, back. Phrased more precisely, a move will either increment or decrement a single component of your current position vector by 1.</p>
+</blockquote>
+<h3 id="sample-input-2">Sample Input</h3>
+<blockquote>
+<p>START 1
+O
+0 0 0
+0 0 0
+END
+START 3
+XXX
+XXX
+XXX
+OOO
+OOO
+OOO
+XXX
+XXX
+XXX
+0 0 1
+2 2 1
+END
+START 5
+OOOOO
+OOOOO
+OOOOO
+OOOOO
+OOOOO
+OOOOO
+OOOOO
+OOOOO
+OOOOO
+OOOOO
+XXXXX
+XXXXX
+XXXXX
+XXXXX
+XXXXX
+OOOOO
+OOOOO
+OOOOO
+OOOOO
+OOOOO
+OOOOO
+OOOOO
+OOOOO
+OOOOO
+OOOOO
+0 0 0
+4 4 4
+END</p>
+</blockquote>
+<h3 id="sample-output-2">Sample Output</h3>
+<blockquote>
+<p>1 0
+3 4
+NO ROUTE</p>
+</blockquote>
+<h3 id="思路-2">思路</h3>
+<p>BBBBBBBBBBFFFFFFFFFFFFFFFFSSSSSSSSSSSSSSS!</p>
+<h3 id="注意-1">注意</h3>
+<p>有六个方向可以走哦</p>
+<h3 id="代码-1">代码</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;cmath&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;cstring&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;queue&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">const</span> <span class="kt">int</span> <span class="n">maxN</span><span class="o">=</span><span class="mi">55</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">newX</span><span class="p">,</span><span class="n">newY</span><span class="p">,</span><span class="n">newZ</span><span class="p">,</span><span class="n">N</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">maze</span><span class="p">[</span><span class="n">maxN</span><span class="p">][</span><span class="n">maxN</span><span class="p">][</span><span class="n">maxN</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">maxTime</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">shit</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">step</span><span class="p">;</span>
+<span class="p">}</span><span class="n">S</span><span class="p">,</span><span class="n">E</span><span class="p">,</span><span class="n">top</span><span class="p">,</span><span class="n">temp</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">inq</span><span class="p">[</span><span class="n">maxN</span><span class="p">][</span><span class="n">maxN</span><span class="p">][</span><span class="n">maxN</span><span class="p">];</span>
+<span class="kt">void</span> <span class="nf">Move</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="n">newY</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">y</span><span class="p">;</span><span class="n">newZ</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">z</span><span class="p">;}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span><span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n">newY</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">y</span><span class="p">;</span><span class="n">newZ</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">z</span><span class="p">;}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">3</span><span class="p">)</span> <span class="p">{</span><span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="p">;</span><span class="n">newY</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="n">newZ</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">z</span><span class="p">;}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">4</span><span class="p">)</span> <span class="p">{</span><span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="p">;</span><span class="n">newY</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n">newZ</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">z</span><span class="p">;}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">5</span><span class="p">)</span> <span class="p">{</span><span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="p">;</span><span class="n">newY</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">y</span><span class="p">;</span><span class="n">newZ</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">z</span><span class="o">+</span><span class="mi">1</span><span class="p">;}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">6</span><span class="p">)</span> <span class="p">{</span><span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="p">;</span><span class="n">newY</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">y</span><span class="p">;</span><span class="n">newZ</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">z</span><span class="o">-</span><span class="mi">1</span><span class="p">;}</span>
+
+<span class="p">}</span>
+<span class="kt">bool</span> <span class="nf">judge</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="kt">int</span> <span class="n">y</span><span class="p">,</span><span class="kt">int</span> <span class="n">z</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">||</span><span class="n">x</span><span class="o">&gt;=</span><span class="n">N</span><span class="o">||</span><span class="n">y</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">||</span><span class="n">y</span><span class="o">&gt;=</span><span class="n">N</span><span class="o">||</span><span class="n">z</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">||</span><span class="n">z</span><span class="o">&gt;=</span><span class="n">N</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">maze</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">][</span><span class="n">z</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;X&#39;</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">inq</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">][</span><span class="n">z</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">BFS</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">queue</span><span class="o">&lt;</span><span class="n">shit</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+    <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">top</span><span class="o">=</span><span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="c1">//printf(&#34;top.x:%d top.step:%d E.x:%d\n&#34;,top.x,top.step,E.x);
+</span><span class="c1"></span>        <span class="c1">//if(top.step==maxTime+1)
+</span><span class="c1"></span>            <span class="c1">//return -1;
+</span><span class="c1"></span>         <span class="k">if</span><span class="p">(</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="o">==</span><span class="n">E</span><span class="p">.</span><span class="n">x</span><span class="o">&amp;&amp;</span><span class="n">top</span><span class="p">.</span><span class="n">y</span><span class="o">==</span><span class="n">E</span><span class="p">.</span><span class="n">y</span><span class="o">&amp;&amp;</span><span class="n">top</span><span class="p">.</span><span class="n">z</span><span class="o">==</span><span class="n">E</span><span class="p">.</span><span class="n">z</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">top</span><span class="p">.</span><span class="n">step</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">6</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Move</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+            <span class="c1">//printf(&#34;newX:%d\n&#34;,newX);
+</span><span class="c1"></span>            <span class="k">if</span><span class="p">(</span><span class="n">judge</span><span class="p">(</span><span class="n">newX</span><span class="p">,</span><span class="n">newY</span><span class="p">,</span><span class="n">newZ</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">temp</span><span class="p">.</span><span class="n">x</span><span class="o">=</span><span class="n">newX</span><span class="p">;</span>
+                <span class="n">temp</span><span class="p">.</span><span class="n">y</span><span class="o">=</span><span class="n">newY</span><span class="p">;</span>
+                <span class="n">temp</span><span class="p">.</span><span class="n">z</span><span class="o">=</span><span class="n">newZ</span><span class="p">;</span>
+                <span class="n">temp</span><span class="p">.</span><span class="n">step</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">step</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+                <span class="c1">//printf(&#34;newX:%d top.step:%d\n&#34;,newX,top.step);
+</span><span class="c1"></span>                <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+                <span class="n">inq</span><span class="p">[</span><span class="n">newX</span><span class="p">][</span><span class="n">newY</span><span class="p">][</span><span class="n">newZ</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">//freopen(&#34;fopen.txt&#34;,&#34;r&#34;,stdin);
+</span><span class="c1"></span>    <span class="kt">char</span> <span class="n">s</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+    <span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">~</span><span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%s%d&#34;</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="o">&amp;</span><span class="n">N</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">getchar</span><span class="p">();</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">k</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">k</span><span class="o">++</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%c&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">maze</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">]);</span>
+                <span class="p">}</span>
+                <span class="n">getchar</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="c1">//getchar();
+</span><span class="c1"></span>        <span class="p">}</span>
+        <span class="cm">/*for(int i=0;i&lt;N;i++)
+</span><span class="cm">        {
+</span><span class="cm">            for(int j=0;j&lt;N;j++)
+</span><span class="cm">                {
+</span><span class="cm">                    for(int k=0;k&lt;N;k++)
+</span><span class="cm">                    {
+</span><span class="cm">                        cout&lt;&lt;maze[j][k][i];
+</span><span class="cm">                    }
+</span><span class="cm">                    cout&lt;&lt;endl;
+</span><span class="cm">                }
+</span><span class="cm">        }*/</span>
+        <span class="c1">//cout&lt;&lt;maze[0][0][0]&lt;&lt;&#34;-&#34;&lt;&lt;maze[0][0][1]&lt;&lt;&#34;-&#34;&lt;&lt;maze[0][0][2];
+</span><span class="c1"></span>        <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d %d %d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">S</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="o">&amp;</span><span class="n">S</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="o">&amp;</span><span class="n">S</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d %d %d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">E</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="o">&amp;</span><span class="n">E</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="o">&amp;</span><span class="n">E</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%s&#34;</span><span class="p">,</span><span class="n">s</span><span class="p">);</span>
+        <span class="c1">//printf(&#34;%d %d %d\n&#34;,S.x,S.y,S.z);
+</span><span class="c1"></span>        <span class="c1">//printf(&#34;%d %d %d\n&#34;,E.x,E.y,E.z);
+</span><span class="c1"></span>        <span class="n">memset</span><span class="p">(</span><span class="n">inq</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">inq</span><span class="p">));</span>
+        <span class="n">S</span><span class="p">.</span><span class="n">step</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">ans</span><span class="o">=</span><span class="n">BFS</span><span class="p">();</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">ans</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">ans</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&#34;NO ROUTE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div><h2 id="a-strange-lift">A strange lift</h2>
+<blockquote>
+<p>There is a strange lift.The lift can stop can at every floor as you want, and there is a number Ki(0 &lt;= Ki &lt;= N) on every floor.The lift have just two buttons: up and down.When you at floor i,if you press the button &ldquo;UP&rdquo; , you will go up Ki floor,i.e,you will go to the i+Ki th floor,as the same, if you press the button &ldquo;DOWN&rdquo; , you will go down Ki floor,i.e,you will go to the i-Ki th floor. Of course, the lift can&rsquo;t go up high than N,and can&rsquo;t go down lower than 1. For example, there is a buliding with 5 floors, and k1 = 3, k2 = 3,k3 = 1,k4 = 2, k5 = 5.Begining from the 1 st floor,you can press the button &ldquo;UP&rdquo;, and you&rsquo;ll go up to the 4 th floor,and if you press the button &ldquo;DOWN&rdquo;, the lift can&rsquo;t do it, because it can&rsquo;t go down to the -2 th floor,as you know ,the -2 th floor isn&rsquo;t exist.  Here comes the problem: when you are on floor A,and you want to go to floor B,how many times at least he has to press the button &ldquo;UP&rdquo; or &ldquo;DOWN&rdquo;?</p>
+</blockquote>
+<h3 id="input-3">Input</h3>
+<blockquote>
+<p>The input consists of several test cases.,Each test case contains two lines.  The first line contains three integers N ,A,B( 1 &lt;= N,A,B &lt;= 200) which describe above,The second line consist N integers k1,k2,&hellip;.kn.  A single 0 indicate the end of the input.</p>
+</blockquote>
+<h3 id="output-3">Output</h3>
+<blockquote>
+<p>For each case of the input output a interger, the least times you have to press the button when you on floor A,and you want to go to floor B.If you can&rsquo;t reach floor B,printf &ldquo;-1&rdquo;.</p>
+</blockquote>
+<h3 id="sample-input-3">Sample Input</h3>
+<blockquote>
+<p>5 1 5
+3 3 1 2 5
+0</p>
+</blockquote>
+<h3 id="sample-output-3">Sample Output</h3>
+<blockquote>
+<p>3</p>
+</blockquote>
+<h3 id="思路-3">思路</h3>
+<p>一维空间的BFS</p>
+<p>两种移动方式</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">Move</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="p">];</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="代码-2">代码</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;cmath&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;cstring&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;queue&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">const</span> <span class="kt">int</span> <span class="n">maxN</span><span class="o">=</span><span class="mi">205</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">newX</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="n">maxN</span><span class="p">];</span>
+<span class="k">struct</span> <span class="nc">shit</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">step</span><span class="p">;</span>
+<span class="p">}</span><span class="n">S</span><span class="p">,</span><span class="n">E</span><span class="p">,</span><span class="n">top</span><span class="p">,</span><span class="n">temp</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">inq</span><span class="p">[</span><span class="n">maxN</span><span class="p">];</span>
+<span class="kt">void</span> <span class="nf">Move</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="p">];</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="kt">bool</span> <span class="nf">judge</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">||</span><span class="n">x</span><span class="o">&gt;</span><span class="n">N</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">inq</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">BFS</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">queue</span><span class="o">&lt;</span><span class="n">shit</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+    <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">top</span><span class="o">=</span><span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="c1">//printf(&#34;top.x:%d top.step:%d E.x:%d\n&#34;,top.x,top.step,E.x);
+</span><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="o">==</span><span class="n">E</span><span class="p">.</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">top</span><span class="p">.</span><span class="n">step</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">2</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Move</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+            <span class="c1">//printf(&#34;newX:%d\n&#34;,newX);
+</span><span class="c1"></span>            <span class="k">if</span><span class="p">(</span><span class="n">judge</span><span class="p">(</span><span class="n">newX</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">temp</span><span class="p">.</span><span class="n">x</span><span class="o">=</span><span class="n">newX</span><span class="p">;</span>
+                <span class="n">temp</span><span class="p">.</span><span class="n">step</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">step</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+                <span class="c1">//printf(&#34;newX:%d top.step:%d\n&#34;,newX,top.step);
+</span><span class="c1"></span>                <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+                <span class="n">inq</span><span class="p">[</span><span class="n">newX</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">N</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="o">&amp;&amp;</span><span class="n">N</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d %d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">S</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="o">&amp;</span><span class="n">E</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="n">memset</span><span class="p">(</span><span class="n">inq</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">inq</span><span class="p">));</span>
+        <span class="n">S</span><span class="p">.</span><span class="n">step</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">BFS</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div><h2 id="catch-that-cow">Catch That Cow</h2>
+<blockquote>
+<p>Farmer John has been informed of the location of a fugitive cow and wants to catch her immediately. He starts at a point N (0 ≤ N ≤ 100,000) on a number line and the cow is at a point K (0 ≤ K ≤ 100,000) on the same number line. Farmer John has two modes of transportation: walking and teleporting.   * Walking: FJ can move from any point X to the points X - 1 or X + 1 in a single minute  * Teleporting: FJ can move from any point X to the point 2 × X in a single minute.   If the cow, unaware of its pursuit, does not move at all, how long does it take for Farmer John to retrieve it?</p>
+</blockquote>
+<h3 id="input-4">Input</h3>
+<blockquote>
+<p>Line 1: Two space-separated integers: N and K</p>
+</blockquote>
+<h3 id="output-4">Output</h3>
+<blockquote>
+<p>Line 1: The least amount of time, in minutes, it takes for Farmer John to catch the fugitive cow.</p>
+</blockquote>
+<h3 id="sample-input-4">Sample Input</h3>
+<blockquote>
+<p>5 17</p>
+</blockquote>
+<h3 id="sample-output-4">Sample Output</h3>
+<blockquote>
+<p>4</p>
+</blockquote>
+<h3 id="思路-4">思路</h3>
+<p>一维BFS</p>
+<h3 id="注意-2">注意</h3>
+<p>广搜超过10000时及时推出，不然会爆</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">||</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">100000</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</code></pre></div><h3 id="代码-3">代码</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;cmath&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;cstring&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;queue&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">newX</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">shit</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">step</span><span class="p">;</span>
+<span class="p">}</span><span class="n">S</span><span class="p">,</span><span class="n">E</span><span class="p">,</span><span class="n">top</span><span class="p">,</span><span class="n">temp</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">maxN</span><span class="o">=</span><span class="mi">100005</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">inq</span><span class="p">[</span><span class="n">maxN</span><span class="p">];</span>
+<span class="kt">void</span> <span class="nf">Move</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">3</span><span class="p">)</span> <span class="n">newX</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">bool</span> <span class="nf">judge</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">||</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">100000</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">inq</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">BFS</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">queue</span><span class="o">&lt;</span><span class="n">shit</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+    <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">top</span><span class="o">=</span><span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="c1">//printf(&#34;top.x:%d E.x:%d\n&#34;,top.x,E.x);
+</span><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">top</span><span class="p">.</span><span class="n">x</span><span class="o">==</span><span class="n">E</span><span class="p">.</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">top</span><span class="p">.</span><span class="n">step</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">3</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Move</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+            <span class="c1">//printf(&#34;newX:%d\n&#34;,newX);
+</span><span class="c1"></span>            <span class="k">if</span><span class="p">(</span><span class="n">judge</span><span class="p">(</span><span class="n">newX</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">temp</span><span class="p">.</span><span class="n">x</span><span class="o">=</span><span class="n">newX</span><span class="p">;</span>
+                <span class="n">temp</span><span class="p">.</span><span class="n">step</span><span class="o">=</span><span class="n">top</span><span class="p">.</span><span class="n">step</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+                <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+                <span class="n">inq</span><span class="p">[</span><span class="n">newX</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">~</span><span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d %d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">S</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="o">&amp;</span><span class="n">E</span><span class="p">.</span><span class="n">x</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">memset</span><span class="p">(</span><span class="n">inq</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">inq</span><span class="p">));</span>
+        <span class="n">S</span><span class="p">.</span><span class="n">step</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">BFS</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2018-08-04&#32;21:01:00>更新于 2018-08-04</span>
+      </div>
+      <div class="post-info-license "><span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://example.org/posts/%E4%B8%80%E4%BA%9Bbfs%E9%A2%98%E9%9B%86/" data-title="一些BFS题集" data-hashtags="算法，BFS,题集"><i class="fa-brands fa-twitter fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://example.org/posts/%E4%B8%80%E4%BA%9Bbfs%E9%A2%98%E9%9B%86/" data-hashtag="算法，BFS"><i class="fa-brands fa-facebook-square fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="http://example.org/posts/%E4%B8%80%E4%BA%9Bbfs%E9%A2%98%E9%9B%86/" data-title="一些BFS题集" data-web><i class="fa-brands fa-whatsapp fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://example.org/posts/%E4%B8%80%E4%BA%9Bbfs%E9%A2%98%E9%9B%86/" data-title="一些BFS题集"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://example.org/posts/%E4%B8%80%E4%BA%9Bbfs%E9%A2%98%E9%9B%86/" data-title="一些BFS题集"><i class="fa-brands fa-weibo fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="http://example.org/posts/%E4%B8%80%E4%BA%9Bbfs%E9%A2%98%E9%9B%86/" data-title="一些BFS题集" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a>
+  <a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="http://example.org/posts/%E4%B8%80%E4%BA%9Bbfs%E9%A2%98%E9%9B%86/" data-title="一些BFS题集" data-description=""><i class="fa-brands fa-blogger fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="http://example.org/posts/%E4%B8%80%E4%BA%9Bbfs%E9%A2%98%E9%9B%86/" data-title="一些BFS题集"><i class="fa-brands fa-evernote fa-fw"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95bfs/">算法，BFS</a>,&nbsp;<a href="/tags/%E9%A2%98%E9%9B%86/">题集</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/tjoi2013-%E9%BB%84%E9%87%91%E7%9F%BF%E5%B7%A5-01%E8%83%8C%E5%8C%85%E6%94%B9/" class="prev" rel="prev" title="TJOI2013 黄金矿工(01背包改)"><i class="fa-solid fa-angle-left fa-fw"></i>TJOI2013 黄金矿工(01背包改)</a>
+      <a href="/posts/p%E6%B4%9B%E8%B0%B71162-%E5%A1%AB%E6%B6%82%E9%A2%9C%E8%89%B2-dfs%E6%BC%AB%E6%B0%B4%E5%A1%AB%E5%85%85%E6%B3%95/" class="next" rel="next" title="洛谷1162 填涂颜色(DFS漫水填充法)">洛谷1162 填涂颜色(DFS漫水填充法)<i class="fa-solid fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/Lruihao/FixIt" target="_blank" rel="external nofollow noopener noreferrer" title="FixIt v0.2.15-RC"><img class="fixit-icon" src="/images/fixit.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright"><i class="fa-regular fa-copyright fa-fw"></i>
+            <span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">
+              <a
+  href="/"
+  
+  
+  
+  
+  
+>coldheart</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets">
+  <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+      <i class="fa-solid fa-arrow-up fa-fw"></i>
+    </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+      <i class="fa-solid fa-comment fa-fw"></i>
+    </a>
+  </div><div id="mask"></div>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/sharer/sharer.min.js" async defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":100},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"enablePWA":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="/js/_custom.min.js" defer></script></body>
+</html>

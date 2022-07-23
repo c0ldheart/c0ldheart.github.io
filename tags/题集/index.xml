@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>题集 - 标签 - coldheart&#39;s blog</title>
+    <link>http://example.org/tags/%E9%A2%98%E9%9B%86/</link>
+    <description>题集 - 标签 - coldheart&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 04 Aug 2018 21:01:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/%E9%A2%98%E9%9B%86/" rel="self" type="application/rss+xml" /><item>
+  <title>一些BFS题集</title>
+  <link>http://example.org/posts/%E4%B8%80%E4%BA%9Bbfs%E9%A2%98%E9%9B%86/</link>
+  <pubDate>Sat, 04 Aug 2018 21:01:00 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/%E4%B8%80%E4%BA%9Bbfs%E9%A2%98%E9%9B%86/</guid>
+  <description><![CDATA[一些BFS题集 A计划 可怜的公主在一次次被魔王掳走一次次被骑士们救回来之后，而今，不幸的她再一次面临生命的考验。魔王已经发出消息说将在T时刻吃]]></description>
+</item></channel>
+</rss>

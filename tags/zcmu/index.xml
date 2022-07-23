@@ -1,0 +1,77 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>ZCMU - 标签 - coldheart&#39;s blog</title>
+    <link>http://example.org/tags/zcmu/</link>
+    <description>ZCMU - 标签 - coldheart&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 31 Jul 2018 17:29:31 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/zcmu/" rel="self" type="application/rss+xml" /><item>
+  <title>ZCMU2164 去注释(string应用)</title>
+  <link>http://example.org/posts/zcmu2164-%E5%8E%BB%E6%B3%A8%E9%87%8A-string%E5%BA%94%E7%94%A8/</link>
+  <pubDate>Tue, 31 Jul 2018 17:29:31 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu2164-%E5%8E%BB%E6%B3%A8%E9%87%8A-string%E5%BA%94%E7%94%A8/</guid>
+  <description><![CDATA[ZCMU2164 去注释(string应用) Description 给你一段C++代码，将其中的注释去除后输出剩余的代码。 注释共有两种形式： \1. 行注视：以//开头，一直作用到行尾为]]></description>
+</item><item>
+  <title>ZCMU2188 Frames</title>
+  <link>http://example.org/posts/zcmu2188-frames/</link>
+  <pubDate>Tue, 31 Jul 2018 09:52:22 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu2188-frames/</guid>
+  <description><![CDATA[ZCMU2188 Frames(多情况模拟讨论) Description Throughout Igor K.&rsquo;s life he has had many situations worthy of attention. We remember the story with the virus, the story of his mathematical career and of course, his famous programming achievements. However, one does not always adopt new hobbies, one can quit something as well. This time Igor K. got disappointed in]]></description>
+</item><item>
+  <title>ZCMU1156 新年彩灯1(树状数组区间更新单点查询)</title>
+  <link>http://example.org/posts/zcmu1156-%E6%96%B0%E5%B9%B4%E5%BD%A9%E7%81%AF1-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%8C%BA%E9%97%B4%E6%9B%B4%E6%96%B0%E5%8D%95%E7%82%B9%E6%9F%A5%E8%AF%A2/</link>
+  <pubDate>Sun, 29 Jul 2018 19:00:55 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu1156-%E6%96%B0%E5%B9%B4%E5%BD%A9%E7%81%AF1-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%8C%BA%E9%97%B4%E6%9B%B4%E6%96%B0%E5%8D%95%E7%82%B9%E6%9F%A5%E8%AF%A2/</guid>
+  <description><![CDATA[ZCMU1156 新年彩灯 Description 新年将至，YY准备挂一排彩灯，已知彩灯刚挂完的彩灯共有N盏（编号为1,2,3,……），并且都是灭的。彩灯的闪烁由一段程序控制。 每]]></description>
+</item><item>
+  <title>ZCMU1713 打麻将(模拟)</title>
+  <link>http://example.org/posts/zcmu1713-%E6%89%93%E9%BA%BB%E5%B0%86-%E6%A8%A1%E6%8B%9F/</link>
+  <pubDate>Sat, 28 Jul 2018 16:02:37 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu1713-%E6%89%93%E9%BA%BB%E5%B0%86-%E6%A8%A1%E6%8B%9F/</guid>
+  <description><![CDATA[ZCMU1713 打麻将(模拟) Description 卡斯丁狗表示真月里那几天，天天在打麻将，他的手气很好，总是摸到三四个财神，于是他就怒赚了一波红包。由于长得帅，他就想把这个]]></description>
+</item><item>
+  <title>ZCMU1854 zbj的可乐</title>
+  <link>http://example.org/posts/zcmu1854-zbj%E7%9A%84%E5%8F%AF%E4%B9%90%E6%A8%A1%E6%8B%9F/</link>
+  <pubDate>Sat, 28 Jul 2018 15:18:05 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu1854-zbj%E7%9A%84%E5%8F%AF%E4%B9%90%E6%A8%A1%E6%8B%9F/</guid>
+  <description><![CDATA[ZCMU1854 zbj的可乐(模拟) Description zbj最近特别想喝可乐，然而可口可乐有一个万年梗的活动就是&hellip;.四个瓶盖换一瓶可乐的活动 现在zbj想喝n]]></description>
+</item><item>
+  <title>ZCMU1880 wjw的火车站(栈的基本应用)</title>
+  <link>http://example.org/posts/zcmu1880-wjw%E7%9A%84%E7%81%AB%E8%BD%A6%E7%AB%99-%E6%A0%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/</link>
+  <pubDate>Fri, 27 Jul 2018 20:41:32 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu1880-wjw%E7%9A%84%E7%81%AB%E8%BD%A6%E7%AB%99-%E6%A0%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/</guid>
+  <description><![CDATA[ZCMU1880 wjw的火车站 Description wjw最近新开了一座火车站&hellip;没错就是火车站，因为寒假过完同学们都该返校了，所以他准备大干一场，但是这里有一个]]></description>
+</item><item>
+  <title>ZCMCMU1639 残缺的棋盘</title>
+  <link>http://example.org/posts/zcmu1639-%E6%AE%8B%E7%BC%BA%E7%9A%84%E6%A3%8B%E7%9B%98/</link>
+  <pubDate>Fri, 27 Jul 2018 18:30:39 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu1639-%E6%AE%8B%E7%BC%BA%E7%9A%84%E6%A3%8B%E7%9B%98/</guid>
+  <description><![CDATA[ZCMU1639 残缺的棋盘 Description 在国际象棋里，王是最重要的一个棋子。每一步，王可以往上下左右或者对角线方向移动一 步，如下图所示。给定两个格子 A(r1,c1), B(r2,c2)]]></description>
+</item><item>
+  <title>ZCMU1398 工程</title>
+  <link>http://example.org/posts/zcmu1398-%E5%B7%A5%E7%A8%8B/</link>
+  <pubDate>Wed, 25 Jul 2018 19:28:21 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu1398-%E5%B7%A5%E7%A8%8B/</guid>
+  <description><![CDATA[ZCMU1398 工程 Description 某省自从实行了很多年的畅通工程计划后，终于修建了很多路。不过路多了也不好，每次要从一个城镇到另一个城镇时，都有许多种道路方案可以选择]]></description>
+</item><item>
+  <title>ZCMU1375 阶乘的零</title>
+  <link>http://example.org/posts/zcmu1375-%E9%98%B6%E4%B9%98%E7%9A%84%E9%9B%B6/</link>
+  <pubDate>Wed, 25 Jul 2018 18:12:14 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu1375-%E9%98%B6%E4%B9%98%E7%9A%84%E9%9B%B6/</guid>
+  <description><![CDATA[ZCMU1375 阶乘的零 Description 定义f(n)为n！的末尾零的个数，例如f(4)=0，f(5)=1。你的任务是对于一个给定的的值x找出最小的n满足f(n)=x。 Input]]></description>
+</item><item>
+  <title>ZCMU1711 背包</title>
+  <link>http://example.org/posts/zcmu1711-%E8%83%8C%E5%8C%85/</link>
+  <pubDate>Wed, 25 Jul 2018 11:52:13 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu1711-%E8%83%8C%E5%8C%85/</guid>
+  <description><![CDATA[ZCMU1711 背包 Description 你有一个神奇的背包，他的容积是m(0&lt;m&lt;=80)，只有你装满他，你才能拿走他，现在给你n(1&lt;=n&lt;=20]]></description>
+</item></channel>
+</rss>

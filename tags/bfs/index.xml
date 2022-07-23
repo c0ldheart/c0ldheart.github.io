@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>BFS - 标签 - coldheart&#39;s blog</title>
+    <link>http://example.org/tags/bfs/</link>
+    <description>BFS - 标签 - coldheart&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 07 Aug 2018 15:10:36 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/bfs/" rel="self" type="application/rss+xml" /><item>
+  <title>洛谷P1032 字串变换(BFS&#43;STL字符串处理)</title>
+  <link>http://example.org/posts/%E6%B4%9B%E8%B0%B7p1032-%E5%AD%97%E4%B8%B2%E5%8F%98%E6%8D%A2-bfs-stl%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/</link>
+  <pubDate>Tue, 07 Aug 2018 15:10:36 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/%E6%B4%9B%E8%B0%B7p1032-%E5%AD%97%E4%B8%B2%E5%8F%98%E6%8D%A2-bfs-stl%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/</guid>
+  <description><![CDATA[洛谷P1032 字串变换(BFS+STL字符串处理) 题目描述 已知有两个字串 A,BA,B 及一组字串变换的规则（至多 66 个规则）: A1 -&gt; B1 A2 -&gt; B2 规则的含义为：在]]></description>
+</item><item>
+  <title>ZCMCMU1639 残缺的棋盘</title>
+  <link>http://example.org/posts/zcmu1639-%E6%AE%8B%E7%BC%BA%E7%9A%84%E6%A3%8B%E7%9B%98/</link>
+  <pubDate>Fri, 27 Jul 2018 18:30:39 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu1639-%E6%AE%8B%E7%BC%BA%E7%9A%84%E6%A3%8B%E7%9B%98/</guid>
+  <description><![CDATA[ZCMU1639 残缺的棋盘 Description 在国际象棋里，王是最重要的一个棋子。每一步，王可以往上下左右或者对角线方向移动一 步，如下图所示。给定两个格子 A(r1,c1), B(r2,c2)]]></description>
+</item></channel>
+</rss>

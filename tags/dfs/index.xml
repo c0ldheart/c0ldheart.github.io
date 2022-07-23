@@ -1,0 +1,35 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>DFS - 标签 - coldheart&#39;s blog</title>
+    <link>http://example.org/tags/dfs/</link>
+    <description>DFS - 标签 - coldheart&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 26 Nov 2018 17:30:39 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/dfs/" rel="self" type="application/rss+xml" /><item>
+  <title>蓝桥杯T35 危险系数（DFS）</title>
+  <link>http://example.org/posts/%E8%93%9D%E6%A1%A5%E6%9D%AFt35-%E5%8D%B1%E9%99%A9%E7%B3%BB%E6%95%B0dfs/</link>
+  <pubDate>Mon, 26 Nov 2018 17:30:39 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/%E8%93%9D%E6%A1%A5%E6%9D%AFt35-%E5%8D%B1%E9%99%A9%E7%B3%BB%E6%95%B0dfs/</guid>
+  <description><![CDATA[Description 抗日战争时期，冀中平原的地道战曾发挥重要作用。 地道的多个站点间有通道连接，形成了庞大的网络。但也有隐患，当敌人发现了某个站点后，其它站点间]]></description>
+</item><item>
+  <title>洛谷1162 填涂颜色(DFS漫水填充法)</title>
+  <link>http://example.org/posts/p%E6%B4%9B%E8%B0%B71162-%E5%A1%AB%E6%B6%82%E9%A2%9C%E8%89%B2-dfs%E6%BC%AB%E6%B0%B4%E5%A1%AB%E5%85%85%E6%B3%95/</link>
+  <pubDate>Mon, 06 Aug 2018 13:21:06 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/p%E6%B4%9B%E8%B0%B71162-%E5%A1%AB%E6%B6%82%E9%A2%9C%E8%89%B2-dfs%E6%BC%AB%E6%B0%B4%E5%A1%AB%E5%85%85%E6%B3%95/</guid>
+  <description><![CDATA[洛谷1162 填涂颜色(DFS漫水填充法) 题目描述 由数字 0组成的方阵中，有一任意形状闭合圈，闭合圈由数字 1 构成，围圈时只走上下左右 4 个方向。现]]></description>
+</item><item>
+  <title>洛谷P1036 选数(DFS解n选m问题)</title>
+  <link>http://example.org/posts/%E6%B4%9B%E8%B0%B7p1036-%E9%80%89%E6%95%B0-dfs%E8%A7%A3n%E9%80%89m%E9%97%AE%E9%A2%98/</link>
+  <pubDate>Sun, 29 Jul 2018 10:30:53 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/%E6%B4%9B%E8%B0%B7p1036-%E9%80%89%E6%95%B0-dfs%E8%A7%A3n%E9%80%89m%E9%97%AE%E9%A2%98/</guid>
+  <description><![CDATA[洛谷P1036 选数(DFS解n选m问题) 题目描述 已知 n 个整数 x1,x2,x3&hellip;.,xn ，以及 1 个整数 k ( k&lt;n)。从 n 个整数中任选 k个整数相加，可分别得到一系]]></description>
+</item><item>
+  <title>ZCMU1711 背包</title>
+  <link>http://example.org/posts/zcmu1711-%E8%83%8C%E5%8C%85/</link>
+  <pubDate>Wed, 25 Jul 2018 11:52:13 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu1711-%E8%83%8C%E5%8C%85/</guid>
+  <description><![CDATA[ZCMU1711 背包 Description 你有一个神奇的背包，他的容积是m(0&lt;m&lt;=80)，只有你装满他，你才能拿走他，现在给你n(1&lt;=n&lt;=20]]></description>
+</item></channel>
+</rss>

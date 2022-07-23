@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>CF758D Ability To Convert(贪心模拟) - coldheart&#39;s blog</title><meta name="author" content="coldheart">
+<meta name="author-link" content="">
+<meta name="description" content="CF758D Ability To Convert(贪心模拟) 题目描述 Alexander is learning how to convert numbers from the decimal system to any other, however, he doesn&rsquo;t know English letters, so he writes any number only as a decimal number, it means that instead of the letter A he will write the number 10. Thus, by converting the number 475" /><meta name="keywords" content='算法, 贪心, 模拟' /><meta itemprop="name" content="CF758D Ability To Convert(贪心模拟)">
+<meta itemprop="description" content="CF758D Ability To Convert(贪心模拟) 题目描述 Alexander is learning how to convert numbers from the decimal system to any other, however, he doesn&rsquo;t know English letters, so he writes any number only as a decimal number, it means that instead of the letter A he will write the number 10. Thus, by converting the number 475"><meta itemprop="datePublished" content="2018-08-09T15:23:30+00:00" />
+<meta itemprop="dateModified" content="2018-08-09T15:23:30+00:00" />
+<meta itemprop="wordCount" content="1234"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="算法,贪心,模拟," /><meta property="og:title" content="CF758D Ability To Convert(贪心模拟)" />
+<meta property="og:description" content="CF758D Ability To Convert(贪心模拟) 题目描述 Alexander is learning how to convert numbers from the decimal system to any other, however, he doesn&rsquo;t know English letters, so he writes any number only as a decimal number, it means that instead of the letter A he will write the number 10. Thus, by converting the number 475" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/cf758d-ability-to-convert-%E8%B4%AA%E5%BF%83%E6%A8%A1%E6%8B%9F/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-08-09T15:23:30+00:00" />
+<meta property="article:modified_time" content="2018-08-09T15:23:30+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="CF758D Ability To Convert(贪心模拟)"/>
+<meta name="twitter:description" content="CF758D Ability To Convert(贪心模拟) 题目描述 Alexander is learning how to convert numbers from the decimal system to any other, however, he doesn&rsquo;t know English letters, so he writes any number only as a decimal number, it means that instead of the letter A he will write the number 10. Thus, by converting the number 475"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/cf758d-ability-to-convert-%E8%B4%AA%E5%BF%83%E6%A8%A1%E6%8B%9F/" /><link rel="prev" href="http://example.org/posts/usaco1-5-%E5%9B%9E%E6%96%87%E8%B4%A8%E6%95%B0-prime-palindromes/" /><link rel="next" href="http://example.org/posts/%E6%B4%9B%E8%B0%B7p1618-%E4%B8%89%E8%BF%9E%E5%87%BB-%E5%8D%87%E7%BA%A7%E7%89%88-%E6%9A%B4%E5%8A%9B%E5%85%A8%E6%8E%92%E5%88%97%E6%9E%9A%E4%B8%BE/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "CF758D Ability To Convert(贪心模拟)",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/cf758d-ability-to-convert-%E8%B4%AA%E5%BF%83%E6%A8%A1%E6%8B%9F\/"
+    },"genre": "posts","keywords": "算法, 贪心, 模拟","wordcount":  1234 ,
+    "url": "http:\/\/example.org\/posts\/cf758d-ability-to-convert-%E8%B4%AA%E5%BF%83%E6%A8%A1%E6%8B%9F\/","datePublished": "2018-08-09T15:23:30+00:00","dateModified": "2018-08-09T15:23:30+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "coldheart"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="coldheart&#39;s blog"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/images/fixit.svg"
+    data-srcset="/images/fixit.svg, /images/fixit.svg 1.5x, /images/fixit.svg 2x"
+    data-sizes="auto"
+    alt="coldheart&#39;s blog"
+    title="coldheart&#39;s blog" /><span class="header-title-text">coldheart&#39;s blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >文章</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >分类</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >标签</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="coldheart&#39;s blog"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/images/fixit.svg"
+    data-srcset="/images/fixit.svg, /images/fixit.svg 1.5x, /images/fixit.svg 2x"
+    data-sizes="auto"
+    alt="/images/fixit.svg"
+    title="/images/fixit.svg" /><span class="header-title-text">coldheart&#39;s blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >文章</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >分类</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >标签</a></li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录 <i class="toc-icon fa-solid fa-angle-down fa-fw"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
+        <span>CF758D Ability To Convert(贪心模拟)</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle"></i>
+      coldheart</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E7%AE%97%E6%B3%95/"><i class="fa-regular fa-folder fa-fw"></i>&nbsp;算法</a></span></div>
+      <div class="post-meta-line"><span title=2018-08-09&#32;15:23:30>
+            <i class="fa-regular fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2018-08-09" >2018-08-09</time>
+          </span>&nbsp;<i class="fa-solid fa-pencil-alt fa-fw"></i>&nbsp;约 1234 字&nbsp;
+        <i class="fa-regular fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#题目描述">题目描述</a></li>
+    <li><a href="#input">Input</a></li>
+    <li><a href="#output">Output</a></li>
+    <li><a href="#examples">Examples</a>
+      <ul>
+        <li><a href="#input1">Input1</a></li>
+        <li><a href="#output1">Output1</a></li>
+        <li><a href="#input2">Input2</a></li>
+        <li><a href="#output2">Output2</a></li>
+        <li><a href="#input3">Input3</a></li>
+        <li><a href="#output3">Output3</a></li>
+        <li><a href="#input4">Input4</a></li>
+        <li><a href="#output4">Output4</a></li>
+      </ul>
+    </li>
+    <li><a href="#翻译及题意">翻译及题意</a></li>
+    <li><a href="#思路">思路</a></li>
+    <li><a href="#注意">注意</a></li>
+    <li><a href="#代码">代码</a></li>
+  </ul>
+</nav></div>
+      </div><div
+      class="content"
+      id="content"
+      
+      
+    ><h1 id="cf758d-ability-to-convert贪心模拟">CF758D Ability To Convert(贪心模拟)</h1>
+<h2 id="题目描述">题目描述</h2>
+<blockquote>
+<p>Alexander is learning how to convert numbers from the decimal system to any other, however, he doesn&rsquo;t know English letters, so he writes any number only as a decimal number, it means that instead of the letter <em>A</em> he will write the number 10. Thus, by converting the number 475 from decimal to hexadecimal system, he gets 11311 (475 = 1·162 + 13·161 + 11·160). Alexander lived calmly until he tried to convert the number back to the decimal number system.</p>
+<p>Alexander remembers that he worked with little numbers so he asks to find the minimum decimal number so that by converting it to the system with the base <em>n</em> he will get the number <em>k</em>.</p>
+</blockquote>
+<h2 id="input">Input</h2>
+<blockquote>
+<p>The first line contains the integer <em>n</em> (2 ≤ <em>n</em> ≤ 109). The second line contains the integer <em>k</em> (0 ≤ <em>k</em> &lt; 1060), it is guaranteed that the number <em>k</em> contains no more than 60 symbols. All digits in the second line are strictly less than <em>n</em>.</p>
+<p>Alexander guarantees that the answer exists and does not exceed 1018.</p>
+<p>The number <em>k</em> doesn&rsquo;t contain leading zeros.</p>
+</blockquote>
+<h2 id="output">Output</h2>
+<blockquote>
+<p>Print the number <em>x</em> (0 ≤ <em>x</em> ≤ 1018) — the answer to the problem.</p>
+</blockquote>
+<h2 id="examples">Examples</h2>
+<h3 id="input1">Input1</h3>
+<blockquote>
+<p>13
+12</p>
+</blockquote>
+<h3 id="output1">Output1</h3>
+<blockquote>
+<p>12</p>
+</blockquote>
+<h3 id="input2">Input2</h3>
+<blockquote>
+<p>16
+11311</p>
+</blockquote>
+<h3 id="output2">Output2</h3>
+<blockquote>
+<p>475</p>
+</blockquote>
+<h3 id="input3">Input3</h3>
+<blockquote>
+<p>20
+999</p>
+</blockquote>
+<h3 id="output3">Output3</h3>
+<blockquote>
+<p>3789</p>
+</blockquote>
+<h3 id="input4">Input4</h3>
+<blockquote>
+<p>17
+2016</p>
+</blockquote>
+<h3 id="output4">Output4</h3>
+<blockquote>
+<p>594</p>
+</blockquote>
+<h2 id="翻译及题意">翻译及题意</h2>
+<blockquote>
+<p>亚历山大正在学习如何把十进制数字转换成其他进制，但是他不懂英文字母，所以他只是把数值按照十进制数字的方式写出来。这意味着他会用 10 代替英文字母 A。这样，他就会把十进制的 475 转换成十六进制的 11311（475=1·16^2+13·16^1+11·16^0）。亚历山大平静的生活着，直到有一天他试着把这些数字转换回十进制数字。</p>
+<p>亚历山大记着他总是用较小的数字工作，所以他需要找到在 n 进制的基础下，用他的转换系统得出数字 k 的最小十进制数。 输入输出格式 输入格式：</p>
+<p>第一行是一个正整数 n ( 2&lt;=n&lt;=10^9)，第二行有一个正整数 k ，满足数字 k中包含不超过 60 个数值。第二行整数中的没每一个数字都严格小于 n。</p>
+<p>亚历山大保证答案存在且不超过 10^18，数字 k 不含前导 0. 输出格式：</p>
+<p>输出一个数字 x —— 问题的答案。</p>
+</blockquote>
+<p>一串用十进制数字代替字母的n进制数字，组合方式不同最终在十进制下大小也不同，要求输出最小的数字</p>
+<h2 id="思路">思路</h2>
+<p>可以用DP做，同时不断用贪心也满足条件</p>
+<p>数字位数越多永远越大，所以尽可能让位数小，也就要求n进制某一位所含数字个数尽可能多</p>
+<p>用字符串存储n进制数字，从后往前遍历（也就是n进制0次方那一位开始），每次经可能多的选（当然加起来不能大于n），找出最大能选的个数后，删除这些数(string中的<strong>erase()</strong>)，再从尾找，直到数字选完（字符串为空<strong>s.size()==0</strong>）</p>
+<p>题中有分别要处理10进制n进制两种进制的数，10进制数是当前末尾选的数的大小（与n比较），会不断刷新，找到目标后加到n进制的最前面那一位。</p>
+<h2 id="注意">注意</h2>
+<p>大致思路定下来后，先注意数据类型：答案不超过 10^18，因此要用long long存各个数据</p>
+<p>此外设计到大数的幂运算，所以要自己编写<strong>快速幂</strong>函数</p>
+<p>之后再考虑边界和特殊情况的细节问题</p>
+<p>不同实现方法，细节处理也不相同，对于我的代码，有以下要注意</p>
+<p>若n进制数字小于n，直接输出n进制数字</p>
+<p>末尾为0且不能与前面的数合并为一位，就要独占一位</p>
+<p>某一位数返回的结果是一个起始为0的数，就要不断往回找，选择第一位不为0的最大数</p>
+<p>上一种特殊情况如果前导0过多，会爆long long，所以要判断0过多情况并及时退出</p>
+<h2 id="代码">代码</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;cstring&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">LL</span><span class="p">;</span>
+<span class="n">LL</span> <span class="n">n</span><span class="p">;</span>
+<span class="n">string</span> <span class="n">k</span><span class="p">;</span>
+<span class="n">LL</span> <span class="nf">binaryPow</span><span class="p">(</span><span class="n">LL</span> <span class="n">a</span><span class="p">,</span><span class="n">LL</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">binaryPow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">LL</span> <span class="n">mul</span><span class="o">=</span><span class="n">binaryPow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">mul</span><span class="o">*</span><span class="n">mul</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">ios</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+    <span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">n</span><span class="o">&gt;&gt;</span><span class="n">k</span><span class="p">;</span>
+    <span class="n">LL</span> <span class="n">ans</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="n">LL</span> <span class="n">p_n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">k</span><span class="p">.</span><span class="n">size</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">LL</span> <span class="n">p_10</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="n">LL</span> <span class="n">End</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="n">LL</span> <span class="n">i</span><span class="o">=</span><span class="n">k</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">End</span><span class="o">+</span><span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="sc">&#39;0&#39;</span><span class="p">)</span><span class="o">*</span><span class="n">binaryPow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="n">p_10</span><span class="p">)</span><span class="o">&lt;</span><span class="n">n</span><span class="o">&amp;&amp;</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span>   <span class="o">&amp;&amp;</span><span class="n">p_10</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">)</span>
+        <span class="p">{</span>
+
+            <span class="n">End</span><span class="o">+=</span><span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="n">i</span><span class="o">--</span><span class="p">]</span><span class="o">-</span><span class="sc">&#39;0&#39;</span><span class="p">)</span><span class="o">*</span><span class="n">binaryPow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="n">p_10</span><span class="o">++</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">ans</span><span class="o">+=</span><span class="n">End</span><span class="o">*</span><span class="n">binaryPow</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">p_n</span><span class="p">);</span>
+            <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">ans</span><span class="p">;</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;0&#39;</span><span class="p">)</span>
+        <span class="p">{</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="n">k</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;0&#39;</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">i</span><span class="o">=</span><span class="n">k</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                <span class="n">End</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+                <span class="n">p_10</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+                <span class="k">while</span><span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;0&#39;</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+                    <span class="n">p_10</span><span class="o">--</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span>
+        <span class="n">ans</span><span class="o">+=</span><span class="n">End</span><span class="o">*</span><span class="n">binaryPow</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">p_n</span><span class="o">++</span><span class="p">);</span>
+        <span class="n">k</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">k</span><span class="p">.</span><span class="n">end</span><span class="p">()</span><span class="o">-</span><span class="n">p_10</span><span class="p">,</span><span class="n">k</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="p">}</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">ans</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2018-08-09&#32;15:23:30>更新于 2018-08-09</span>
+      </div>
+      <div class="post-info-license "><span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://example.org/posts/cf758d-ability-to-convert-%E8%B4%AA%E5%BF%83%E6%A8%A1%E6%8B%9F/" data-title="CF758D Ability To Convert(贪心模拟)" data-hashtags="算法,贪心,模拟"><i class="fa-brands fa-twitter fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://example.org/posts/cf758d-ability-to-convert-%E8%B4%AA%E5%BF%83%E6%A8%A1%E6%8B%9F/" data-hashtag="算法"><i class="fa-brands fa-facebook-square fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="http://example.org/posts/cf758d-ability-to-convert-%E8%B4%AA%E5%BF%83%E6%A8%A1%E6%8B%9F/" data-title="CF758D Ability To Convert(贪心模拟)" data-web><i class="fa-brands fa-whatsapp fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://example.org/posts/cf758d-ability-to-convert-%E8%B4%AA%E5%BF%83%E6%A8%A1%E6%8B%9F/" data-title="CF758D Ability To Convert(贪心模拟)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://example.org/posts/cf758d-ability-to-convert-%E8%B4%AA%E5%BF%83%E6%A8%A1%E6%8B%9F/" data-title="CF758D Ability To Convert(贪心模拟)"><i class="fa-brands fa-weibo fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="http://example.org/posts/cf758d-ability-to-convert-%E8%B4%AA%E5%BF%83%E6%A8%A1%E6%8B%9F/" data-title="CF758D Ability To Convert(贪心模拟)" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a>
+  <a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="http://example.org/posts/cf758d-ability-to-convert-%E8%B4%AA%E5%BF%83%E6%A8%A1%E6%8B%9F/" data-title="CF758D Ability To Convert(贪心模拟)" data-description=""><i class="fa-brands fa-blogger fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="http://example.org/posts/cf758d-ability-to-convert-%E8%B4%AA%E5%BF%83%E6%A8%A1%E6%8B%9F/" data-title="CF758D Ability To Convert(贪心模拟)"><i class="fa-brands fa-evernote fa-fw"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E8%B4%AA%E5%BF%83/">贪心</a>,&nbsp;<a href="/tags/%E6%A8%A1%E6%8B%9F/">模拟</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/usaco1-5-%E5%9B%9E%E6%96%87%E8%B4%A8%E6%95%B0-prime-palindromes/" class="prev" rel="prev" title="[USACO1.5]回文质数 Prime Palindromes"><i class="fa-solid fa-angle-left fa-fw"></i>[USACO1.5]回文质数 Prime Palindromes</a>
+      <a href="/posts/%E6%B4%9B%E8%B0%B7p1618-%E4%B8%89%E8%BF%9E%E5%87%BB-%E5%8D%87%E7%BA%A7%E7%89%88-%E6%9A%B4%E5%8A%9B%E5%85%A8%E6%8E%92%E5%88%97%E6%9E%9A%E4%B8%BE/" class="next" rel="next" title="洛谷P1618 三连击(升级版) (暴力全排列枚举)">洛谷P1618 三连击(升级版) (暴力全排列枚举)<i class="fa-solid fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/Lruihao/FixIt" target="_blank" rel="external nofollow noopener noreferrer" title="FixIt v0.2.15-RC"><img class="fixit-icon" src="/images/fixit.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright"><i class="fa-regular fa-copyright fa-fw"></i>
+            <span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">
+              <a
+  href="/"
+  
+  
+  
+  
+  
+>coldheart</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets">
+  <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+      <i class="fa-solid fa-arrow-up fa-fw"></i>
+    </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+      <i class="fa-solid fa-comment fa-fw"></i>
+    </a>
+  </div><div id="mask"></div>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/sharer/sharer.min.js" async defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":100},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"enablePWA":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="/js/_custom.min.js" defer></script></body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>VOJ Aggressive Cows(二分法查找最小值最大) - coldheart&#39;s blog</title><meta name="author" content="coldheart">
+<meta name="author-link" content="">
+<meta name="description" content="VOJ Aggressive cows 描述 Farmer John has built a new long barn, with N (2 &lt;= N &lt;= 100,000) stalls. The stalls are located along a straight line at positions x1,&hellip;,xN (0 &lt;= xi &lt;= 1,000,000,000). His C (2 &lt;= C &lt;= N) cows don&rsquo;t like this barn layout and become aggressive towards each other once put into a stall. To prevent the cows from hurting each other, FJ" /><meta name="keywords" content='算法, 二分查找' /><meta itemprop="name" content="VOJ Aggressive Cows(二分法查找最小值最大)">
+<meta itemprop="description" content="VOJ Aggressive cows 描述 Farmer John has built a new long barn, with N (2 &lt;= N &lt;= 100,000) stalls. The stalls are located along a straight line at positions x1,&hellip;,xN (0 &lt;= xi &lt;= 1,000,000,000). His C (2 &lt;= C &lt;= N) cows don&rsquo;t like this barn layout and become aggressive towards each other once put into a stall. To prevent the cows from hurting each other, FJ"><meta itemprop="datePublished" content="2018-07-28T10:15:27+00:00" />
+<meta itemprop="dateModified" content="2018-07-28T10:15:27+00:00" />
+<meta itemprop="wordCount" content="685"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="算法,二分查找," /><meta property="og:title" content="VOJ Aggressive Cows(二分法查找最小值最大)" />
+<meta property="og:description" content="VOJ Aggressive cows 描述 Farmer John has built a new long barn, with N (2 &lt;= N &lt;= 100,000) stalls. The stalls are located along a straight line at positions x1,&hellip;,xN (0 &lt;= xi &lt;= 1,000,000,000). His C (2 &lt;= C &lt;= N) cows don&rsquo;t like this barn layout and become aggressive towards each other once put into a stall. To prevent the cows from hurting each other, FJ" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/voj-aggressive-cows-%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-07-28T10:15:27+00:00" />
+<meta property="article:modified_time" content="2018-07-28T10:15:27+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="VOJ Aggressive Cows(二分法查找最小值最大)"/>
+<meta name="twitter:description" content="VOJ Aggressive cows 描述 Farmer John has built a new long barn, with N (2 &lt;= N &lt;= 100,000) stalls. The stalls are located along a straight line at positions x1,&hellip;,xN (0 &lt;= xi &lt;= 1,000,000,000). His C (2 &lt;= C &lt;= N) cows don&rsquo;t like this barn layout and become aggressive towards each other once put into a stall. To prevent the cows from hurting each other, FJ"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/voj-aggressive-cows-%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7/" /><link rel="prev" href="http://example.org/posts/zcmu1880-wjw%E7%9A%84%E7%81%AB%E8%BD%A6%E7%AB%99-%E6%A0%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/" /><link rel="next" href="http://example.org/posts/voj-expanding-rods-%E4%BA%8C%E5%88%86%E6%B3%95%E8%A7%A3%E6%96%B9%E7%A8%8B/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "VOJ Aggressive Cows(二分法查找最小值最大)",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/voj-aggressive-cows-%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7\/"
+    },"genre": "posts","keywords": "算法, 二分查找","wordcount":  685 ,
+    "url": "http:\/\/example.org\/posts\/voj-aggressive-cows-%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7\/","datePublished": "2018-07-28T10:15:27+00:00","dateModified": "2018-07-28T10:15:27+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "coldheart"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="coldheart&#39;s blog"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/images/fixit.svg"
+    data-srcset="/images/fixit.svg, /images/fixit.svg 1.5x, /images/fixit.svg 2x"
+    data-sizes="auto"
+    alt="coldheart&#39;s blog"
+    title="coldheart&#39;s blog" /><span class="header-title-text">coldheart&#39;s blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >文章</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >分类</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >标签</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="coldheart&#39;s blog"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/images/fixit.svg"
+    data-srcset="/images/fixit.svg, /images/fixit.svg 1.5x, /images/fixit.svg 2x"
+    data-sizes="auto"
+    alt="/images/fixit.svg"
+    title="/images/fixit.svg" /><span class="header-title-text">coldheart&#39;s blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >文章</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >分类</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >标签</a></li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录 <i class="toc-icon fa-solid fa-angle-down fa-fw"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
+        <span>VOJ Aggressive Cows(二分法查找最小值最大)</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle"></i>
+      coldheart</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E7%AE%97%E6%B3%95/"><i class="fa-regular fa-folder fa-fw"></i>&nbsp;算法</a></span></div>
+      <div class="post-meta-line"><span title=2018-07-28&#32;10:15:27>
+            <i class="fa-regular fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2018-07-28" >2018-07-28</time>
+          </span>&nbsp;<i class="fa-solid fa-pencil-alt fa-fw"></i>&nbsp;约 685 字&nbsp;
+        <i class="fa-regular fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#描述">描述</a></li>
+    <li><a href="#input">Input</a></li>
+    <li><a href="#output">Output</a></li>
+    <li><a href="#sample-input">Sample Input</a></li>
+    <li><a href="#sample-output">Sample Output</a></li>
+    <li><a href="#题意">题意</a></li>
+    <li><a href="#思路">思路</a></li>
+    <li><a href="#注意">注意</a></li>
+    <li><a href="#代码">代码</a></li>
+  </ul>
+</nav></div>
+      </div><div
+      class="content"
+      id="content"
+      
+      
+    ><h1 id="voj-aggressive-cows">VOJ Aggressive cows</h1>
+<h2 id="描述">描述</h2>
+<blockquote>
+<p>Farmer John has built a new long barn, with N (2 &lt;= N &lt;= 100,000) stalls. The stalls are located along a straight line at positions x1,&hellip;,xN (0 &lt;= xi &lt;= 1,000,000,000).  His C (2 &lt;= C &lt;= N) cows don&rsquo;t like this barn layout and become aggressive towards each other once put into a stall. To prevent the cows from hurting each other, FJ want to assign the cows to the stalls, such that the minimum distance between any two of them is as large as possible. What is the largest minimum distance?</p>
+</blockquote>
+<h2 id="input">Input</h2>
+<blockquote>
+<p>Line 1: Two space-separated integers: N and C </p>
+<p>Lines 2..N+1: Line i+1 contains an integer stall location, xi</p>
+</blockquote>
+<h2 id="output">Output</h2>
+<blockquote>
+<p>Line 1: One integer: the largest minimum distance</p>
+</blockquote>
+<h2 id="sample-input">Sample Input</h2>
+<pre tabindex="0"><code>5 3
+1
+2
+8
+4
+9
+</code></pre><h2 id="sample-output">Sample Output</h2>
+<pre tabindex="0"><code>3
+</code></pre><h2 id="题意">题意</h2>
+<p>有N个房间，距离不定，往这N个房间中放C头牛，问怎么放可以使牛与牛之间的最小距离最大（前提是C头牛都放进去了）。</p>
+<h2 id="思路">思路</h2>
+<p>二分查找解最小值最大问题。</p>
+<p>查找一个mid对应为牛与牛之间距离最小值，设置二分下界为0，上届为所有房间中最大距离。</p>
+<p>先对所有房间排序，然后从第一个房间遍历所有房间，每次查询一个房间，判断它能否塞一头牛（条件为该牛与上一头牛之间距离大于等于mid），若不能，继续查找下一个房间；若能，记下放牛个数，并刷新距离计数器为下一头牛与该牛的距离。直至遍历结束。判断放了几头牛，若个没放满，说明假设的mid太大了，需要mid=right-1；若正好放了C头牛或多放了，mid都可能还可以增大，因此先记录mid，再让mid=left-1。一路搜索，直到left&gt;right。</p>
+<h2 id="注意">注意</h2>
+<p>left+1前需要先记录mid，以免丢失正确答案。</p>
+<h2 id="代码">代码</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;cstring&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">s</span><span class="p">[</span><span class="mi">100005</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">INF</span><span class="o">=</span><span class="mh">0x3ffff</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">c</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">minLen</span><span class="p">(</span><span class="kt">int</span> <span class="n">nowLen</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">nowPoi</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="c1">//初始化
+</span><span class="c1"></span>	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;)</span><span class="c1">//第i个仓库
+</span><span class="c1"></span>	<span class="p">{</span>
+		<span class="k">while</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;</span><span class="n">nowLen</span><span class="o">+</span><span class="n">nowPoi</span><span class="p">)</span><span class="c1">//while不能安排到第i个仓库
+</span><span class="c1"></span>            <span class="n">i</span><span class="o">++</span><span class="p">;</span><span class="c1">//跳到下一个仓库
+</span><span class="c1"></span>        <span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="c1">//计安排了几只羊的记数器+1
+</span><span class="c1"></span>        <span class="c1">//cout&lt;&lt;&#34;sum-&#34;&lt;&lt;sum&lt;&lt;endl;
+</span><span class="c1"></span>		<span class="n">nowPoi</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">fill</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">n</span><span class="p">,</span><span class="n">INF</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d %d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">,</span><span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">n</span><span class="p">);</span>
+	<span class="kt">int</span> <span class="n">r</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">-</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">l</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">ans</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="k">while</span><span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">mid</span><span class="o">=</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+		<span class="kt">int</span> <span class="n">num</span><span class="o">=</span><span class="n">minLen</span><span class="p">(</span><span class="n">mid</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">&gt;=</span><span class="n">c</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">ans</span><span class="o">=</span><span class="n">mid</span><span class="p">;</span>
+			<span class="n">l</span><span class="o">=</span><span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="k">else</span>
+			<span class="n">r</span><span class="o">=</span><span class="n">mid</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">ans</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2018-07-28&#32;10:15:27>更新于 2018-07-28</span>
+      </div>
+      <div class="post-info-license "><span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://example.org/posts/voj-aggressive-cows-%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7/" data-title="VOJ Aggressive Cows(二分法查找最小值最大)" data-hashtags="算法,二分查找"><i class="fa-brands fa-twitter fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://example.org/posts/voj-aggressive-cows-%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7/" data-hashtag="算法"><i class="fa-brands fa-facebook-square fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="http://example.org/posts/voj-aggressive-cows-%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7/" data-title="VOJ Aggressive Cows(二分法查找最小值最大)" data-web><i class="fa-brands fa-whatsapp fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://example.org/posts/voj-aggressive-cows-%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7/" data-title="VOJ Aggressive Cows(二分法查找最小值最大)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://example.org/posts/voj-aggressive-cows-%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7/" data-title="VOJ Aggressive Cows(二分法查找最小值最大)"><i class="fa-brands fa-weibo fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="http://example.org/posts/voj-aggressive-cows-%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7/" data-title="VOJ Aggressive Cows(二分法查找最小值最大)" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a>
+  <a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="http://example.org/posts/voj-aggressive-cows-%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7/" data-title="VOJ Aggressive Cows(二分法查找最小值最大)" data-description=""><i class="fa-brands fa-blogger fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="http://example.org/posts/voj-aggressive-cows-%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7/" data-title="VOJ Aggressive Cows(二分法查找最小值最大)"><i class="fa-brands fa-evernote fa-fw"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">二分查找</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/zcmu1880-wjw%E7%9A%84%E7%81%AB%E8%BD%A6%E7%AB%99-%E6%A0%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/" class="prev" rel="prev" title="ZCMU1880 wjw的火车站(栈的基本应用)"><i class="fa-solid fa-angle-left fa-fw"></i>ZCMU1880 wjw的火车站(栈的基本应用)</a>
+      <a href="/posts/voj-expanding-rods-%E4%BA%8C%E5%88%86%E6%B3%95%E8%A7%A3%E6%96%B9%E7%A8%8B/" class="next" rel="next" title="VOJ Expanding Rods(二分法解方程)">VOJ Expanding Rods(二分法解方程)<i class="fa-solid fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/Lruihao/FixIt" target="_blank" rel="external nofollow noopener noreferrer" title="FixIt v0.2.15-RC"><img class="fixit-icon" src="/images/fixit.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright"><i class="fa-regular fa-copyright fa-fw"></i>
+            <span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">
+              <a
+  href="/"
+  
+  
+  
+  
+  
+>coldheart</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets">
+  <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+      <i class="fa-solid fa-arrow-up fa-fw"></i>
+    </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+      <i class="fa-solid fa-comment fa-fw"></i>
+    </a>
+  </div><div id="mask"></div>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/sharer/sharer.min.js" async defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":100},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"enablePWA":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="/js/_custom.min.js" defer></script></body>
+</html>

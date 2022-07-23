@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>ACM - 标签 - coldheart&#39;s blog</title>
+    <link>http://example.org/tags/acm/</link>
+    <description>ACM - 标签 - coldheart&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 22 Jul 2018 18:45:32 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/acm/" rel="self" type="application/rss+xml" /><item>
+  <title>洛谷P1060 开心的金明</title>
+  <link>http://example.org/posts/%E6%B4%9B%E8%B0%B7p1060-%E5%BC%80%E5%BF%83%E7%9A%84%E9%87%91%E6%98%8E/</link>
+  <pubDate>Sun, 22 Jul 2018 18:45:32 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/%E6%B4%9B%E8%B0%B7p1060-%E5%BC%80%E5%BF%83%E7%9A%84%E9%87%91%E6%98%8E/</guid>
+  <description><![CDATA[洛谷P1060 开心的金明 题目描述 金明今天很开心，家里购置的新房就要领钥匙了，新房里有一间他自己专用的很宽敞的房间。更让他高兴的是，妈妈昨天对]]></description>
+</item><item>
+  <title>ZCMU1980 不存在的泳池</title>
+  <link>http://example.org/posts/zcmu1980-%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E6%B3%B3%E6%B1%A0/</link>
+  <pubDate>Sun, 22 Jul 2018 14:21:24 &#43;0000</pubDate>
+  <author>coldheart</author>
+  <guid>http://example.org/posts/zcmu1980-%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E6%B3%B3%E6%B1%A0/</guid>
+  <description><![CDATA[ZCMU 1980 不存在的泳池 Description 小w是云南中医学院的同学，有一天他看到了学校的百度百科介绍： 截止到2014年5月，云南中医学院图书馆纸本藏书74.8457]]></description>
+</item></channel>
+</rss>

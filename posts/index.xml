@@ -3,7 +3,14 @@
     <title>所有文章 - coldheart&#39;s blog</title>
     <link>http://example.org/posts/</link>
     <description>所有文章 | coldheart&#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 23 Jul 2022 14:16:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 19 Oct 2022 17:50:20 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+  <title>我的linux工具</title>
+  <link>http://example.org/posts/%E6%88%91%E7%9A%84linux%E5%B7%A5%E5%85%B7/</link>
+  <pubDate>Wed, 19 Oct 2022 17:50:20 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://example.org/posts/%E6%88%91%E7%9A%84linux%E5%B7%A5%E5%85%B7/</guid>
+  <description><![CDATA[]]></description>
+</item><item>
   <title>admonition</title>
   <link>http://example.org/posts/my-first-post/</link>
   <pubDate>Sat, 23 Jul 2022 14:16:00 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
   <author>coldheart</author>
   <guid>http://example.org/posts/%E6%B4%9B%E8%B0%B7p1618-%E4%B8%89%E8%BF%9E%E5%87%BB-%E5%8D%87%E7%BA%A7%E7%89%88-%E6%9A%B4%E5%8A%9B%E5%85%A8%E6%8E%92%E5%88%97%E6%9E%9A%E4%B8%BE/</guid>
   <description><![CDATA[洛谷P1618 三连击(升级版) (暴力全排列枚举) 题目描述 将1，2，…，9共9个数分成三组，分别组成三个三位数，且使这三个三位数的比例是A:B]]></description>
-</item><item>
-  <title>CF758D Ability To Convert(贪心模拟)</title>
-  <link>http://example.org/posts/cf758d-ability-to-convert-%E8%B4%AA%E5%BF%83%E6%A8%A1%E6%8B%9F/</link>
-  <pubDate>Thu, 09 Aug 2018 15:23:30 &#43;0000</pubDate>
-  <author>coldheart</author>
-  <guid>http://example.org/posts/cf758d-ability-to-convert-%E8%B4%AA%E5%BF%83%E6%A8%A1%E6%8B%9F/</guid>
-  <description><![CDATA[CF758D Ability To Convert(贪心模拟) 题目描述 Alexander is learning how to convert numbers from the decimal system to any other, however, he doesn&rsquo;t know English letters, so he writes any number only as a decimal number, it means that instead of the letter A he will write the number 10. Thus, by converting the number 475]]></description>
 </item></channel>
 </rss>

@@ -2,14 +2,18 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
   ><url>
+      <loc>http://example.org/categories/</loc><lastmod>2022-10-19T17:50:20&#43;08:00</lastmod></url><url>
       <loc>http://example.org/</loc><lastmod>2022-10-19T17:50:20&#43;08:00</lastmod></url><url>
+      <loc>http://example.org/tags/linux/</loc><lastmod>2022-10-19T17:50:20&#43;08:00</lastmod></url><url>
+      <loc>http://example.org/categories/linux/</loc><lastmod>2022-10-19T17:50:20&#43;08:00</lastmod></url><url>
       <loc>http://example.org/posts/</loc><lastmod>2022-10-19T17:50:20&#43;08:00</lastmod></url><url>
+      <loc>http://example.org/tags/</loc><lastmod>2022-10-19T17:50:20&#43;08:00</lastmod></url><url>
+      <loc>http://example.org/tags/%E5%B7%A5%E5%85%B7/</loc><lastmod>2022-10-19T17:50:20&#43;08:00</lastmod></url><url>
       <loc>http://example.org/posts/%E6%88%91%E7%9A%84linux%E5%B7%A5%E5%85%B7/</loc><lastmod>2022-10-19T17:50:20&#43;08:00</lastmod></url><url>
+      <loc>http://example.org/tags/%E6%95%88%E7%8E%87/</loc><lastmod>2022-10-19T17:50:20&#43;08:00</lastmod></url><url>
       <loc>http://example.org/friends/</loc><lastmod>2022-08-01T15:49:08&#43;08:00</lastmod></url><url>
       <loc>http://example.org/posts/my-first-post/</loc><lastmod>2022-07-23T14:16:00&#43;08:00</lastmod></url><url>
-      <loc>http://example.org/categories/</loc><lastmod>2018-11-26T17:30:39&#43;00:00</lastmod></url><url>
       <loc>http://example.org/tags/dfs/</loc><lastmod>2018-11-26T17:30:39&#43;00:00</lastmod></url><url>
-      <loc>http://example.org/tags/</loc><lastmod>2018-11-26T17:30:39&#43;00:00</lastmod></url><url>
       <loc>http://example.org/tags/%E7%AE%97%E6%B3%95/</loc><lastmod>2018-11-26T17:30:39&#43;00:00</lastmod></url><url>
       <loc>http://example.org/categories/%E7%AE%97%E6%B3%95/</loc><lastmod>2018-11-26T17:30:39&#43;00:00</lastmod></url><url>
       <loc>http://example.org/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/</loc><lastmod>2018-11-26T17:30:39&#43;00:00</lastmod></url><url>

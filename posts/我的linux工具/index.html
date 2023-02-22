@@ -11,7 +11,7 @@
 <meta name="description" content="This is My New Hugo Site" /><meta name="keywords" content='效率, 工具, Linux' /><meta itemprop="name" content="我的linux工具">
 <meta itemprop="description" content=""><meta itemprop="datePublished" content="2022-10-19T17:50:20+08:00" />
 <meta itemprop="dateModified" content="2022-10-19T17:50:20+08:00" />
-<meta itemprop="wordCount" content="143"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="wordCount" content="545"><meta itemprop="image" content="http://example.org/logo.png"/>
 <meta itemprop="keywords" content="效率,工具,Linux," /><meta property="og:title" content="我的linux工具" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="article" />
@@ -36,7 +36,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/example.org\/posts\/%E6%88%91%E7%9A%84linux%E5%B7%A5%E5%85%B7\/"
-    },"genre": "posts","keywords": "效率, 工具, Linux","wordcount":  143 ,
+    },"genre": "posts","keywords": "效率, 工具, Linux","wordcount":  545 ,
     "url": "http:\/\/example.org\/posts\/%E6%88%91%E7%9A%84linux%E5%B7%A5%E5%85%B7\/","datePublished": "2022-10-19T17:50:20+08:00","dateModified": "2022-10-19T17:50:20+08:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -183,8 +183,8 @@
           <span class="post-category">收录于 <a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw"></i>&nbsp;Linux</a></span></div>
       <div class="post-meta-line"><span title=2022-10-19&#32;17:50:20>
             <i class="fa-regular fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-10-19" >2022-10-19</time>
-          </span>&nbsp;<i class="fa-solid fa-pencil-alt fa-fw"></i>&nbsp;约 143 字&nbsp;
-        <i class="fa-regular fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+          </span>&nbsp;<i class="fa-solid fa-pencil-alt fa-fw"></i>&nbsp;约 545 字&nbsp;
+        <i class="fa-regular fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
     </div><div class="details toc" id="toc-static" kept="false">
         <div class="details-summary toc-title">
           <span>目录</span>
@@ -192,28 +192,30 @@
         </div>
         <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#shell">shell</a></li>
-    <li><a href="#窗口和后台">窗口和后台</a>
+    <li><a href="#1-科学上网">1 🌐科学上网</a>
       <ul>
-        <li><a href="#byobu">Byobu</a></li>
-        <li><a href="#screen">Screen</a></li>
+        <li></li>
       </ul>
     </li>
-    <li><a href="#高亮">高亮</a>
+    <li><a href="#2-shell">2 💻shell</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#3-窗口和后台">3 🪟窗口和后台</a>
+      <ul>
+        <li><a href="#byobu">Byobu</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-高亮">3 💅高亮</a>
       <ul>
         <li><a href="#man高亮">man高亮</a></li>
         <li><a href="#vim高亮">vim高亮</a></li>
       </ul>
     </li>
-    <li><a href="#thefuck">thefuck</a></li>
-    <li><a href="#资源监控">资源监控</a>
+    <li><a href="#4-资源监控">4 📺资源监控</a>
       <ul>
         <li><a href="#glances">glances</a></li>
-      </ul>
-    </li>
-    <li><a href="#科学上网">科学上网</a>
-      <ul>
-        <li><a href="#clash">clash</a></li>
       </ul>
     </li>
   </ul>
@@ -223,25 +225,121 @@
       id="content"
       
       
-    ><h2 id="shell">shell</h2>
+    ><h2 id="1-科学上网">1 🌐科学上网</h2>
+<h4 id="clash">clash</h4>
 <ol>
-<li>zsh</li>
-<li>oh-my-zsh</li>
-<li>power10k
-<ul>
-<li>pure主题</li>
-</ul>
-</li>
-<li>插件
-<ul>
-<li>自动补全</li>
-<li>高亮</li>
-</ul>
-</li>
+<li>在 Clash <a
+  href="https://github.com/Dreamacro/clash/releases"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreferrer"
+  
+  
+  
+>release</a> 页面下载相应的版本，对于 Ubuntu 一般使用 <a
+  href="https://github.com/Dreamacro/clash/releases/download/v1.9.0/clash-linux-amd64-v1.9.0.gz"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreferrer"
+  
+  
+  
+>clash-linux-amd64-vX.X.X.gz</a> 版本：</li>
 </ol>
-<h2 id="窗口和后台">窗口和后台</h2>
+<pre tabindex="0"><code>wget https://github.com/Dreamacro/clash/releases/download/v1.10.0/clash-linux-amd64-v1.10.0.gz
+</code></pre><ol start="2">
+<li>然后使用 gunzip 命令解压，并重命名为 clash, 为 clash 添加可执行权限：：</li>
+</ol>
+<pre tabindex="0"><code>gunzip clash-linux-amd64-v1.10.0.gz
+mv clash-linux-amd64-v1.10.0 clash
+chmod u+x clash
+</code></pre><ol start="3">
+<li>Clash 运行时需要 Country.mmdb 文件，当第一次启动 Clash 时（使用 ./clash 命令） 会自动下载（会下载至 /home/XXX/.config/clash 文件夹下）。自动下载可能会因网络原因较慢，可以访问该<a
+  href="https://github.com/Dreamacro/maxmind-geoip/releases"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreferrer"
+  
+  
+  
+>链接</a>手动下载。</li>
+</ol>
+<blockquote>
+<p>Country.mmdb 文件利用 GeoIP2 服务能识别互联网用户的地点位置，以供规则分流时使用。</p>
+</blockquote>
+<ol start="4">
+<li>yaml配置文件位于<code>~/.config/clash</code></li>
+</ol>
+<h2 id="2-shell">2 💻shell</h2>
+<pre tabindex="0"><code>sudo apt install git
+sudo apt-get install -y zsh
+# 设置为默认shell
+$ chsh -s /usr/bin/zsh
+</code></pre><pre tabindex="0"><code>sh -c &quot;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;
+</code></pre><pre tabindex="0"><code>git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+</code></pre><ul>
+<li>在<code>~/.zshrc</code>修改主题<code>ZSH_THEME=&quot;powerlevel10k/powerlevel10k</code></li>
+<li><strong>pure主题</strong> <code>p10k configure</code>后检测字体图标全y后可选</li>
+</ul>
+<ol start="4">
+<li>插件</li>
+</ol>
+<pre tabindex="0"><code>git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+</code></pre><pre tabindex="0"><code>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+</code></pre><p>在<code>~/.zshrc</code>修改插件：<strong>plugins= (zsh-autosuggestions zsh-syntax-highlighting zsh-z)</strong></p>
+<h4 id="thefuck">thefuck</h4>
+<p>输错命令行指令后，输入<code>fuck</code>提示纠正
+<a
+  href="https://github.com/nvbn/thefuck"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreferrer"
+  
+  
+  
+>GitHub - nvbn/thefuck: Magnificent app which corrects your previous console command.</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># .zshrc</span>
+<span class="nb">eval</span> <span class="k">$(</span>thefuck --alias fuck<span class="k">)</span>
+</code></pre></div><h2 id="3-窗口和后台">3 🪟窗口和后台</h2>
 <h3 id="byobu">Byobu</h3>
-<p>byobu可以使用tmux作为后端，并且自带一套十分好用的配置。
+<p><a
+  href="https://www.google.com/url?q=https%3A%2F%2Flaunchpad.net%2Fubuntu%2F%2Bsource%2Fbyobu&amp;sa=D&amp;sntz=1&amp;usg=AOvVaw3BjCZ3H34c-z6M9za2-R4-"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreferrer"
+  
+  
+  
+>Ubuntu</a></p>
+<pre tabindex="0"><code>sudo apt-get install byobu
+byobu-enable
+按下F9修改具体配置
+</code></pre><p>byobu可以使用tmux作为后端，并且自带一套十分好用的配置。
 <a
   href="https://help.ubuntu.com/community/Byobu"
   
@@ -271,8 +369,7 @@
   
 >https://betterprogramming.pub/introduction-to-byobu-a-window-manager-and-terminal-multiplexer-d8ef0cc278d9</a>
 不知道为什么垂直分页快捷键<code>ctrl+F2</code>无效，改用<code>crtl+a %</code></p>
-<h3 id="screen">Screen</h3>
-<h2 id="高亮">高亮</h2>
+<h2 id="3-高亮">3 💅高亮</h2>
 <h3 id="man高亮">man高亮</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># .zshrc</span>
 <span class="nb">export</span> <span class="nv">LESS_TERMCAP_mb</span><span class="o">=</span><span class="s1">$&#39;\e[1;32m&#39;</span>
@@ -284,10 +381,7 @@
 <span class="nb">export</span> <span class="nv">LESS_TERMCAP_us</span><span class="o">=</span><span class="s1">$&#39;\e[1;4;31m&#39;</span>
 </code></pre></div><h3 id="vim高亮">vim高亮</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> syntax on
-</code></pre></div><h2 id="thefuck">thefuck</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># .zshrc</span>
-<span class="nb">eval</span> <span class="k">$(</span>thefuck --alias fuck<span class="k">)</span>
-</code></pre></div><h2 id="资源监控">资源监控</h2>
+</code></pre></div><h2 id="4-资源监控">4 📺资源监控</h2>
 <h3 id="glances">glances</h3>
 <p><a
   href="https://github.com/nicolargo/glances"
@@ -303,8 +397,8 @@
   
   
 >https://github.com/nicolargo/glances</a></p>
-<h2 id="科学上网">科学上网</h2>
-<h3 id="clash">clash</h3></div><div class="post-footer" id="post-footer">
+<pre tabindex="0"><code>pip install --user 'glances[gpu]'
+</code></pre><p>可能需要将bin文件加到环境变量中</p></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">

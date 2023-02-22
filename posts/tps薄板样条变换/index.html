@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>TPS薄板样条变换 - coldheart&#39;s blog</title><meta name="author" content="coldheart">
+<meta name="author-link" content="">
+<meta name="description" content="This is My New Hugo Site" /><meta name="keywords" content='Theme, Hugo' /><meta itemprop="name" content="TPS薄板样条变换">
+<meta itemprop="description" content=""><meta itemprop="datePublished" content="2022-10-19T20:50:41+08:00" />
+<meta itemprop="dateModified" content="2022-10-19T20:50:41+08:00" />
+<meta itemprop="wordCount" content="1140"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="" /><meta property="og:title" content="TPS薄板样条变换" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/tps%E8%96%84%E6%9D%BF%E6%A0%B7%E6%9D%A1%E5%8F%98%E6%8D%A2/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-19T20:50:41+08:00" />
+<meta property="article:modified_time" content="2022-10-19T20:50:41+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="TPS薄板样条变换"/>
+<meta name="twitter:description" content=""/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/tps%E8%96%84%E6%9D%BF%E6%A0%B7%E6%9D%A1%E5%8F%98%E6%8D%A2/" /><link rel="prev" href="http://example.org/posts/%E4%BF%AE%E6%94%B9hugo%E6%96%B0%E5%BB%BApost%E7%9A%84%E9%BB%98%E8%AE%A4%E4%BF%A1%E6%81%AF/" /><link rel="next" href="http://example.org/posts/%E5%9F%BA%E4%BA%8Epytorch%E6%A8%A1%E5%9E%8B%E7%9A%84web%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%92%8C%E9%83%A8%E7%BD%B2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "TPS薄板样条变换",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/tps%E8%96%84%E6%9D%BF%E6%A0%B7%E6%9D%A1%E5%8F%98%E6%8D%A2\/"
+    },"genre": "posts","wordcount":  1140 ,
+    "url": "http:\/\/example.org\/posts\/tps%E8%96%84%E6%9D%BF%E6%A0%B7%E6%9D%A1%E5%8F%98%E6%8D%A2\/","datePublished": "2022-10-19T20:50:41+08:00","dateModified": "2022-10-19T20:50:41+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "coldheart"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="coldheart&#39;s blog"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/images/fixit.svg"
+    data-srcset="/images/fixit.svg, /images/fixit.svg 1.5x, /images/fixit.svg 2x"
+    data-sizes="auto"
+    alt="coldheart&#39;s blog"
+    title="coldheart&#39;s blog" /><span class="header-title-text">coldheart&#39;s blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class='fa-solid fa-archive fa-fw fa-sm'></i> 文章</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class='fa-solid fa-tags fa-fw fa-sm'></i> 标签</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/friends/"
+                
+                
+              ><i class='fa-solid fa-info-circle fa-fw fa-sm'></i> 关于</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="coldheart&#39;s blog"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/images/fixit.svg"
+    data-srcset="/images/fixit.svg, /images/fixit.svg 1.5x, /images/fixit.svg 2x"
+    data-sizes="auto"
+    alt="/images/fixit.svg"
+    title="/images/fixit.svg" /><span class="header-title-text">coldheart&#39;s blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class='fa-solid fa-archive fa-fw fa-sm'></i> 文章</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class='fa-solid fa-tags fa-fw fa-sm'></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/friends/"
+                
+                
+              ><i class='fa-solid fa-info-circle fa-fw fa-sm'></i> 关于</a></li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录 <i class="toc-icon fa-solid fa-angle-down fa-fw"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
+        <span title="转载" class="icon-repost"><i class="fa-solid fa-share fa-fw"></i></span><span>TPS薄板样条变换</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle"></i>
+      coldheart</span></span></div>
+      <div class="post-meta-line"><span title=2022-10-19&#32;20:50:41>
+            <i class="fa-regular fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-10-19" >2022-10-19</time>
+          </span>&nbsp;<i class="fa-solid fa-pencil-alt fa-fw"></i>&nbsp;约 1140 字&nbsp;
+        <i class="fa-regular fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是图像扭曲问题">什么是图像扭曲问题？</a></li>
+    <li><a href="#径向基函数插值">径向基函数插值</a></li>
+    <li><a href="#thin-plate-spline">Thin Plate Spline</a></li>
+    <li><a href="#how-to-solve">How to solve</a></li>
+  </ul>
+</nav></div>
+      </div><div
+      class="content"
+      id="content"
+      
+      
+    ><p>$$
+\begin{equation*}
+\rho \frac{\mathrm{D} \mathbf{v}}{\mathrm{D} t}=\nabla \cdot \mathbb{P}+\rho \mathbf{f}
+\end{equation*}
+$$</p>
+<h2 id="什么是图像扭曲问题">什么是图像扭曲问题？</h2>
+<p>给定控制点$(x_i, y_i)$和相应位移点$(\Delta{x_i}, \Delta{y_i})$稀疏对应集，我们需要找到一个映射$f: (x,y) \to (x’, y’)$，且两点之间的$(x_i + \Delta{x_i}, y_i + \Delta{y_i})$尽可能平滑。</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://img-blog.csdnimg.cn/img_convert/e7669dfaa823282e79ac62d1fb0d88d3.png"
+    data-srcset="https://img-blog.csdnimg.cn/img_convert/e7669dfaa823282e79ac62d1fb0d88d3.png, https://img-blog.csdnimg.cn/img_convert/e7669dfaa823282e79ac62d1fb0d88d3.png 1.5x, https://img-blog.csdnimg.cn/img_convert/e7669dfaa823282e79ac62d1fb0d88d3.png 2x"
+    data-sizes="auto"
+    alt="https://img-blog.csdnimg.cn/img_convert/e7669dfaa823282e79ac62d1fb0d88d3.png"
+    title="一维空间举例，绿色为对应集，需找到蓝色曲线映射，满足形变后控制点重合且之间连线平滑" /></p>
+<h2 id="径向基函数插值">径向基函数插值</h2>
+<p>起初，我们只有一组稀疏的控制点对应信息。最简单的方法来推断其他点是一个线性插值，插值点将沿着连接最近的控制点的分段移动，如下所示。</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://img-blog.csdnimg.cn/img_convert/8330b0b575bd32e628a04983cdbd370f.png"
+    data-srcset="https://img-blog.csdnimg.cn/img_convert/8330b0b575bd32e628a04983cdbd370f.png, https://img-blog.csdnimg.cn/img_convert/8330b0b575bd32e628a04983cdbd370f.png 1.5x, https://img-blog.csdnimg.cn/img_convert/8330b0b575bd32e628a04983cdbd370f.png 2x"
+    data-sizes="auto"
+    alt="https://img-blog.csdnimg.cn/img_convert/8330b0b575bd32e628a04983cdbd370f.png"
+    title="一维空间举例，绿色为对应集，需找到蓝色曲线映射，满足形变后控制点重合且之间连线平滑" /></p>
+<p>然而，我们想要的是一个通过紧密控制点得到的平滑的插值函数，这就是径向基函数作用。</p>
+<p>以每个控制点为中心放一个核函数$R$，那么中间的点由$f(z)=\sumα_iR(z, x_i)$得到。其中 $α_i$ 是$x_i$点周围径向基核函数$r(x，x_i) $的权重。待变化的点$x$离控制点$x_i$越远，受内核影响的程度就越小。一些核由于其中心周围邻近点的密度和大小较大，对整体光滑轮廓的影响比其他核大。</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://img-blog.csdnimg.cn/f3f66349907843708b6dc5a4f22ce508.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAYzBsZEhFYXJ0,size_20,color_FFFFFF,t_70,g_se,x_16"
+    data-srcset="https://img-blog.csdnimg.cn/f3f66349907843708b6dc5a4f22ce508.png?x-oss-process=image/watermark%2ctype_ZHJvaWRzYW5zZmFsbGJhY2s%2cshadow_50%2ctext_Q1NETiBAYzBsZEhFYXJ0%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16, https://img-blog.csdnimg.cn/f3f66349907843708b6dc5a4f22ce508.png?x-oss-process=image/watermark%2ctype_ZHJvaWRzYW5zZmFsbGJhY2s%2cshadow_50%2ctext_Q1NETiBAYzBsZEhFYXJ0%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16 1.5x, https://img-blog.csdnimg.cn/f3f66349907843708b6dc5a4f22ce508.png?x-oss-process=image/watermark%2ctype_ZHJvaWRzYW5zZmFsbGJhY2s%2cshadow_50%2ctext_Q1NETiBAYzBsZEhFYXJ0%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16 2x"
+    data-sizes="auto"
+    alt="https://img-blog.csdnimg.cn/f3f66349907843708b6dc5a4f22ce508.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAYzBsZEhFYXJ0,size_20,color_FFFFFF,t_70,g_se,x_16"
+    title="经向基函数控制下" /></p>
+<p>假设有三个控制点，权重 $α_0$  ,$α_1$ , $α_2$将是下列线性系统的解</p>
+<p>$$
+% <!-- raw HTML omitted -->
+$$</p>
+<p>即$\vec{\alpha} = R^{-1}\times \vec{x}$</p>
+<p>径向基函数可以是高斯核$e^{\frac{-r^2}{2\sigma}}$或$r^2 log(r)$，这是一维情况下的TPS薄板样条函数。</p>
+<h2 id="thin-plate-spline">Thin Plate Spline</h2>
+<p>现在，介绍二维warp下的Thin Plate Spline warping。</p>
+<p>给定红色叉点和预期移动到的蓝色圆点，我们想解得两个光滑函数，采样后使得其他离散点可沿$x$和$y$方向位移（图中箭头）。</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://khanhha.github.io/assets/images/tps/2019-d278d8c0.png"
+    data-srcset="https://khanhha.github.io/assets/images/tps/2019-d278d8c0.png, https://khanhha.github.io/assets/images/tps/2019-d278d8c0.png 1.5x, https://khanhha.github.io/assets/images/tps/2019-d278d8c0.png 2x"
+    data-sizes="auto"
+    alt="https://khanhha.github.io/assets/images/tps/2019-d278d8c0.png"
+    title="https://khanhha.github.io/assets/images/tps/2019-d278d8c0.png" /></p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://img-blog.csdnimg.cn/85aa44a2783c4346bca2a9fdd362d804.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAYzBsZEhFYXJ0,size_20,color_FFFFFF,t_70,g_se,x_16"
+    data-srcset="https://img-blog.csdnimg.cn/85aa44a2783c4346bca2a9fdd362d804.png?x-oss-process=image/watermark%2ctype_ZHJvaWRzYW5zZmFsbGJhY2s%2cshadow_50%2ctext_Q1NETiBAYzBsZEhFYXJ0%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16, https://img-blog.csdnimg.cn/85aa44a2783c4346bca2a9fdd362d804.png?x-oss-process=image/watermark%2ctype_ZHJvaWRzYW5zZmFsbGJhY2s%2cshadow_50%2ctext_Q1NETiBAYzBsZEhFYXJ0%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16 1.5x, https://img-blog.csdnimg.cn/85aa44a2783c4346bca2a9fdd362d804.png?x-oss-process=image/watermark%2ctype_ZHJvaWRzYW5zZmFsbGJhY2s%2cshadow_50%2ctext_Q1NETiBAYzBsZEhFYXJ0%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16 2x"
+    data-sizes="auto"
+    alt="https://img-blog.csdnimg.cn/85aa44a2783c4346bca2a9fdd362d804.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAYzBsZEhFYXJ0,size_20,color_FFFFFF,t_70,g_se,x_16"
+    title="https://img-blog.csdnimg.cn/85aa44a2783c4346bca2a9fdd362d804.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAYzBsZEhFYXJ0,size_20,color_FFFFFF,t_70,g_se,x_16" /></p>
+<p>两个光滑函数如下所示</p>
+<p>$$
+f_{x'}(x,y) = a_1 + a_xx +a_yy + \sum_{i=1}^N{w_i U(||(x_i, y_i) - (x,y)||)}
+\<br>
+f_{y'}(x,y) = a_1 + a_xx +a_yy + \sum_{i=1}^N{w_i U(||(x_i, y_i) - (x,y)||)}
+$$</p>
+<p>其中前三个系数$(a_1, a_x, a_y)$表示能通过所有控制点$(x_i, y_i)$最逼近$x'$（或$y'$）的线性平面，$w_i$表示每个控制点的控制权重，$U(||((x_i, y_i) - (x,y))||)$表示核函数，例如薄板样条核$U(r) = r^2log(r)$，接受的参数为待移动点与控制点的距离$||((x_i, y_i) - (x,y))||$，下图为薄板样条核可视化，待变换点离内核中心(控制点)越近，它的高度或返回值就越高。</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://khanhha.github.io/assets/images/tps/2019-8076195d.png"
+    data-srcset="https://khanhha.github.io/assets/images/tps/2019-8076195d.png, https://khanhha.github.io/assets/images/tps/2019-8076195d.png 1.5x, https://khanhha.github.io/assets/images/tps/2019-8076195d.png 2x"
+    data-sizes="auto"
+    alt="https://khanhha.github.io/assets/images/tps/2019-8076195d.png"
+    title="薄板样条核可视化" /></p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://khanhha.github.io/assets/images/tps/2019-18b0ca24.png"
+    data-srcset="https://khanhha.github.io/assets/images/tps/2019-18b0ca24.png, https://khanhha.github.io/assets/images/tps/2019-18b0ca24.png 1.5x, https://khanhha.github.io/assets/images/tps/2019-18b0ca24.png 2x"
+    data-sizes="auto"
+    alt="https://khanhha.github.io/assets/images/tps/2019-18b0ca24.png"
+    title="所有的核函数乘以它们相应的权值后的样子" /></p>
+<h2 id="how-to-solve">How to solve</h2>
+<p>每个薄板样条函数的系数$(a,a_x,a_y,w_i)$由以下线性系统解出</p>
+<p>$$
+% <!-- raw HTML omitted -->
+$$</p>
+<p>其中$K_{ij} = U(distance((x_i,y_i), (x_j, y_j))$,$P$由$(1,x_i,y_i)$组成</p>
+<p>$v$是所有控制点组成的向量。第一行$[K \ \ P]\times[v, o]^T$表示由所有$(x_i,y_i)$替代得到的函数$f_{x'}$或$f_{y'}$</p>
+<p>$$
+f_{x'}(x,y) = a_1 + a_xx +a_yy + \sum_{i=1}^N{w_i U(||(x_i, y_i) - (x,y)||)}
+$$</p>
+<p>$$
+f_{y'}(x,y) = a_1 + a_xx +a_yy + \sum_{i=1}^N{w_i U(||(x_i, y_i) - (x,y)||)}
+$$</p>
+<p>第二行$[P^T\ \ O]$表示系统的额外约束，解释见原paper</p>
+<p>$$
+\sum_{i=1}^N{w_i} = 0 \ \ \ \ \ \ (1)
+$$</p>
+<p>$$
+\sum_{i=1}^N{w_ix_i} = \sum_{i=1}^N{w_iy_i} = 0 \ \ \ \ \ \ (2)
+$$</p>
+<p>假设有三个控制点，则线性系统如下</p>
+<p>$$
+% <!-- raw HTML omitted -->
+$$</p>
+<p>$$
+% <!-- raw HTML omitted -->
+$$</p>
+<p>总结如下：</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy8wQkJyc0tmRmNWbjBUQXlseXFuQkhNdzdzd0h5ejJQcWFHUDd6MTFZUlh5akV4Skh2dU5yTGd4TnBWa3Z1aWNyMTl2OHZRaWJVdkZUeEtQOFc2YmxKZkp3LzY0MA?x-oss-process=image/format,png"
+    data-srcset="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy8wQkJyc0tmRmNWbjBUQXlseXFuQkhNdzdzd0h5ejJQcWFHUDd6MTFZUlh5akV4Skh2dU5yTGd4TnBWa3Z1aWNyMTl2OHZRaWJVdkZUeEtQOFc2YmxKZkp3LzY0MA?x-oss-process=image/format%2cpng, https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy8wQkJyc0tmRmNWbjBUQXlseXFuQkhNdzdzd0h5ejJQcWFHUDd6MTFZUlh5akV4Skh2dU5yTGd4TnBWa3Z1aWNyMTl2OHZRaWJVdkZUeEtQOFc2YmxKZkp3LzY0MA?x-oss-process=image/format%2cpng 1.5x, https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy8wQkJyc0tmRmNWbjBUQXlseXFuQkhNdzdzd0h5ejJQcWFHUDd6MTFZUlh5akV4Skh2dU5yTGd4TnBWa3Z1aWNyMTl2OHZRaWJVdkZUeEtQOFc2YmxKZkp3LzY0MA?x-oss-process=image/format%2cpng 2x"
+    data-sizes="auto"
+    alt="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy8wQkJyc0tmRmNWbjBUQXlseXFuQkhNdzdzd0h5ejJQcWFHUDd6MTFZUlh5akV4Skh2dU5yTGd4TnBWa3Z1aWNyMTl2OHZRaWJVdkZUeEtQOFc2YmxKZkp3LzY0MA?x-oss-process=image/format,png"
+    title="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy8wQkJyc0tmRmNWbjBUQXlseXFuQkhNdzdzd0h5ejJQcWFHUDd6MTFZUlh5akV4Skh2dU5yTGd4TnBWa3Z1aWNyMTl2OHZRaWJVdkZUeEtQOFc2YmxKZkp3LzY0MA?x-oss-process=image/format,png" /></p>
+<p>由LW=Y解得W矩阵：</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy8wQkJyc0tmRmNWbjBUQXlseXFuQkhNdzdzd0h5ejJQcXU1SzdiamNFNXhiN2RsOVFKNWE4SFIzb05LQW41c3FoRU50M1RxMWxJd29CS0JrZHd4Qk5rZy82NDA?x-oss-process=image/format,png"
+    data-srcset="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy8wQkJyc0tmRmNWbjBUQXlseXFuQkhNdzdzd0h5ejJQcXU1SzdiamNFNXhiN2RsOVFKNWE4SFIzb05LQW41c3FoRU50M1RxMWxJd29CS0JrZHd4Qk5rZy82NDA?x-oss-process=image/format%2cpng, https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy8wQkJyc0tmRmNWbjBUQXlseXFuQkhNdzdzd0h5ejJQcXU1SzdiamNFNXhiN2RsOVFKNWE4SFIzb05LQW41c3FoRU50M1RxMWxJd29CS0JrZHd4Qk5rZy82NDA?x-oss-process=image/format%2cpng 1.5x, https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy8wQkJyc0tmRmNWbjBUQXlseXFuQkhNdzdzd0h5ejJQcXU1SzdiamNFNXhiN2RsOVFKNWE4SFIzb05LQW41c3FoRU50M1RxMWxJd29CS0JrZHd4Qk5rZy82NDA?x-oss-process=image/format%2cpng 2x"
+    data-sizes="auto"
+    alt="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy8wQkJyc0tmRmNWbjBUQXlseXFuQkhNdzdzd0h5ejJQcXU1SzdiamNFNXhiN2RsOVFKNWE4SFIzb05LQW41c3FoRU50M1RxMWxJd29CS0JrZHd4Qk5rZy82NDA?x-oss-process=image/format,png"
+    title="img" /></p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2022-10-19&#32;20:50:41>更新于 2022-10-19</span>
+      </div>
+      <div class="post-info-license "></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://example.org/posts/tps%E8%96%84%E6%9D%BF%E6%A0%B7%E6%9D%A1%E5%8F%98%E6%8D%A2/" data-title="TPS薄板样条变换"><i class="fa-brands fa-twitter fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://example.org/posts/tps%E8%96%84%E6%9D%BF%E6%A0%B7%E6%9D%A1%E5%8F%98%E6%8D%A2/"><i class="fa-brands fa-facebook-square fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="http://example.org/posts/tps%E8%96%84%E6%9D%BF%E6%A0%B7%E6%9D%A1%E5%8F%98%E6%8D%A2/" data-title="TPS薄板样条变换" data-web><i class="fa-brands fa-whatsapp fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://example.org/posts/tps%E8%96%84%E6%9D%BF%E6%A0%B7%E6%9D%A1%E5%8F%98%E6%8D%A2/" data-title="TPS薄板样条变换"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://example.org/posts/tps%E8%96%84%E6%9D%BF%E6%A0%B7%E6%9D%A1%E5%8F%98%E6%8D%A2/" data-title="TPS薄板样条变换"><i class="fa-brands fa-weibo fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="http://example.org/posts/tps%E8%96%84%E6%9D%BF%E6%A0%B7%E6%9D%A1%E5%8F%98%E6%8D%A2/" data-title="TPS薄板样条变换" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a>
+  <a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="http://example.org/posts/tps%E8%96%84%E6%9D%BF%E6%A0%B7%E6%9D%A1%E5%8F%98%E6%8D%A2/" data-title="TPS薄板样条变换" data-description=""><i class="fa-brands fa-blogger fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="http://example.org/posts/tps%E8%96%84%E6%9D%BF%E6%A0%B7%E6%9D%A1%E5%8F%98%E6%8D%A2/" data-title="TPS薄板样条变换"><i class="fa-brands fa-evernote fa-fw"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/%E4%BF%AE%E6%94%B9hugo%E6%96%B0%E5%BB%BApost%E7%9A%84%E9%BB%98%E8%AE%A4%E4%BF%A1%E6%81%AF/" class="prev" rel="prev" title="修改hugo新建post的默认信息"><i class="fa-solid fa-angle-left fa-fw"></i>修改hugo新建post的默认信息</a>
+      <a href="/posts/%E5%9F%BA%E4%BA%8Epytorch%E6%A8%A1%E5%9E%8B%E7%9A%84web%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%92%8C%E9%83%A8%E7%BD%B2/" class="next" rel="next" title="基于pytorch模型的web应用开发和部署">基于pytorch模型的web应用开发和部署<i class="fa-solid fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/Lruihao/FixIt" target="_blank" rel="external nofollow noopener noreferrer" title="FixIt v0.2.15-RC"><img class="fixit-icon" src="/images/fixit.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright"><i class="fa-regular fa-copyright fa-fw"></i>
+            <span itemprop="copyrightYear">2017 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a
+  href="/"
+  
+  
+  
+  
+  
+>coldheart</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets">
+  <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+      <i class="fa-solid fa-arrow-up fa-fw"></i>
+    </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+      <i class="fa-solid fa-comment fa-fw"></i>
+    </a>
+  </div><div id="mask"></div>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/sharer/sharer.min.js" async defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":100},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"enablePWA":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="/js/_custom.min.js" defer></script></body>
+</html>

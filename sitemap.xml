@@ -2,9 +2,10 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
   ><url>
+      <loc>http://example.org/</loc><lastmod>2023-02-28T16:08:21&#43;08:00</lastmod></url><url>
+      <loc>http://example.org/posts/</loc><lastmod>2023-02-28T16:08:21&#43;08:00</lastmod></url><url>
+      <loc>http://example.org/posts/%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA%E7%9A%84openpose%E5%A7%BF%E6%80%81%E9%A2%84%E6%B5%8B%E6%A0%BC%E5%BC%8F/</loc><lastmod>2023-02-28T16:08:21&#43;08:00</lastmod></url><url>
       <loc>http://example.org/categories/</loc><lastmod>2023-02-22T14:02:48&#43;08:00</lastmod></url><url>
-      <loc>http://example.org/</loc><lastmod>2023-02-22T14:02:48&#43;08:00</lastmod></url><url>
-      <loc>http://example.org/posts/</loc><lastmod>2023-02-22T14:02:48&#43;08:00</lastmod></url><url>
       <loc>http://example.org/tags/pytorch/</loc><lastmod>2023-02-22T14:02:48&#43;08:00</lastmod></url><url>
       <loc>http://example.org/tags/</loc><lastmod>2023-02-22T14:02:48&#43;08:00</lastmod></url><url>
       <loc>http://example.org/tags/web/</loc><lastmod>2023-02-22T14:02:48&#43;08:00</lastmod></url><url>

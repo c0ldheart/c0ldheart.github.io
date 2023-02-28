@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>编译构建的openpose姿态预测格式 - coldheart&#39;s blog</title><meta name="author" content="coldheart">
+<meta name="author-link" content="">
+<meta name="description" content="This is My New Hugo Site" /><meta name="keywords" content='Theme, Hugo' /><meta itemprop="name" content="编译构建的openpose姿态预测格式">
+<meta itemprop="description" content=""><meta itemprop="datePublished" content="2023-02-28T16:08:21+08:00" />
+<meta itemprop="dateModified" content="2023-02-28T16:08:21+08:00" />
+<meta itemprop="wordCount" content="604"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="" /><meta property="og:title" content="编译构建的openpose姿态预测格式" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA%E7%9A%84openpose%E5%A7%BF%E6%80%81%E9%A2%84%E6%B5%8B%E6%A0%BC%E5%BC%8F/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-28T16:08:21+08:00" />
+<meta property="article:modified_time" content="2023-02-28T16:08:21+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="编译构建的openpose姿态预测格式"/>
+<meta name="twitter:description" content=""/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA%E7%9A%84openpose%E5%A7%BF%E6%80%81%E9%A2%84%E6%B5%8B%E6%A0%BC%E5%BC%8F/" /><link rel="prev" href="http://example.org/posts/%E5%9F%BA%E4%BA%8Epytorch%E6%A8%A1%E5%9E%8B%E7%9A%84web%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%92%8C%E9%83%A8%E7%BD%B2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "编译构建的openpose姿态预测格式",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA%E7%9A%84openpose%E5%A7%BF%E6%80%81%E9%A2%84%E6%B5%8B%E6%A0%BC%E5%BC%8F\/"
+    },"genre": "posts","wordcount":  604 ,
+    "url": "http:\/\/example.org\/posts\/%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA%E7%9A%84openpose%E5%A7%BF%E6%80%81%E9%A2%84%E6%B5%8B%E6%A0%BC%E5%BC%8F\/","datePublished": "2023-02-28T16:08:21+08:00","dateModified": "2023-02-28T16:08:21+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "coldheart"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="coldheart&#39;s blog"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/images/fixit.svg"
+    data-srcset="/images/fixit.svg, /images/fixit.svg 1.5x, /images/fixit.svg 2x"
+    data-sizes="auto"
+    alt="coldheart&#39;s blog"
+    title="coldheart&#39;s blog" /><span class="header-title-text">coldheart&#39;s blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class='fa-solid fa-archive fa-fw fa-sm'></i> 文章</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class='fa-solid fa-tags fa-fw fa-sm'></i> 标签</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/friends/"
+                
+                
+              ><i class='fa-solid fa-info-circle fa-fw fa-sm'></i> 关于</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="coldheart&#39;s blog"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/images/fixit.svg"
+    data-srcset="/images/fixit.svg, /images/fixit.svg 1.5x, /images/fixit.svg 2x"
+    data-sizes="auto"
+    alt="/images/fixit.svg"
+    title="/images/fixit.svg" /><span class="header-title-text">coldheart&#39;s blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class='fa-solid fa-archive fa-fw fa-sm'></i> 文章</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class='fa-solid fa-tags fa-fw fa-sm'></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/friends/"
+                
+                
+              ><i class='fa-solid fa-info-circle fa-fw fa-sm'></i> 关于</a></li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录 <i class="toc-icon fa-solid fa-angle-down fa-fw"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
+        <span title="转载" class="icon-repost"><i class="fa-solid fa-share fa-fw"></i></span><span>编译构建的openpose姿态预测格式</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle"></i>
+      coldheart</span></span></div>
+      <div class="post-meta-line"><span title=2023-02-28&#32;16:08:21>
+            <i class="fa-regular fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-02-28" >2023-02-28</time>
+          </span>&nbsp;<i class="fa-solid fa-pencil-alt fa-fw"></i>&nbsp;约 604 字&nbsp;
+        <i class="fa-regular fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#输出格式">输出格式</a></li>
+        <li><a href="#c-api-中-keypoints-格式">C++ API 中 Keypoints 格式</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div
+      class="content"
+      id="content"
+      
+      
+    ><h3 id="输出格式">输出格式</h3>
+<p>OpenPose 有两种可选的输出保存方式：</p>
+<ol>
+<li>采用 write_json flag 将人体姿态数据结果保存为 JSON writer 格式.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># Only body</span>
+./build/examples/openpose/openpose.bin 
+            --video examples/media/video.avi 
+            --write_json output/ 
+            --display <span class="m">0</span> 
+            --render_pose <span class="m">0</span>
+<span class="c1"># Body + face + hands</span>
+./build/examples/openpose/openpose.bin 
+            --video examples/media/video.avi 
+            --write_video output/result.avi
+            --write_json output/ 
+            --display <span class="m">0</span>
+            --render_pose <span class="m">0</span> 
+            --face 
+            --hand
+<span class="c1"># Only body</span>
+./build/examples/openpose/openpose.bin 
+            --video examples/media/video.avi 
+            --write_json output/ 
+            --display <span class="m">0</span> 
+            --render_pose <span class="m">0</span>
+<span class="c1"># Body + face + hands</span>
+./build/examples/openpose/openpose.bin 
+            --video examples/media/video.avi 
+            --write_video output/result.avi
+            --write_json output/ 
+            --display <span class="m">0</span>
+            --render_pose <span class="m">0</span> 
+            --face 
+            --hand
+</code></pre></div><h3 id="c-api-中-keypoints-格式">C++ API 中 Keypoints 格式</h3>
+<p>在 <code>Datum</code> 类中有 3 种不同的关键点 Array<!-- raw HTML omitted --> 元素:</p>
+<ol>
+<li>数组 poseKeypoints - 为了访问 Person person 和 Body Part part(其中，index 对应于 POSE_COCO_BODY_PARTS 或 POSE_MPI_BODY_PARTS)，简单输出如下：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// Common patrameters needed
+</span><span class="c1"></span><span class="k">const</span> <span class="k">auto</span> <span class="n">numberPeopleDetected</span> <span class="o">=</span> <span class="n">poseKeypoints</span><span class="p">.</span><span class="n">getSize</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">numberBodyParts</span> <span class="o">=</span> <span class="n">poseKeypoints</span><span class="p">.</span><span class="n">getSize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="c1">// Easy version
+</span><span class="c1"></span><span class="k">const</span> <span class="k">auto</span> <span class="n">x</span> <span class="o">=</span> <span class="n">poseKeypoints</span><span class="p">[{</span><span class="n">person</span><span class="p">,</span> <span class="n">part</span><span class="p">,</span> <span class="mi">0</span><span class="p">}];</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">y</span> <span class="o">=</span> <span class="n">poseKeypoints</span><span class="p">[{</span><span class="n">person</span><span class="p">,</span> <span class="n">part</span><span class="p">,</span> <span class="mi">1</span><span class="p">}];</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">score</span> <span class="o">=</span> <span class="n">poseKeypoints</span><span class="p">[{</span><span class="n">person</span><span class="p">,</span> <span class="n">part</span><span class="p">,</span> <span class="mi">2</span><span class="p">}];</span>
+<span class="c1">// Slightly more efficient version
+</span><span class="c1">// If you want to access these elements on a huge loop, you can get the index
+</span><span class="c1">// by your own, but it is usually not faster enough to be worthy
+</span><span class="c1"></span><span class="k">const</span> <span class="k">auto</span> <span class="n">baseIndex</span> <span class="o">=</span> <span class="n">poseKeypoints</span><span class="p">.</span><span class="n">getSize</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">person</span><span class="o">*</span><span class="n">numberBodyParts</span> <span class="o">+</span> <span class="n">part</span><span class="p">);</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">x</span> <span class="o">=</span> <span class="n">poseKeypoints</span><span class="p">[</span><span class="n">baseIndex</span><span class="p">];</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">y</span> <span class="o">=</span> <span class="n">poseKeypoints</span><span class="p">[</span><span class="n">baseIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">score</span> <span class="o">=</span> <span class="n">poseKeypoints</span><span class="p">[</span><span class="n">baseIndex</span> <span class="o">+</span> <span class="mi">2</span><span class="p">];</span>
+</code></pre></div><ol start="2">
+<li>数组 faceKeypoints - 完全类似于 poseKeypoints.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// Common parameters needed
+</span><span class="c1"></span><span class="k">const</span> <span class="k">auto</span> <span class="n">numberPeopleDetected</span> <span class="o">=</span> <span class="n">faceKeypoints</span><span class="p">.</span><span class="n">getSize</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">numberFaceParts</span> <span class="o">=</span> <span class="n">faceKeypoints</span><span class="p">.</span><span class="n">getSize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="c1">// Easy version
+</span><span class="c1"></span><span class="k">const</span> <span class="k">auto</span> <span class="n">x</span> <span class="o">=</span> <span class="n">faceKeypoints</span><span class="p">[{</span><span class="n">person</span><span class="p">,</span> <span class="n">part</span><span class="p">,</span> <span class="mi">0</span><span class="p">}];</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">y</span> <span class="o">=</span> <span class="n">faceKeypoints</span><span class="p">[{</span><span class="n">person</span><span class="p">,</span> <span class="n">part</span><span class="p">,</span> <span class="mi">1</span><span class="p">}];</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">score</span> <span class="o">=</span> <span class="n">faceKeypoints</span><span class="p">[{</span><span class="n">person</span><span class="p">,</span> <span class="n">part</span><span class="p">,</span> <span class="mi">2</span><span class="p">}];</span>
+<span class="c1">// Slightly more efficient version
+</span><span class="c1"></span><span class="k">const</span> <span class="k">auto</span> <span class="n">baseIndex</span> <span class="o">=</span> <span class="n">faceKeypoints</span><span class="p">.</span><span class="n">getSize</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">person</span><span class="o">*</span><span class="n">numberFaceParts</span> <span class="o">+</span> <span class="n">part</span><span class="p">);</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">x</span> <span class="o">=</span> <span class="n">faceKeypoints</span><span class="p">[</span><span class="n">baseIndex</span><span class="p">];</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">y</span> <span class="o">=</span> <span class="n">faceKeypoints</span><span class="p">[</span><span class="n">baseIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">score</span> <span class="o">=</span> <span class="n">faceKeypoints</span><span class="p">[</span><span class="n">baseIndex</span> <span class="o">+</span> <span class="mi">2</span><span class="p">];</span>
+</code></pre></div><ol start="3">
+<li>std::array&lt;Array, 2&gt; handKeypoints, 其中，handKeypoints[0] 对应于 left hand，handKeypoints[1] 对应于 right hand. 每个 handKeypoints[i] 类似于 poseKeypoints 和 faceKeypoints：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// Common parameters needed
+</span><span class="c1"></span><span class="k">const</span> <span class="k">auto</span> <span class="n">numberPeopleDetected</span> <span class="o">=</span> <span class="n">handKeypoints</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">getSize</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// = handKeypoints[1].getSize(0)
+</span><span class="c1"></span><span class="k">const</span> <span class="k">auto</span> <span class="n">numberHandParts</span> <span class="o">=</span> <span class="n">handKeypoints</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">getSize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// = handKeypoints[1].getSize(1)
+</span><span class="c1"></span>
+<span class="c1">// Easy version
+</span><span class="c1">// Left Hand
+</span><span class="c1"></span><span class="k">const</span> <span class="k">auto</span> <span class="n">xL</span> <span class="o">=</span> <span class="n">handKeypoints</span><span class="p">[</span><span class="mi">0</span><span class="p">][{</span><span class="n">person</span><span class="p">,</span> <span class="n">part</span><span class="p">,</span> <span class="mi">0</span><span class="p">}];</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">yL</span> <span class="o">=</span> <span class="n">handKeypoints</span><span class="p">[</span><span class="mi">0</span><span class="p">][{</span><span class="n">person</span><span class="p">,</span> <span class="n">part</span><span class="p">,</span> <span class="mi">1</span><span class="p">}];</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">scoreL</span> <span class="o">=</span> <span class="n">handKeypoints</span><span class="p">[</span><span class="mi">0</span><span class="p">][{</span><span class="n">person</span><span class="p">,</span> <span class="n">part</span><span class="p">,</span> <span class="mi">2</span><span class="p">}];</span>
+<span class="c1">// Right Hand
+</span><span class="c1"></span><span class="k">const</span> <span class="k">auto</span> <span class="n">xR</span> <span class="o">=</span> <span class="n">handKeypoints</span><span class="p">[</span><span class="mi">1</span><span class="p">][{</span><span class="n">person</span><span class="p">,</span> <span class="n">part</span><span class="p">,</span> <span class="mi">0</span><span class="p">}];</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">yR</span> <span class="o">=</span> <span class="n">handKeypoints</span><span class="p">[</span><span class="mi">1</span><span class="p">][{</span><span class="n">person</span><span class="p">,</span> <span class="n">part</span><span class="p">,</span> <span class="mi">1</span><span class="p">}];</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">scoreR</span> <span class="o">=</span> <span class="n">handKeypoints</span><span class="p">[</span><span class="mi">1</span><span class="p">][{</span><span class="n">person</span><span class="p">,</span> <span class="n">part</span><span class="p">,</span> <span class="mi">2</span><span class="p">}];</span>
+
+<span class="c1">// Slightly more efficient version
+</span><span class="c1"></span><span class="k">const</span> <span class="k">auto</span> <span class="n">baseIndex</span> <span class="o">=</span> <span class="n">handKeypoints</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">getSize</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">person</span><span class="o">*</span><span class="n">numberHandParts</span> <span class="o">+</span> <span class="n">part</span><span class="p">);</span>
+<span class="c1">// Left Hand
+</span><span class="c1"></span><span class="k">const</span> <span class="k">auto</span> <span class="n">xL</span> <span class="o">=</span> <span class="n">handKeypoints</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">baseIndex</span><span class="p">];</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">yL</span> <span class="o">=</span> <span class="n">handKeypoints</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">baseIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">scoreL</span> <span class="o">=</span> <span class="n">handKeypoints</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">baseIndex</span> <span class="o">+</span> <span class="mi">2</span><span class="p">];</span>
+<span class="c1">// Right Hand
+</span><span class="c1"></span><span class="k">const</span> <span class="k">auto</span> <span class="n">xR</span> <span class="o">=</span> <span class="n">handKeypoints</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">baseIndex</span><span class="p">];</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">yR</span> <span class="o">=</span> <span class="n">handKeypoints</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">baseIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">scoreR</span> <span class="o">=</span> <span class="n">handKeypoints</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">baseIndex</span> <span class="o">+</span> <span class="mi">2</span><span class="p">];</span>
+</code></pre></div><blockquote>
+<p>来自：https://www.aiuai.cn/aifarm712.htm</p>
+</blockquote></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2023-02-28&#32;16:08:21>更新于 2023-02-28</span>
+      </div>
+      <div class="post-info-license "></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://example.org/posts/%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA%E7%9A%84openpose%E5%A7%BF%E6%80%81%E9%A2%84%E6%B5%8B%E6%A0%BC%E5%BC%8F/" data-title="编译构建的openpose姿态预测格式"><i class="fa-brands fa-twitter fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://example.org/posts/%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA%E7%9A%84openpose%E5%A7%BF%E6%80%81%E9%A2%84%E6%B5%8B%E6%A0%BC%E5%BC%8F/"><i class="fa-brands fa-facebook-square fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="http://example.org/posts/%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA%E7%9A%84openpose%E5%A7%BF%E6%80%81%E9%A2%84%E6%B5%8B%E6%A0%BC%E5%BC%8F/" data-title="编译构建的openpose姿态预测格式" data-web><i class="fa-brands fa-whatsapp fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://example.org/posts/%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA%E7%9A%84openpose%E5%A7%BF%E6%80%81%E9%A2%84%E6%B5%8B%E6%A0%BC%E5%BC%8F/" data-title="编译构建的openpose姿态预测格式"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://example.org/posts/%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA%E7%9A%84openpose%E5%A7%BF%E6%80%81%E9%A2%84%E6%B5%8B%E6%A0%BC%E5%BC%8F/" data-title="编译构建的openpose姿态预测格式"><i class="fa-brands fa-weibo fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="http://example.org/posts/%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA%E7%9A%84openpose%E5%A7%BF%E6%80%81%E9%A2%84%E6%B5%8B%E6%A0%BC%E5%BC%8F/" data-title="编译构建的openpose姿态预测格式" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a>
+  <a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="http://example.org/posts/%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA%E7%9A%84openpose%E5%A7%BF%E6%80%81%E9%A2%84%E6%B5%8B%E6%A0%BC%E5%BC%8F/" data-title="编译构建的openpose姿态预测格式" data-description=""><i class="fa-brands fa-blogger fa-fw"></i></a>
+  <a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="http://example.org/posts/%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA%E7%9A%84openpose%E5%A7%BF%E6%80%81%E9%A2%84%E6%B5%8B%E6%A0%BC%E5%BC%8F/" data-title="编译构建的openpose姿态预测格式"><i class="fa-brands fa-evernote fa-fw"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/%E5%9F%BA%E4%BA%8Epytorch%E6%A8%A1%E5%9E%8B%E7%9A%84web%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%92%8C%E9%83%A8%E7%BD%B2/" class="prev" rel="prev" title="基于pytorch模型的web应用开发和部署"><i class="fa-solid fa-angle-left fa-fw"></i>基于pytorch模型的web应用开发和部署</a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/Lruihao/FixIt" target="_blank" rel="external nofollow noopener noreferrer" title="FixIt v0.2.15-RC"><img class="fixit-icon" src="/images/fixit.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright"><i class="fa-regular fa-copyright fa-fw"></i>
+            <span itemprop="copyrightYear">2017 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a
+  href="/"
+  
+  
+  
+  
+  
+>coldheart</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets">
+  <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+      <i class="fa-solid fa-arrow-up fa-fw"></i>
+    </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+      <i class="fa-solid fa-comment fa-fw"></i>
+    </a>
+  </div><div id="mask"></div>
+</div><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/sharer/sharer.min.js" async defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":100},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"enablePWA":true,"search":{"highlightTag":"em","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="/js/_custom.min.js" defer></script></body>
+</html>
